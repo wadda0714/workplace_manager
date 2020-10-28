@@ -1,0 +1,13 @@
+button:hover{
+    cursor: pointer;
+    color: #ff8f5b;
+    background-color: #ffff;
+    border: 2px solid #ff8f5b;
+}
+
+button:disabled{
+    cursor: default;
+    color: #ffff;
+    border: 0;
+    background: #22222222;
+}

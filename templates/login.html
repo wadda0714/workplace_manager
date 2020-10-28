@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>main</title>
+  <link rel="stylesheet" type="text/css" title="Cool stylesheet" href="static/css/login.css">
+</head>
+<body>
+    <form action="/login" method = "POST"> 
+        <fieldset>
+            <legend>Please input username and password!</legend>
+            <p>username</p>
+            <input type="text" name="username">
+            <br>
+            <br>
+            <p>password</p>
+            <input type="text" name="password">
+            <br>
+            <button type="submit" id = "login" disabled=True>送信</button>
+            
+        </fieldset>
+
+    </form>
+</body>
+<script src="static/js/login.js"></script>
+</html>
