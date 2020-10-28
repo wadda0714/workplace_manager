@@ -1,1 +1,2 @@
 # workplace_manager
+ファイルはmasterブランチにあるので切り替えてください
