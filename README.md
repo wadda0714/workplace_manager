@@ -1,2 +1,2 @@
 # workplace_manager
-ファイルはmasterブランチにあるので切り替えてください
+ファイルはmasterブランチにあるのでmainから切り替えてください
