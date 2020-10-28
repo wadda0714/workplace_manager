@@ -9,13 +9,12 @@ app = Flask(__name__)
 def login():
     if request.method == "POST":
         un = request.form.get("username")
-        username = session.get('un',un)
-        
-        return render_template("map.html", username = username)
+        pwd = request.form.get("password")
+        return render_template("map.html", username = un ,password = pwd)
 @app.route('/',methods = ['GET'])
 def login_form():
     return render_template("login.html")
-@app.route('/map',methods = ['GET'])
+@app.route('/kintai',methods = ['GET'])
 def map():
     return render_template("map.html")
 
