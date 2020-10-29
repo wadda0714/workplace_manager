@@ -7,7 +7,36 @@
   <link rel="stylesheet" type="text/css" title="Cool stylesheet" href="static/css/map.css">
 </head>
 <body>
+
+  
     <h1>ようこそ！{{username}}さん！！</h1>
-   <div class = "aaa"> <a href="http://127.0.0.1:5555/kintai">勤怠登録はこちら</a></div>
+    <img src="static/pics/5eca199d240000940f8eb5f8.jpeg" usemap="#ImageMap" alt="" />
+<map name="ImageMap">
+  <area shape="rect" coords="NaN,NaN,NaN,NaN" href="#" alt="" />
+  <div class = "tikubi1"><area shape="circle" coords="450,555,38" href="https://jp.pornhub.com/" alt=""/></div>
+  <div class = "tikubi2"><area shape="circle" coords="257,559,37" href="https://jp.pornhub.com/" alt=""/></div>
+</map>
+
+    <form action="/kintai" method="POST">
+      
+    <fieldset>
+      <legend>勤怠登録フォーム</legend>
+      <p>勤務状況</p><select name="kintai">
+        <option>欠勤</option>
+        <option>出勤</option>
+        <option>出張</option>
+      </select>
+      <br>
+      <br>
+      <p>勤務先</p>
+      <select name="kinmusaki">
+        <option>白浜</option>
+        <option>名古屋</option>
+        <option>東京</option>
+        <option>大阪</option>
+      </select>
+    </fieldset></form>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="static/js/map.js"></script>
 </body>
 </html>

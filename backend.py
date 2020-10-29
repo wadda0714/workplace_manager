@@ -11,12 +11,20 @@ def login():
         un = request.form.get("username")
         pwd = request.form.get("password")
         return render_template("map.html", username = un ,password = pwd)
+    
+@app.route('/register',methods = ['POST'])
+def register():
+    if request.method == "POST":
+        un = request.form.get("username")
+        pwd = request.form.get("password")
+        place = request.form.get("working_place")
+        print(place)
+        
 @app.route('/',methods = ['GET'])
 def login_form():
     return render_template("login.html")
-@app.route('/kintai',methods = ['GET'])
-def map():
-    return render_template("map.html")
+def generate_info():
+    return 0
 
 if __name__ == '__main__':
     

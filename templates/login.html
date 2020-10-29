@@ -10,9 +10,9 @@
     <form action="/login" method = "POST"> 
         <h1>Sign in</h1>
         <fieldset>
-            <legend>Please input username and password! </legend>
+            <legend>Please input username and password!</legend>
             <p>username</p>
-            <input type="text" name="username">
+            <input type="text" class="test" name="username">
             <br>
             <p>password</p>
             <input type="text" name="password">
@@ -26,7 +26,7 @@
          <fieldset>
              <legend>Please input some information!</legend>
              <p>username</p>
-             <input type="text" name="username">
+             <input type="text" name="username" class="un">
              <br>
              <p>password</p>
              <input type="text" name="password">
@@ -39,11 +39,9 @@
                  <option>大阪</option>
                  <option>東京</option>
              </select>
-
-         </fieldset>
-        
-        
-        
+             <br>
+             <button type="submit" id = "signup" disabled=True>送信</button>
+            </fieldset>
         </form>
     
     
