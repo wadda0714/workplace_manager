@@ -23,8 +23,9 @@ def register():
 @app.route('/',methods = ['GET'])
 def login_form():
     return render_template("login.html")
-def generate_info():
-    return 0
+@app.route('/',methods = ['GET'])
+def signup():
+    return render_template("signup.html")
 
 if __name__ == '__main__':
     
