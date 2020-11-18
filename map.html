@@ -1,33 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html><!--初めの宣言-->
+<html lang="en"><!--おまじない-->
+<head><!--head-->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>main</title>
-  <link rel="stylesheet" type="text/css" title="Cool stylesheet" href="static/css/map.css">
+  <link rel="stylesheet" type="text/css" title="Cool stylesheet" href="static/css/map.css"><!--cssファイルの読み込み-->
 </head>
 <body>
-    <h1>ようこそ！{{username}}さん！！</h1>
-    <div class = "toggle"><p>切り替え</p></div>
+    <h1>ようこそ！{{username}}さん！！</h1><!--h1：見出しタグ　h2いっこちっちゃなる-->
+    <div class = "toggle"><p> 切り替え</p></div><!--div 意味なし--><!--p 文字・切り替え-->
     <div class = "ikkai">
-    <img src="/static/pics/白浜社屋1F.png" usemap="#ImageMap" alt="" />
-<map name="ImageMap">
-  <area shape="rect" coords="NaN,NaN,NaN,NaN" href="#" alt="" onclick= />
-  <area shape="rect" coords="67,302,219,561" href="#" alt="" onclick=/>
-  <area shape="rect" coords="63,560,217,823" href="#" alt="" onclick=/>
-  <area shape="rect" coords="285,31,381,175" href="#" alt="" onclick=/>
-  <area shape="rect" coords="694,29,1025,173" href="#" alt="" onclick=/>
-</map></div>  
-    <form action="/kintai" method="POST">
+    <img src="/static/pics/白浜社屋1F.png" usemap="#ImageMap" alt="" /><!--image map 1階の画像-->
+<map name="ImageMap"><!--適用するimage map-->
+  <area shape="rect" coords="NaN,NaN,NaN,NaN" href="#" alt="" onclick= /><!--image map 1階の画像の切り抜き-->
+  <area shape="rect" coords="67,302,219,561" href="#" alt="" onclick=/><!--image map 1階の画像の切り抜き-->
+  <area shape="rect" coords="63,560,217,823" href="#" alt="" onclick=/><!--image map 1階の画像の切り抜き-->
+  <area shape="rect" coords="285,31,381,175" href="#" alt="" onclick=/><!--image map 1階の画像の切り抜き-->
+  <area shape="rect" coords="694,29,1025,173" href="#" alt="" onclick=/><!--image map 1階の画像の切り抜き-->
+</map></div>  <!--image mapの終了--><!--divの終了-->
+    <form action="/kintai" method="POST"><!--action:入力したデータを""内に送る-->
       
-    <fieldset>
-      <legend>勤怠登録フォーム</legend>
-      <p>勤務状況</p><select name="kintai">
-        <option>欠勤</option>
+    <fieldset><!--fieldset:中身を全部囲ってくれる-->
+      <legend>勤怠登録フォーム</legend><!--legend:囲いの中の見出しを作ってくれる-->
+      <p>勤務状況</p><select name="kintai"><!--selectタグで囲う:選択できる-->
+        <option>欠勤</option><!--potionタグで囲う:中身できる-->
         <option>出勤</option>
         <option>出張</option>
       </select>
-      <br>
+      <br><!--改行-->
       <br>
       <p>勤務先</p>
       <select name="kinmusaki">
@@ -36,8 +36,8 @@
         <option>東京</option>
         <option>大阪</option>
       </select>
-    </fieldset></form>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="static/js/map.js"></script>
+    </fieldset></form><!--fieldタグの終了タグ--><!--formタグの終了タグ-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script><!--javascriptを読み込む-->
+    <script src="static/js/map.js"></script><!--javascriptの読み込みは読み込んでほしいときにする-->
 </body>
 </html>
