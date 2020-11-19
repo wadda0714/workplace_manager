@@ -1,9 +1,8 @@
 from flask import Flask, request, Response, abort, render_template,session, jsonify
 from flask_login import LoginManager, login_user, logout_user, login_required, UserMixin
-
+import sqlite3
 
 app = Flask(__name__)
-
 
 @app.route('/login',methods = ['POST'])
 def login():
