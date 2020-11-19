@@ -8,12 +8,12 @@
 </head>
 <body>
     <h1>ようこそ！{{username}}さん！！</h1>
-    <div class = "toggle"><p>切り替え</p></div>
+    <a class = "toggle" href="#">切り替え</a>
     <div class = "ikkai">
-    <img src="/static/pics/白浜社屋1F.png" usemap="#ImageMap" alt="" />
+    <img src="/static/pics/白浜社屋1F.png" usemap="#ImageMap" alt="" /><!--画像ファイルはpicsの下に入れてね-->
 <map name="ImageMap">
   <area shape="rect" coords="NaN,NaN,NaN,NaN" href="#" alt="" onclick= />
-  <area shape="rect" coords="67,302,219,561" href="#" alt="" onclick=/>
+  <area shape="rect" coords="67,302,219,561" href="#" alt="" class="cafe" onclick=/>
   <area shape="rect" coords="63,560,217,823" href="#" alt="" onclick=/>
   <area shape="rect" coords="285,31,381,175" href="#" alt="" onclick=/>
   <area shape="rect" coords="694,29,1025,173" href="#" alt="" onclick=/>
@@ -21,11 +21,14 @@
     <form action="/kintai" method="POST">
       
     <fieldset>
-      <legend>勤怠登録フォーム</legend>
+      <legend>勤怠情報変更フォーム</legend>
       <p>勤務状況</p><select name="kintai">
         <option>欠勤</option>
         <option>出勤</option>
         <option>出張</option>
+        <option>早退</option>
+        <option>退勤</option>
+        op
       </select>
       <br>
       <br>

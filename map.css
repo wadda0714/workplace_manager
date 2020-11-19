@@ -1,0 +1,11 @@
+
+.toggle:hover+.ikkai{
+    visibility: hidden;
+}
+.toggle{
+    display:inline;
+    
+}
+.cafe:active{
+    transform: scale(2, 2);
+}
