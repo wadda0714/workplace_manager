@@ -22,7 +22,7 @@ def register():
 @app.route('/',methods = ['GET'])
 def login_form():
     return render_template("login.html")
-@app.route('/',methods = ['GET'])
+@app.route('/signup',methods = ['GET'])
 def signup():
     return render_template("signup.html")
 
