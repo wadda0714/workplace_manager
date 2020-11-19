@@ -7,20 +7,7 @@
   <link rel="stylesheet" type="text/css" title="Cool stylesheet" href="static/css/login.css"><!--cssの読みこみ-->
 </head>
 <body>
-    <form action="/login" method = "POST"> <!--loginっていうURLにpostする-->
-        <h1>Sign in</h1><!--見出し-->
-        <fieldset>
-            <legend>Please input username and password!</legend>
-            <p>username</p>
-            <input type="text" class="test" name="username">
-            <br>
-            <p>password</p>
-            <input type="text" name="password">
-            <br>
-            <button type="submit" id = "login" disabled=True>送信</button>
-            <p>forgot your password?? hahahahahahahah</p>
-        </fieldset>
-    </form>
+    
     <form action="/register" method = "POST">
          <h1>Sign up</h1>
          <fieldset>
@@ -29,17 +16,11 @@
              <input type="text" name="username" class="un">
              <br>
              <p>password</p>
-             <input type="text" name="password">
+             <input type="text" name="password"><!--input:userが入力する部分を作る-->
              <br>
-             
-             <p>勤務地</p>
-             <select name="working_place">
-                 <option>白浜</option>
-                 <option>名古屋</option>
-                 <option>大阪</option>
-                 <option>東京</option>
-             </select>
-             <br>
+
+             <a href="/signup">signup</a><!--a:リンクを張るタグ-->
+
              <button type="submit" id = "signup" class = "sp" disabled=True>送信</button>
             </fieldset>
         </form>
