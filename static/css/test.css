@@ -1,0 +1,28 @@
+.a1:active{
+    .balloon3-top{
+        position: relative;
+        display: inline-block;
+        margin: 1.5em 0;
+        padding: 0 5px;
+        width: 90px;
+        height: 90px;
+        line-height: 90px;
+        text-align: center;
+        color: #FFF;
+        font-size: 20px;
+        font-weight: bold;
+        background: #a4eb84;
+        border-radius: 50%;
+        box-sizing: border-box;
+    }
+    .baloon3-top:before{
+        content:"座る";
+        position:absolute;
+        top: -25px;
+        left: 50%;
+        margin-left: -15px;
+        border-bottom:15px solid #a4eb84;
+        z-index: 0;
+    }
+    
+}
