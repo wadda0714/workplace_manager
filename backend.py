@@ -3,7 +3,9 @@ from flask_login import LoginManager, login_user, logout_user, login_required, U
 import sqlite3
 
 app = Flask(__name__)
-
+dbpath = "sample.sqlite"
+connection = sqlite3.connect(dbpath)
+cursor = connection.cursor()
 @app.route('/login',methods = ['POST'])
 def login():
     if request.method == "POST":
@@ -29,4 +31,4 @@ def signup():
 if __name__ == '__main__':
     
     app.run(host="127.0.0.1", port=5555, debug=True)
-    aaaaa
+    
