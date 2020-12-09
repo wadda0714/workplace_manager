@@ -24,3 +24,11 @@
     margin: 0;
     padding: 0;
 }
+
+
+.toggle:hover+.ikkai{
+    visibility: hidden;
+}
+.a1:active{
+    
+}

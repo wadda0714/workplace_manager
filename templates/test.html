@@ -3,12 +3,78 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>main</title>
+  <link rel="stylesheet" type="text/css" title="Cool stylesheet" href="/static/css/map.css">
   <link rel="stylesheet" type="text/css" title="Cool stylesheet" href="/static/css/test.css">
-  <title>Document</title>
+
 </head>
 <body>
-  <div class="balloon1-left">
-    <p>座る</p>
-  </div>
+    <h1>ようこそ！{{username}}さん！！</h1>
+    <a class = "toggle" href="#">切り替え</a>
+    <div class = "ikkai"></div>
+
+    <div class="pop-box">
+      <label for="popup-on"><label for="popup-on"><div class="btn-open">
+        <img src="/static/pics/白浜本社1F-room1.jpg" alt="" class="layer-img">
+    </div></label>
+    <input type="checkbox" id="popup-on">
+    <div class="popup">
+      <label for="popup-on"> class="icon-clone"> </label>
+      <div class="popup-content">
+        <img src="/static/pics/白浜社屋1F.png" usemap="#ImageMap" alt="" />
+        <area shape="rect" coords="67,302,219,561" href="#" alt="" class="cafe" onclick=/>
+      </div>
+      <label for="popup-on"><div class="btn-close">閉じる</div></label>
+    </div>
+    </div>
+ 
+  <img src="/static/pics/白浜社屋1F.png" usemap="#ImageMap" alt="" />
+  <map name="ImageMap">
+    <area shape="rect" coords="NaN,NaN,NaN,NaN" href="#" alt="" onclick= />
+  <area shape="rect" coords="67,302,219,561" href="#" alt="" class="cafe" onclick=/>
+  <area shape="rect" coords="63,560,217,823" href="#" alt="" onclick=/>
+  <area shape="rect" coords="285,31,381,175" href="#" alt="" onclick=/>
+  <area shape="rect" coords="694,29,1025,173" href="#" alt="" onclick=/>
+
+  </map>
+
+  <img src="/static/pics/白浜社屋2F.png" usemap="#ImageMap" alt="" />
+<map name="ImageMap">
+
+
+</map>
+
+
+</map></div>  
+    <form action="/kintai" method="POST">
+      
+    <fieldset>
+      <legend>勤怠情報変更フォーム</legend>
+      <p>勤務状況</p><select name="kintai">
+        <option>欠勤</option>
+        <option>出勤</option>
+        <option>出張</option>
+        <option>早退</option>
+        <option>退勤</option>
+        op
+      </select>
+      <br>
+      <br>
+      <p>趣味</p>
+      <select name="kinmusaki">
+        <option>掃除</option>
+        <option>絵画</option>
+        <option>本読み</option>
+        <option>えりちゃん</option>
+      </select>
+    </fieldset></form>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="static/js/map.js"></script>
+
+    <div class="balloon1-left">
+      <p>座る</p>
+    </div>
+
+    
 </body>
 </html>
