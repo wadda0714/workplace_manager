@@ -6,33 +6,3 @@
     
 }
 
-
-.balloonoya{
-    position: relative;
-    cursor :pointer;
-}
-
-.balloon1{
-    display: none;
-}
-
-.balloon{
-    position: absolute;
-    display: inline;
-    padding: 2px;
-    background-color: thistle;
-    width: 180px;
-    right: 1%;
-    font-size: 80%;
-}
-
-.balloon:after{
-    border-right: 12px solid rgba(26,26,255,0.50);
-    border-top: 10px solid transparent;
-    border-bottom: 10px solid transparent;
-    left: -12px;
-    top: 5%;
-    content: "";
-    position: absolute;
-}
-
