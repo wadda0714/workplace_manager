@@ -9,8 +9,12 @@ cursor = connection.cursor()
 @app.route('/login',methods = ['POST'])
 def login():
     if request.method == "POST":
+        dbpath = "user.sqlite"
+        connection = sqlite3.connect(dbpath)
+        cursor = connection.cursor()
         un = request.form.get("username")
         pwd = request.form.get("password")
+        cursor.execute()
         return render_template("map.html", username = un ,password = pwd)
     
 @app.route('/register',methods = ['POST'])
