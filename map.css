@@ -1,10 +1,15 @@
 
-.toggle:hover+.ikkai{
+.toggle:active+.ikkai{
     visibility: hidden;
+}
+.nikai{
+    visibility: hidden;
+}
+.toggle:active+.nikai{
+    visibility: visible;
 }
 .toggle{
     display:inline;
-    
 }
 .cafe:active{
     transform: scale(2, 2);

@@ -3,20 +3,18 @@ from flask_login import LoginManager, login_user, logout_user, login_required, U
 import sqlite3
 
 app = Flask(__name__)
-dbpath = "sample.sqlite"
-connection = sqlite3.connect(dbpath)
-cursor = connection.cursor()
+
 @app.route('/login',methods = ['POST'])
 def login():
     if request.method == "POST":
-        dbpath = "user.sqlite"
-        connection = sqlite3.connect(dbpath)
-        cursor = connection.cursor()
         un = request.form.get("username")
         pwd = request.form.get("password")
-        cursor.execute()
         return render_template("map.html", username = un ,password = pwd)
-    
+
+@app.route("/admin",methods = ["GET"])
+def admin():
+    return render_template("admin.html")
+
 @app.route('/register',methods = ['POST'])
 def register():
     if request.method == "POST":
@@ -24,13 +22,18 @@ def register():
         pwd = request.form.get("password")
         place = request.form.get("working_place")
         print(place)
-        
+      
 @app.route('/',methods = ['GET'])
 def login_form():
     return render_template("login.html")
+
 @app.route('/signup',methods = ['GET'])
 def signup():
     return render_template("signup.html")
+@app.route("/regis/<workplace>")
+def regis(workplace):
+    return render_template()
+
 
 if __name__ == '__main__':
     
