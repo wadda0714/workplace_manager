@@ -1,28 +1,26 @@
-.a1:active{
-    .balloon3-top{
-        position: relative;
-        display: inline-block;
-        margin: 1.5em 0;
-        padding: 0 5px;
-        width: 90px;
-        height: 90px;
-        line-height: 90px;
-        text-align: center;
-        color: #FFF;
-        font-size: 20px;
-        font-weight: bold;
-        background: #a4eb84;
-        border-radius: 50%;
-        box-sizing: border-box;
-    }
-    .baloon3-top:before{
-        content:"座る";
-        position:absolute;
-        top: -25px;
-        left: 50%;
-        margin-left: -15px;
-        border-bottom:15px solid #a4eb84;
-        z-index: 0;
-    }
-    
+.balloon1-left {
+    position: relative;
+    display: inline-block;
+    margin: 1.5em 0 1.5em 15px;
+    padding: 7px 10px;
+    min-width: 120px;
+    max-width: 100%;
+    color: rgb(181, 238, 238);
+    font-size: 16px;
+    background: #e0edff;
+}
+
+.balloon1-left:before{
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: -30px;
+    margin-top: -15px;
+    border: 15px solid transparent;
+    border-right: 15px solid #e0edff;
+}
+
+.balloon1-left p{
+    margin: 0;
+    padding: 0;
 }
