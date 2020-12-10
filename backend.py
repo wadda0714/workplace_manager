@@ -32,6 +32,13 @@ def signup():
     return render_template("signup.html")
 @app.route("/regis/<workplace>")
 def regis(workplace):
+    dbname = ".db"
+    con = sqlite3.connect(dbname)
+    cursor = con.cursor()
+    cursor.execute("SELECT * FROM ")
+    print(cur.fetchall())
+    
+    con.close()
     return render_template()
 
 
