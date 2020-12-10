@@ -9,7 +9,13 @@ def login():
     if request.method == "POST":
         un = request.form.get("username")
         pwd = request.form.get("password")
-        return render_template("map.html", username = un ,password = pwd)
+        dbname = ".db"
+        con = sqlite3.connect(dbname)
+        cursor = con.cursor()
+        cursor.execute("SELECT * FROM ")
+        if pwd == cursor:
+            return render_template("map.html")
+        
 
 @app.route("/admin",methods = ["GET"])
 def admin():
@@ -21,6 +27,11 @@ def register():
         un = request.form.get("username")
         pwd = request.form.get("password")
         place = request.form.get("working_place")
+        dbname = ".db"
+        con = sqlite3.connect(dbname)
+        cursor = con.cursor()
+        cursor.execute("SELECT * FROM ")
+        
         print(place)
       
 @app.route('/',methods = ['GET'])
@@ -30,7 +41,8 @@ def login_form():
 @app.route('/signup',methods = ['GET'])
 def signup():
     return render_template("signup.html")
-@app.route("/regis/<workplace>")
+
+@app.route("/regis/<workplace>",methods = ["POST"])
 def regis(workplace):
     dbname = ".db"
     con = sqlite3.connect(dbname)
@@ -39,9 +51,7 @@ def regis(workplace):
     print(cur.fetchall())
     
     con.close()
-    return render_template()
-
-
+    
 if __name__ == '__main__':
     
     app.run(host="127.0.0.1", port=5555, debug=True)
