@@ -1,21 +1,21 @@
 
 /*全体設定*/
-*{
+* {
     box-sizing: border-box;
 }
 /*ポップアップウィンドウの設定*/
 .popup{
     background-color: #efefef;
-    box-shadow: 0 0 0 9999px rgba(0,0,0,0);
+    box-shadow: 0 0 0 9999px rgba(0,0,0,0.8);
     display: none;
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    margin: auto;
-    width: 70vw;
-    height: 55vw;
+    margin: auto; /*余白*/
+    width: 30vw;
+    height: 60vw;
     overflow-y: scroll;
 }
 
@@ -47,7 +47,7 @@
     padding: 10px;
     cursor: pointer;
     margin:10px auto;
-    width: 95%;
+    width: 50%;
     text-align: center;
 }
 
@@ -69,4 +69,9 @@
     width: 90%;
 }
 
+/*写真の設定*/
+.layer-img2{
+    width: 100%;
+    height: 100%;
+}
 
