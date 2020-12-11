@@ -9,12 +9,7 @@ def login():
     if request.method == "POST":
         un = request.form.get("username")
         pwd = request.form.get("password")
-        dbname = ".db"
-        con = sqlite3.connect(dbname)
-        cursor = con.cursor()
-        cursor.execute("SELECT * FROM ")
-        if pwd == cursor:
-            return render_template("map.html")
+        return render_template("map.html")
         
 
 @app.route("/admin",methods = ["GET"])
@@ -51,6 +46,13 @@ def regis(workplace):
     print(cur.fetchall())
     
     con.close()
+def sql_generateA(dst_table,dst_data,dbname):
+    con = sqlite3.connect()
+    cursor = con.cursor()
+    query = "SELECT" + dst_data + "FROM" + dst_table
+    cursor.execute(query)
+    return msg
+    
     
 if __name__ == '__main__':
     
