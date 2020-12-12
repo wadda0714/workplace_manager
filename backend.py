@@ -11,8 +11,7 @@ def login():
         pwd = request.form.get("password")
         return render_template("map.html")
         
-
-@app.route("/admin",methods = ["GET"])
+@app.route("/admin",methods = ["GET","POST"])
 def admin():
     return render_template("admin.html")
 
@@ -37,22 +36,22 @@ def login_form():
 def signup():
     return render_template("signup.html")
 
-@app.route("/regis/<workplace>",methods = ["POST"])
+@app.route("/regis/<workplace>",methods = ["GET","POST"])
 def regis(workplace):
-    dbname = ".db"
+    dbname = "systemdesign.sqlite"
     con = sqlite3.connect(dbname)
     cursor = con.cursor()
-    cursor.execute("SELECT * FROM ")
-    print(cur.fetchall())
-    
+    cursor.execute("SELECT * FROM place")
+    print(cursor.fetchall())
     con.close()
+    return render_template("map.html")
+    
 def sql_generateA(dst_table,dst_data,dbname):
     con = sqlite3.connect()
     cursor = con.cursor()
     query = "SELECT" + dst_data + "FROM" + dst_table
     cursor.execute(query)
     return msg
-    
     
 if __name__ == '__main__':
     
