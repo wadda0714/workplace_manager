@@ -7,8 +7,15 @@ app = Flask(__name__)
 @app.route('/login',methods = ['POST'])
 def login():
     if request.method == "POST":
+        dbname = "user.sqlite"
+        con = sqlite3.connect(dbname)
+        cursor = con.cursor()
         un = request.form.get("username")
         pwd = request.form.get("password")
+        data = list()
+        data.append(un)
+        data.append(pwd)
+        sql_generateA("",data,"login")
         return render_template("map.html")
         
 @app.route("/admin",methods = ["GET","POST"])
@@ -41,17 +48,22 @@ def regis(workplace):
     dbname = "systemdesign.sqlite"
     con = sqlite3.connect(dbname)
     cursor = con.cursor()
-    cursor.execute("SELECT * FROM place")
-    print(cursor.fetchall())
+    cursor.execute(sql_generateA())
     con.close()
     return render_template("map.html")
     
-def sql_generateA(dst_table,dst_data,dbname):
-    con = sqlite3.connect()
-    cursor = con.cursor()
+def sql_generateA(dst_table,dst_data,ope):
+    if ope == "insert":
+        pass
+    else if ope == "login":
+        pass
+    else if ope == "update":
+        pass
+    else if ope == "delete":
+        pass
+    
     query = "SELECT" + dst_data + "FROM" + dst_table
-    cursor.execute(query)
-    return msg
+    return query
     
 if __name__ == '__main__':
     
