@@ -25,7 +25,7 @@
 }
 
 /*チェックされたらポップアップウィンドウを開く*/
-#popup-on:checked+ .popup{
+.btn-open1:active+ .popup{
     display: block;
 }
 
@@ -52,7 +52,7 @@
 }
 
 /*開くボタン*/
-.btn-open{
+.btn-open1{
     background: #fff;
     border-radius: 10px;
     color: #fff;

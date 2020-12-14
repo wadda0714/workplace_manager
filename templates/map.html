@@ -1,46 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-
+<head>  
+  <!--UTF8(ってゆう種類)でエンコード(規則を設けて数字を文字にする)するよ-->
   <meta charset="UTF-8">
-
-  <!--パソコンとか携帯とかの幅に自動で合わせてくれる-->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!--キャッシュ無効化-->
-  <meta http-equiv="Cache-Control" content="no-cache">
-
-  <link rel="stylesheet" type="text/css" title="Cool stylesheet" href="/static/css/map.css">
+   <!--パソコンとか携帯とかの幅に自動で合わせてくれる-->
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <!--キャッシュ無効化-->
+   <meta http-equiv="Cache-Control" content="no-cache">
+   <link rel="stylesheet" type="text/css" title="Cool stylesheet" href="/static/css/map.css">
   <title>Document</title>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="/jQuery-rwdImageMaps-master/jQuery-rwdImageMaps-master/jquery.rwdImageMaps.min.js"></script>
+  <!--クリッカブルマップをレスポンシブ化-->
+  <script>$('img[usemap]').rwdImageMaps()</script>
+
+  <!--モーダルウィンドウと連携させる-->
+  <link rel='stylesheet' href="/fancybox-master/fancybox-master/dist/jquery.fancybox.min.css">
+  <script src="/fancybox-master/fancybox-master/dist/jquery.fancybox.min.js"></script>
+  
 </head>
 <body>
-  <img src="/static/pics/白浜社屋1F.png" usemap="#ImageMap" alt="" />
+  <img src="/static/pics/白浜社屋1F.png" usemap="#ImageMap" alt="" class="a" />
   <map name="ImageMap">
-    <area shape="rect" coords="NaN,NaN,NaN,NaN" href="#" alt="" onclick= />
-    <area shape="rect" coords="67,302,219,561" href="#" alt="" class="cafe" onclick=/>
-    <area shape="rect" coords="63,560,217,823" href="#" alt="" onclick=/>
-    <area shape="rect" coords="285,31,381,175" href="#" alt="" onclick=/>
-    <area shape="rect" coords="694,29,1025,173" href="#" alt="" onclick=/>
+  <area shape="rect" coords="694,29,1028,176" href="#" alt="" data-funcybox="seminarroom" target="_blank"/>
+  <area shape="rect" coords="285,28,384,176" href="#" alt="" data-funcybox="gallery2" target="_blank"/>
+  <area shape="rect" coords="63,299,217,565" href="/static/pics/白浜本社1F-room1.jpg" alt="" data-funcybox="1Froom1" target="_blank"/>
+  <area shape="rect" coords="65,564,217,824" href="/static/pics/白浜社屋1F.png" alt="" data-funcybox="1Froom2" target="_blank"/>
+ </map>
 
-  <div class="pop-box">
-    <label for="popup-on"><label for="popup-on">
-      <div class="btn-open">
-        <map name="ImageMap">
-        <area shape="rect" coords="67,302,219,561" href="#" alt="" class="cafe" onclick=/>
-        
-      </div>
-    </label>
-    <input type="checkbox" id="popup-on">
-    <div class="popup">
-      <label for="popup-on" class="icon-close">×</label>
-      <div class="popup-content">
-        <!--ポップアップの中身-->
-        椅子を選択<br>
-        <img src="/static/pics/白浜本社1F-room1.jpg" alt="" class="layer-img2">
-        <!--ポップアップの内容ここまで-->
-      </div>
-      <label for="popup-on"><div class="btn-close">閉じる</div></label>
-    </div>
-  </div>
+ <script>
+   /*fancybox設定*/
+   $('[data-fancybox="1Froom1"]').fancybox({
+     smallBtn:true
+   })
+   $('[data-fancybox="1Froom2"]').fancybox({
+     smallBtn:true
+   })
+ </script>
 </body>
 </html>
