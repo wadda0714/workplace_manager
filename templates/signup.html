@@ -12,16 +12,17 @@
          <h1>Sign up</h1>
          <fieldset>
              <legend>Please input some information!</legend>
-             <p>username</p>
-             <input type="text" name="username" class="un">
+             <label>名前　　　　　:<input type="text" name="username" class="un"></label>
              <br>
-             <p>email</p>
-             <input type="text" name="email" >
+
+             <label>メールアドレス:<input type="mail" name="email" ></label>
              <br>
-             <p>password</p>
-             <input type="text" name="password"><!--input:userが入力する部分を作る-->
+
+             <label>パスワード　　:<input type="password" name="password1"><!--input:userが入力する部分を作る--></label>
              <br>
-             
+
+             <label>もう一度パスワードを入力してください:<input type="password" name="password2"><!--input:userが入力する部分を作る--></label>
+             <br>
              
              <button type="submit" id = "signup" class = "sp" disabled=True>送信</button>
             </fieldset>
