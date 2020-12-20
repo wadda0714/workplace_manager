@@ -75,3 +75,14 @@
     height: 100%;
 }
 
+
+.swich:active + .F1{
+    display: none;
+}
+
+.F2{
+    display: none;
+}
+.swich:active + .F2{
+    display: block;
+}
