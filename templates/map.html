@@ -1,41 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>  
-  <!--UTF8(ってゆう種類)でエンコード(規則を設けて数字を文字にする)するよ-->
-  <meta charset="UTF-8">
-   <!--パソコンとか携帯とかの幅に自動で合わせてくれる-->
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <!--キャッシュ無効化-->
-   <meta http-equiv="Cache-Control" content="no-cache">
-   <link rel="stylesheet" type="text/css" title="Cool stylesheet" href="/static/css/map.css">
-  <title>Document</title>
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="/jQuery-rwdImageMaps-master/jQuery-rwdImageMaps-master/jquery.rwdImageMaps.min.js"></script>
-  <!--クリッカブルマップをレスポンシブ化-->
-  <script>$('img[usemap]').rwdImageMaps()</script>
+<head>
+    <!--UTF8(ってゆう種類)でエンコード(規則を設けて数字を文字にする)するよ-->
+    <meta charset="UTF-8">
+    <!--パソコンとか携帯とかの幅に自動で合わせてくれる-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--キャッシュ無効化-->
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <link rel="stylesheet" type="text/css" title="Cool stylesheet" href="/static/css/map.css">
+    <title>Document</title>
 
-  <!--モーダルウィンドウと連携させる-->
-  <link rel='stylesheet' href="/fancybox-master/fancybox-master/dist/jquery.fancybox.min.css">
-  <script src="/fancybox-master/fancybox-master/dist/jquery.fancybox.min.js"></script>
-  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="/static/js/jquery.rwdImageMaps.min.js"></script>
+    <!--クリッカブルマップをレスポンシブ化-->
+    <script>
+        $('img[usemap]').rwdImageMaps()
+    </script>
+
+    <!--モーダルウィンドウと連携させる-->
+    <link rel='stylesheet' href="/static/css/jquery.fancybox.min.css">
+    <script src="/static/js/jquery.fancybox.min.js"></script>
+
 </head>
 
 
 <body>
-<div class="hidden_box">
-  <input type="checkbox" id="label1" />
-  <label for="label1">2F</label>
-  <div class="hidden_show">
-    <!--表示ここから-->
-    <p>こんにちは</p>
-    <!--ここまで-->
-  </div>
-</div>
+    <div class="hidden_box">
+        <input type="checkbox" id="label1" />
+        <label for="label1">2F</label>
+        <div class="hidden_show">
+            <!--表示ここから-->
+            <p id="greeding">こんにちは</p>
+            <!--ここまで-->
+        </div>
+    </div>
 
-  <div  class="F1">
-    <img src="/static/pics/白浜社屋1F.png" usemap="#ImageMap" alt="" />
-    <map name="ImageMap">
+    <div class="F1">
+        <img src="/static/pics/白浜社屋1F.png" usemap="#ImageMap1" alt="" />
+        <div id="map1"><map name="ImageMap1" id="ikkai">
       <area shape="poly" coords="140,325,145,334,153,328,147,320,147,320" href="/regis/seat1" data-funcybox="floor1" target="_blank" alt="" />
       <area shape="poly" coords="126,334,132,342,140,337,134,328,133,329" href="/regis/seat2"  data-funcybox="floor1" target="_blank" alt="" />
       <area shape="poly" coords="111,343,116,352,127,347,121,336,123,338" href="/regis/seat3"  data-funcybox="floor1" target="_blank" alt="" />
@@ -77,13 +80,14 @@
       <area shape="poly" coords="132,784,124,791,132,800,143,793" href="/regis/seat39"  data-funcybox="floor1" target="_blank" alt="" />
       <area shape="poly" coords="112,777,108,785,120,789,123,779" href="/regis/seat40"  data-funcybox="floor1" target="_blank" alt="" />
       <area shape="poly" coords="101,753,98,764,108,767,111,756" href="/regis/seat41"  data-funcybox="floor1" target="_blank" alt="" />
-      <area shape="rect" coords="285,28,384,175"  data-funcybox="floor1" target="_blank" href="/regis/cafe" alt="" />
-      <area shape="rect" coords="693,30,1024,177"  data-funcybox="floor1" target="_blank" href="/regis/mettingroom" alt="" />
+      <area shape="rect" id="39" class="39" coords="285,28,384,175"  data-funcybox="floor1" target="_blank" href="/regis/cafe" alt="" />
+      <area shape="rect" id="40" class="40" coords="693,30,1024,177"  data-funcybox="floor1" target="_blank" href="/regis/meetingroom" alt="" />
     </map>
-</div>
-<div class="F2">
- <img src="/static/pics/白浜社屋2F.png" usemap="#ImageMap" alt="" />
-<map name="ImageMap">
+        </div>
+    </div>
+    <div class="F2">
+        <img src="/static/pics/白浜社屋2F.png" usemap="#ImageMap2" alt="" />
+        <map name="ImageMap2">
   <area shape="rect" coords="132,86,262,239" href="/regis/presidentroom" alt=""  data-funcybox="floor2" target="_blank" />
   <area shape="rect" coords="325,86,388,238" href="/regis/nexttoprsident" alt=""  data-funcybox="floor2" target="_blank" />
   <area shape="rect" coords="388,90,450,240" href="/regis/privatieofficeA" alt=""  data-funcybox="floor2" target="_blank" />
@@ -143,14 +147,14 @@
   <area shape="poly" coords="190,864,188,873,200,872,199,863" href="/regis/seat91" alt=""  data-funcybox="floor2" target="_blank" />
   <area shape="poly" coords="206,864,204,873,214,873,215,863" href="/regis/seat92" alt="" data-funcybox="floor2" target="_blank" />
 </map>
-</div>
-<br>
-<form action="/kintai" method="POST">
-      
-  <fieldset>
-    
-    <legend>勤怠情報変更フォーム</legend>
-    <p>勤務状況</p><select name="kintai">
+    </div>
+    <br>
+    <form action="/kintai" method="POST">
+
+        <fieldset>
+
+            <legend>勤怠情報変更フォーム</legend>
+            <p>勤務状況</p><select name="kintai">
       <option>出勤</option>
       <option>社用外出</option>
       <option>私用外出</option>
@@ -163,28 +167,36 @@
       <option>退社</option>
       <option>出張</option>
     </select>
-    <br>
+            <br>
 
-    <label class="always"><input type="checkbox">毎日この席に座る</label>
-    <br>
-    <label><input type="submit" value="送信"></label>
-  </fieldset>
-</form>
+            <label class="always"><input type="checkbox">毎日この席に座る</label>
+            <br>
+            <label><input type="submit" value="送信"></label>
+        </fieldset>
+    </form>
 
 
- <script>
-   /*fancybox設定*/
-   $('[data-fancybox="floor1"]').fancybox({
-     smallBtn:true
-   })
-   $('[data-fancybox="floor2"]').fancybox({
-     smallBtn:true
-   })
- </script>
+    <script>
+        /*fancybox設定*/
+        $('[data-fancybox="floor1"]').fancybox({
+            smallBtn: true
+        })
+        $('[data-fancybox="floor2"]').fancybox({
+            smallBtn: true
+        })
+    </script>
 
- <script>
-   var mydiv=document.getElementsByClassName("F1")
-   alert(str(mydiv.textContent));
- </script>
+    <script type="text/javascript">
+        var element = Number(document.getElementById("ikkai").lastElementChild.className);
+        alert(element);
+        for (var i = 39; i <= element; i++) {
+            var elem1 = document.getElementById("" + i);
+            elem1.addEventListener("mouseover", function(event) {
+                alert("aaaaaa");
+            }, false);
+        }
+    </script>
 </body>
+
+
 </html>
