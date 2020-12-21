@@ -56,7 +56,7 @@ def search():
     text1 = request.form.get("text1")
     text2 = request.form.get("text2")
     print(text1)
-    return "OK!"
+    return render_template("map.html",workplace=text1)
 
     
 #def sql_generateA(dst_table,dst_data,ope):
