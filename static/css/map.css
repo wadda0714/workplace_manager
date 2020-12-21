@@ -1,74 +1,4 @@
 
-/*全体設定*/
-* {
-    box-sizing: border-box;
-}
-/*ポップアップウィンドウの設定*/
-.popup{
-    background-color: #efefef;
-    box-shadow: 0 0 0 9999px rgba(0,0,0,0.8);
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    margin: auto; /*余白*/
-    width: 30vw;
-    height: 60vw;
-    overflow-y: scroll;
-}
-
-/*チェックボックスの初期設定*/
-#popup-on{
-    display: none;
-}
-
-/*チェックされたらポップアップウィンドウを開く*/
-.btn-open1:active+ .popup{
-    display: block;
-}
-
-/*閉じるアイコン(右上)*/
-.icon-close{
-    background: #000;
-    color:#fff;
-    font-size: 30px;
-    padding: 0 10px;
-    position: absolute;
-    right: 0;
-}
-
-/*閉じるアイコン*/
-.btn-close{
-    background: #000;
-    border-radius: 10px;
-    color: #fff;
-    padding: 10px;
-    cursor: pointer;
-    margin:10px auto;
-    width: 50%;
-    text-align: center;
-}
-
-/*開くボタン*/
-.btn-open1{
-    background: #fff;
-    border-radius: 10px;
-    color: #fff;
-    padding: 10px;
-    cursor: pointer;
-    margin: 10px auto;
-    width: 95%;
-    text-align: center;
-}
-
-/*ポップアップの内容*/
-.popup-content{
-    margin:40px auto 40px auto;
-    width: 90%;
-}
-
 /*写真の設定*/
 .layer-img2{
     width: 100%;
@@ -85,4 +15,28 @@
 }
 .swich:active + .F2{
     display: block;
+}
+
+/* 画面変える設定の試し */
+/* 全体 */
+.hidden_box{
+    margin: 2em 0;
+    padding: 0;
+}
+/*ボタン装飾*/
+.hidden_box label{
+    padding: 15px;
+    font-weight: bold;
+    background: #efefef;
+    border-radius: 5px;
+    cursor : pointer;
+    transition: .5s;
+}
+/* アイコンを表示 */
+.hidden_box label:before{
+    display: inline-block;
+    content:'\f078';
+    font-family: 'FontAwesome';
+    padding-right: 5px;
+    transition: 0.2s;
 }
