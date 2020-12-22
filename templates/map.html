@@ -28,15 +28,15 @@
 <body>
     <div class="hidden_box">
         <input type="checkbox" id="label1" />
-        <label for="label1">2F</label>
+        <p id="floor">1F</p>
         <div class="hidden_show">
             <!--表示ここから-->
-            <p id="greeding">こんにちは</p>
+            <p id="toggle">切り替え</p>
             <!--ここまで-->
         </div>
     </div>
 
-    <div class="F1">
+    <div id="F1">
         <img src="/static/pics/白浜社屋1F.png" usemap="#ImageMap1" alt="" />
         <div id="map1"><map name="ImageMap1" id="ikkai">
       <area shape="poly" coords="140,325,145,334,153,328,147,320,147,320" href="/regis/seat1" data-funcybox="floor1" target="_blank" alt="" />
@@ -190,16 +190,18 @@
 
     <script type="text/javascript">
         var element = Number(document.getElementById("ikkai").lastElementChild.className);
-        alert(element);
+        var text = document.getElementById("greeding");
+
+        alert(text.textContent);
         for (var i = 39; i <= element; i++) {
 
             var elem1 = document.getElementById("" + i);
 
-            elem1.addEventListener("mouseover", function send_text(event, elem1) {
+            elem1.addEventListener("mouseover", function send_text(event) {
 
-                var text1 = 'hogehoge'
-                var text2 = 'fugafuga'
-
+                var text1 = 'hogehoge';
+                var text2 = 'fugafuga';
+                text.textContent = "aaaa";
                 var fData = new FormData();
 
                 fData.append('text1', text1);
@@ -229,6 +231,20 @@
         }
     </script>
     <script type="text/javascript">
+        var element = document.getElementById("toggle")
+        element.addEventListener("mouseover", function change_map(event) {
+            floor = document.getElementById("floor");
+            if (floor.textContent == "1F") {
+                elem = document.getElementById("F1");
+                elem.innerHTML = '<iframe src="/get_map/2F" width="600" height="100"></iframe>';
+                floor.textContent = "2F";
+            } else {
+                elem = document.getElementById("F1");
+                elem.innerHTML = '<iframe src="/get_map/1F" width="600" height="100"></iframe>';
+                floor.textContent = "1F";
+            }
+
+        }, false);
     </script>
 </body>
 
