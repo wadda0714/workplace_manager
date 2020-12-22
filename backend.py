@@ -31,7 +31,7 @@ def register():
         dbname = ".db"
         con = sqlite3.connect(dbname)
         cursor = con.cursor()
-        cursor.execute("SELECT * FROM ")
+        cursor.execute("SELECT * FROM  ")
         
         print(place)
       
@@ -51,7 +51,7 @@ def regis(workplace):
     cursor.execute(sql_generateA())
     con.close()
     return render_template("map.html")
-    
+     
 def sql_generateA(dst_table,dst_data,ope):
     if ope == "insert":
         pass
