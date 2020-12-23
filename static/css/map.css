@@ -3,6 +3,9 @@
 * {
     box-sizing: border-box;
 }
+#toggle{
+
+}
 /*ポップアップウィンドウの設定*/
 .popup{
     background-color: #efefef;
