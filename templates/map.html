@@ -8,21 +8,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--キャッシュ無効化-->
     <meta http-equiv="Cache-Control" content="no-cache">
+    <link rel="stylesheet" type="text/less" href="/static/css/style.less">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/less.js/2.5.1/less.min.js"></script>
+
     <link rel="stylesheet" type="text/css" title="Cool stylesheet" href="/static/css/map.css">
     <title>Document</title>
+
+    <!--フォント-->
+    <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="/static/js/jquery.rwdImageMaps.min.js"></script>
     <!--クリッカブルマップをレスポンシブ化-->
    
     <!--モーダルウィンドウと連携させる-->
-    <link rel='stylesheet' href="/static/css/jquery.fancybox.min.css">
+    <link rel='stylesheet' type="text/css" href="/static/css/jquery.fancybox.min.css">
     <script src="/static/js/jquery.fancybox.min.js"></script>
 
+    <!--less-->
+
+
+    
+    
 </head>
 
 
 <body>
+    <h1 class="greeding">HELLO {{username}} </h1>
+    <nav class="menu">
+        <ol>
+          <li class="menu-item"><a href="#0">Information</a></li>
+          <li class="menu-item"><a href="#0">Enter</a></li>
+          <li class="menu-item"><a href="#0">Leave</a></li>
+          <li class="menu-item">
+            <a href="#0">Search</a>
+            <ol class="sub-menu">
+              <li class="menu-item"><a href="#0">name</a></li>
+              <li class="menu-item"><a href="#0">Bigger Widgets</a></li>
+              <li class="menu-item"><a href="#0">Huge Widgets</a></li>
+            </ol>
+          </li>
+          <li class="menu-item"><a href="#0">Usage</a></li>
+        </ol>
+      </nav>
+
     <div class="hidden_box">
         <input type="checkbox" id="label1" />
         <p id="floor">1F</p>
@@ -43,31 +72,7 @@
         
     <br>
     <p>{{workplace}}</p>
-    <form action="/kintai" method="POST">
-
-        <fieldset>
-
-            <legend>勤怠情報変更フォーム</legend>
-            <p>勤務状況</p><select name="kintai">
-      <option>出勤</option>
-      <option>社用外出</option>
-      <option>私用外出</option>
-      <option>遅刻</option>
-      <option>早退</option>
-      <option>休み</option>
-      <option>午前休</option>
-      <option>午後休</option>
-      <option>在宅勤務</option>
-      <option>退社</option>
-      <option>出張</option>
-    </select>
-            <br>
-
-            <label class="always"><input type="checkbox">毎日この席に座る</label>
-            <br>
-            <label><input type="submit" value="送信"></label>
-        </fieldset>
-    </form>
+ 
 
 
 

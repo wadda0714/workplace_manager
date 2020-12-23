@@ -14,7 +14,7 @@ def login():
         #cursor = con.cursor()
        # cursor.execute("SELECT hashpass FROM employeeDB WHERE empname="+ un)
       #  print(cursor.fetchall())
-        return render_template("map.html")
+        return render_template("map.html",username=un)
         
 @app.route("/admin",methods = ["GET","POST"])
 def admin():
