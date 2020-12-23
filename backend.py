@@ -64,8 +64,7 @@ def get_map(floor):
     else:
         return render_template("nikai.html")
         
-    
->>>>>>> 3a721c263dc610dd530df5e0cab2f17979b07265
+
     
 #def sql_generateA(dst_table,dst_data,ope):
    # if ope == "insert":
