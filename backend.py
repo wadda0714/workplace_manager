@@ -51,12 +51,12 @@ def regis(workplace):
     con.close()
     return render_template("map.html")
 
-@app.route("/search",methods = ["POST"])
-def search():
-    text1 = request.form.get("text1")
-    text2 = request.form.get("text2")
-    print(text1)
-    return render_template("map.html",workplace=text1)
+@app.route("/search/<workplace>",methods = ['GET','POST'])
+def search(workplace):
+    #text1 = request.form.get("text1")
+    #text2 = request.form.get("text2")
+    print(workplace)
+    return render_template("map.html",)
 
     
 #def sql_generateA(dst_table,dst_data,ope):
