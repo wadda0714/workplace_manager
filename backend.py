@@ -51,13 +51,21 @@ def regis(workplace):
     con.close()
     return render_template("map.html")
 
-@app.route("/search/<workplace>",methods = ['GET','POST'])
-def search(workplace):
-    #text1 = request.form.get("text1")
-    #text2 = request.form.get("text2")
-    print(workplace)
-    return render_template("map.html",)
-
+@app.route("/search",methods = ["POST"])
+def search():
+    text1 = request.form.get("text1")
+    text2 = request.form.get("text2")
+    print(text1)
+    return render_template("map.html",workplace=text1)
+@app.route('/get_map/<floor>')
+def get_map(floor):
+    if floor == "1F":
+        return render_template("ikkai.html")
+    else:
+        return render_template("nikai.html")
+        
+    
+>>>>>>> 3a721c263dc610dd530df5e0cab2f17979b07265
     
 #def sql_generateA(dst_table,dst_data,ope):
    # if ope == "insert":
