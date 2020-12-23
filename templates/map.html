@@ -14,10 +14,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="/static/js/jquery.rwdImageMaps.min.js"></script>
     <!--クリッカブルマップをレスポンシブ化-->
-    <script>
-        $('img[usemap]').rwdImageMaps()
-    </script>
-
+   
     <!--モーダルウィンドウと連携させる-->
     <link rel='stylesheet' href="/static/css/jquery.fancybox.min.css">
     <script src="/static/js/jquery.fancybox.min.js"></script>
@@ -28,126 +25,22 @@
 <body>
     <div class="hidden_box">
         <input type="checkbox" id="label1" />
-        <label for="label1">2F</label>
+        <p id="floor">1F</p>
         <div class="hidden_show">
             <!--表示ここから-->
-            <p id="greeding">こんにちは</p>
+            <p id="toggle">切り替え</p>
             <!--ここまで-->
         </div>
     </div>
 
-    <div class="F1">
-        <img src="/static/pics/白浜社屋1F.png" usemap="#ImageMap1" alt="" />
-        <div id="map1"><map name="ImageMap1" id="ikkai">
-      <area shape="poly" coords="140,325,145,334,153,328,147,320,147,320" href="/regis/seat1" data-funcybox="floor1" target="_blank" alt="" id="1" class="1"/>
-      <area shape="poly" coords="126,334,132,342,140,337,134,328,133,329" href="/regis/seat2"  data-funcybox="floor1" target="_blank" alt="" id="2" class="2"/>
-      <area shape="poly" coords="111,343,116,352,127,347,121,336,123,338" href="/regis/seat3"  data-funcybox="floor1" target="_blank" alt="" id="3" class="3"/>
-      <area shape="poly" coords="86,354,81,362,94,368,97,356,97,356" href="/regis/seat4"  data-funcybox="floor1" target="_blank" alt="" id="4" class="4" />
-      <area shape="poly" coords="80,383,78,393,91,393,92,382" href="/regis/seat5"  data-funcybox="floor1" target="_blank" alt=""  id="5" class="5" />
-      <area shape="poly" coords="82,415,81,424,95,426,95,414" href="/regis/seat6"  data-funcybox="floor1" target="_blank" alt=""  id="6" class="6" />
-      <area shape="poly" coords="80,447,81,458,93,459,95,446" href="/regis/seat7"  data-funcybox="floor1" target="_blank" alt=""  id="7" class="7" />
-      <area shape="poly" coords="81,462,80,472,94,472,94,461" href="/regis/seat8"  data-funcybox="floor1" target="_blank" alt=""  id="8" class="8" />
-      <area shape="poly" coords="82,489,81,501,95,502,93,488" href="/regis/seat9"  data-funcybox="floor1" target="_blank" alt=""  id="9" class="9" />
-      <area shape="poly" coords="81,502,80,513,92,514,93,502" href="/regis/seat10" data-funcybox="floor1" target="_blank"  alt=""  id="10" class="10" />
-      <area shape="poly" coords="109,424,103,434,115,440,121,429" href="/regis/seat11"  data-funcybox="floor1" target="_blank" alt=""  id="11" class="11" />
-      <area shape="poly" coords="131,420,125,430,138,436,142,427" href="/regis/seat12"  data-funcybox="floor1" target="_blank" alt=""  id="12" class="12" />
-      <area shape="poly" coords="116,479,128,482,131,473,120,469" href="/regis/seat13"  data-funcybox="floor1" target="_blank" alt=""  id="13" class="13" />
-      <area shape="poly" coords="139,457,137,467,150,471,152,459" href="/regis/seat14"  data-funcybox="floor1" target="_blank" alt=""  id="14" class="14" />
-      <area shape="poly" coords="159,462,161,472,173,470,169,458" href="/regis/seat15" data-funcybox="floor1" target="_blank" alt=""  id="15" class="15" />
-      <area shape="poly" coords="177,476,181,486,191,482,188,472" href="/regis/seat16"  data-funcybox="floor1" target="_blank" alt=""  id="16" class="16" />
-      <area shape="poly" coords="185,492,192,500,200,492,193,484" href="/regis/seat17"  data-funcybox="floor1" target="_blank" alt=""  id="17" class="17" />
-      <area shape="poly" coords="186,515,194,526,204,517,195,509" href="/regis/seat18" data-funcybox="floor1" target="_blank"  alt=""  id="18" class="18" />
-      <area shape="poly" coords="181,526,177,538,190,541,192,529" href="/regis/seat19"  data-funcybox="floor1" target="_blank" alt=""  id="19" class="19" />
-      <area shape="poly" coords="160,539,155,549,168,553,172,541" href="/regis/seat20"  data-funcybox="floor1" target="_blank" alt=""  id="20" class="20" />
-      <area shape="poly" coords="137,542,140,552,150,550,149,539" href="/regis/seat21"  data-funcybox="floor1" target="_blank" alt=""  id="21" class="21" />
-      <area shape="poly" coords="114,530,119,540,130,536,126,526" href="/regis/seat22"  data-funcybox="floor1" target="_blank" alt=""  id="22" class="22" />
-      <area shape="poly" coords="77,595,77,605,88,606,88,596" href="/regis/seat23"  data-funcybox="floor1" target="_blank" alt=""  id="23" class="23" />
-      <area shape="poly" coords="77,617,77,627,88,627,87,616" href="/regis/seat24" data-funcybox="floor1" target="_blank" alt=""  id="24" class="24" />
-      <area shape="poly" coords="77,638,76,652,88,652,90,638" href="/regis/seat25"  data-funcybox="floor1" target="_blank" alt=""  id="25" class="25" />
-      <area shape="poly" coords="82,715,83,726,94,727,95,715" href="/regis/seat26"  data-funcybox="floor1" target="_blank" alt=""  id="26" class="26" />
-      <area shape="poly" coords="82,797,82,808,94,806,94,796,92,795" href="/regis/seat27"  data-funcybox="floor1" target="_blank" alt=""  id="27" class="27" />
-      <area shape="poly" coords="120,664,118,673,131,678,134,666" href="/regis/seat28"  data-funcybox="floor1" target="_blank" alt=""  id="28" class="28" />
-      <area shape="poly" coords="99,676,95,686,108,689,113,679" href="/regis/seat29"  data-funcybox="floor1" target="_blank" alt=""  id="29" class="29" />
-      <area shape="poly" coords="166,667,168,679,181,677,176,663" href="/regis/seat30"  data-funcybox="floor1" target="_blank" alt=""  id="30" class="30" />
-      <area shape="poly" coords="185,681,189,693,201,688,197,677" href="/regis/seat31"  data-funcybox="floor1" target="_blank" alt=""  id="31" class="31" />
-      <area shape="poly" coords="123,709,133,718,142,710,133,701" href="/regis/seat32"  data-funcybox="floor1" target="_blank" alt=""  id="32" class="32" />
-      <area shape="poly" coords="148,710,155,718,165,712,154,703" href="/regis/seat33"  data-funcybox="floor1" target="_blank" alt=""  id="33" class="33" />
-      <area shape="poly" coords="169,724,177,729,181,718,169,715" href="/regis/seat34"  data-funcybox="floor1" target="_blank" alt=""  id="34" class="34" />
-      <area shape="poly" coords="181,738,179,748,190,750,192,740,191,742" href="/regis/seat35"  data-funcybox="floor1" target="_blank" alt=""  id="35" class="35" />
-      <area shape="poly" coords="178,757,179,766,193,764,189,753" href="/regis/seat36"  data-funcybox="floor1" target="_blank" alt=""  id="36" class="36" />
-      <area shape="poly" coords="167,779,169,789,182,788,179,775" href="/regis/seat37"  data-funcybox="floor1" target="_blank" alt=""  id="37" class="37" />
-      <area shape="poly" coords="147,792,156,799,166,791,156,782" href="/regis/seat38"  data-funcybox="floor1" target="_blank" alt=""  id="38" class="38" />
-      <area shape="poly" coords="132,784,124,791,132,800,143,793" href="/regis/seat39"  data-funcybox="floor1" target="_blank" alt=""  id="39" class="39" />
-      <area shape="poly" coords="112,777,108,785,120,789,123,779" href="/regis/seat40"  data-funcybox="floor1" target="_blank" alt=""  id="40" class="40" />
-      <area shape="poly" coords="101,753,98,764,108,767,111,756" href="/regis/seat41"  data-funcybox="floor1" target="_blank" alt=""  id="41" class="41" />
-      <area shape="rect" coords="285,28,384,175"  data-funcybox="floor1" target="_blank" href="/regis/cafe" alt=""  id="42" class="42" />
-      <area shape="rect" coords="693,30,1024,177"  data-funcybox="floor1" target="_blank" href="/regis/meetingroom" alt=""  id="43" class="43" />
-    </map>
-        </div>
+
+    
+    <div id="F1">
+        <!---->
+        <iframe src="/get_map/1F" width="1500" height="800"></iframe>
+
     </div>
-    <div class="F2">
-        <img src="/static/pics/白浜社屋2F.png" usemap="#ImageMap2" alt="" />
-        <map name="ImageMap2">
-  <area shape="rect" id="44" class="44"  coords="132,86,262,239" href="/regis/presidentroom" alt=""  data-funcybox="floor2" target="_blank" />
-  <area shape="rect" id="45" class="45" coords="325,86,388,238" href="/regis/nexttoprsident" alt=""  data-funcybox="floor2" target="_blank" />
-  <area shape="rect" id="46" class="46"  coords="388,90,450,240" href="/regis/privatieofficeA" alt=""  data-funcybox="floor2" target="_blank" />
-  <area shape="rect" id="47" class="47"  coords="451,89,513,242" href="/regis/privatieofficeB" alt=""  data-funcybox="floor2" target="_blank" />
-  <area shape="rect" id="48" class="48"  coords="886,275,1018,417" href="/regis/coworkingspaceA" alt=""  data-funcybox="floor2" target="_blank" />
-  <area shape="rect" id="49" class="49"  coords="762,272,838,382" href="/regis/coworkingspaceB" alt=""  data-funcybox="floor2" target="_blank" />
-  <area shape="rect" id="50" class="50"  coords="81,433,228,498" href="/regis/nexttodevelopment" alt=""  data-funcybox="floor2" target="_blank" />
-  <area shape="poly" id="51" class="51"  coords="96,511,106,511,106,520,97,522" href="/regis/seat42" alt=""  data-funcybox="floor2" target="_blank" />
-  <area shape="poly" id="52" class="52"  coords="111,512,110,521,120,522,121,512" href="/regis/seat43" alt=""  data-funcybox="floor2" target="_blank" />
-  <area shape="poly" id="53" class="53"  coords="125,511,125,520,135,520,135,511" href="/regis/seat44" alt=""  data-funcybox="floor2" target="_blank" />
-  <area shape="poly" id="54" class="54"  coords="142,510,151,511,151,519,141,519" href="/regis/seat45" alt=""  data-funcybox="floor2" target="_blank" />
-  <area shape="poly" id="55" class="55"  coords="161,511,169,511,169,520,159,520" href="/regis/seat46" alt=""  data-funcybox="floor2" target="_blank" />
-  <area shape="poly" id="56" class="56"  coords="175,509,184,509,185,519,174,517" href="/regis/seat47" alt=""  data-funcybox="floor2" target="_blank" >
-  <area shape="poly" id="57" class="57"  coords="190,510,199,510,199,520,188,520" href="/regis/seat48" alt=""  data-funcybox="floor2" target="_blank" />
-  <area shape="poly" id="58" class="58"  coords="206,510,214,511,214,521,205,521" href="/regis/seat49" alt=""  data-funcybox="floor2" target="_blank" />
-  <area shape="poly" id="59" class="59"  coords="169,543,169,552,179,552,178,543" href="/regis/seat50" alt=""  data-funcybox="floor2" target="_blank" />
-  <area shape="poly" id="60" class="60"  coords="171,566,176,576,186,570,180,560" href="/regis/seat51" alt=""  data-funcybox="floor2" target="_blank" />
-  <area shape="poly" id="61" class="61"  coords="189,575,184,583,197,589,202,580" href="/regis/seat52" alt=""  data-funcybox="floor2" target="_blank" />
-  <area shape="poly" id="62" class="62"  coords="174,604,169,614,181,619,185,609" href="/regis/seat53" alt=""  data-funcybox="floor2" target="_blank" />
-  <area shape="poly" id="63" class="63"  coords="152,601,162,601,162,613,152,612" href="/regis/seat54" alt=""  data-funcybox="floor2" target="_blank" />
-  <area shape="poly" id="64" class="64"  coords="132,609,137,604,146,612,135,618" href="/regis/seat55" alt=""  data-funcybox="floor2" target="_blank" >
-  <area shape="poly" id="65" class="65"  coords="114,577,119,587,131,582,124,572,125,572" href="/regis/seat56" alt=""  data-funcybox="floor2" target="_blank" />
-  <area shape="poly" id="66" class="66"  coords="127,570,136,575,141,566,131,561" href="/regis/seat57" alt=""  data-funcybox="floor2" target="_blank" />
-  <area shape="poly" id="67" class="67"  coords="135,542,135,551,146,552,146,541" href="/regis/seat58" alt=""  data-funcybox="floor2" target="_blank" />
-  <area shape="poly" id="68" class="68"  coords="166,658,172,667,180,662,176,652" href="/regis/seat59" alt=""  data-funcybox="floor2" target="_blank" />
-  <area shape="poly" id="69" class="69"  coords="149,659,148,670,159,671,161,658" href="/regis/seat60" alt=""  data-funcybox="floor2" target="_blank" />
-  <area shape="poly" id="70" class="70"  coords="134,653,128,661,140,669,146,658" href="/regis/seat61" alt=""  data-funcybox="floor2" target="_blank" />
-  <area shape="poly" id="71" class="71"  coords="118,682,112,691,123,698,130,688" href="/regis/seat62" alt=""  data-funcybox="floor2" target="_blank" />
-  <area shape="poly" id="72" class="72"  coords="126,703,129,710,139,706,136,696" href="/regis/seat63" alt=""  data-funcybox="floor2" target="_blank" />
-  <area shape="poly" id="73" class="73"  coords="131,720,130,730,144,732,143,718" href="/regis/seat64" alt=""  data-funcybox="floor2" target="_blank" />
-  <area shape="poly" id="74" class="74"  coords="166,719,166,730,177,729,178,718" href="/regis/seat65" alt=""  data-funcybox="floor2" target="_blank" />
-  <area shape="poly" id="75" class="75"  coords="175,697,168,706,179,712,184,702" href="/regis/seat66" alt=""  data-funcybox="floor2" target="_blank" />
-  <area shape="poly" id="76" class="76"  coords="182,687,187,697,198,693,198,682" href="/regis/seat67" alt=""  data-funcybox="floor2" target="_blank" />
-  <area shape="poly" id="77" class="77"  coords="134,779,131,790,144,791,144,779" href="/regis/seat68" alt=""  data-funcybox="floor2" target="_blank" />
-  <area shape="poly" id="78" class="78"  coords="131,799,127,807,136,813,141,804" href="/regis/seat69" alt=""  data-funcybox="floor2" target="_blank" />
-  <area shape="poly" id="79" class="79"  coords="113,818,118,827,126,822,122,813" href="/regis/seat70" alt=""  data-funcybox="floor2" target="_blank" />
-  <area shape="poly" id="80" class="80"  coords="131,848,134,855,145,851,139,843" href="/regis/seat71" alt=""  data-funcybox="floor2" target="_blank" />
-  <area shape="poly" id="81" class="81"  coords="150,839,150,848,158,849,158,838" href="/regis/seat72" alt=""  data-funcybox="floor2" target="_blank" />
-  <area shape="poly" id="82" class="82"  coords="172,841,167,848,178,856,183,847" href="/regis/seat73" alt=""  data-funcybox="floor2" target="_blank" />
-  <area shape="poly" id="83" class="83"  coords="184,821,192,827,198,819,189,813" href="/regis/seat74" alt=""  data-funcybox="floor2" target="_blank" />
-  <area shape="poly" id="84" class="84"  coords="170,804,175,813,186,808,180,799" href="/regis/seat75" alt=""  data-funcybox="floor2" target="_blank" />
-  <area shape="poly" id="85" class="85"  coords="168,780,167,790,178,791,179,781" href="/regis/seat76" alt=""  data-funcybox="floor2" target="_blank" />
-  <area shape="poly" id="86" class="86"  coords="238,663,238,673,249,673,249,663" href="/regis/seat77" alt=""  data-funcybox="floor2" target="_blank" />
-  <area shape="poly" id="87" class="87"  coords="237,677,237,687,248,687,248,676" href="/regis/seat78" alt=""  data-funcybox="floor2" target="_blank" />
-  <area shape="poly" id="88" class="88"  coords="237,692,236,702,247,702,249,692" href="/regis/seat79" alt=""  data-funcybox="floor2" target="_blank" />
-  <area shape="poly" id="89" class="89"  coords="235,708,236,716,248,717,249,707" href="/regis/sea80" alt=""  data-funcybox="floor2" target="_blank" />
-  <area shape="poly" id="90" class="90"  coords="236,726,236,737,246,738,247,726" href="/regis/seat81" alt=""  data-funcybox="floor2" target="_blank" />
-  <area shape="poly" id="91" class="91"  coords="238,743,237,752,249,754,249,742" href="/regis/seat82" alt=""  data-funcybox="floor2" target="_blank" />
-  <area shape="poly" id="92" class="92"  coords="238,756,236,767,248,767,249,757" href="/regis/seat83" alt=""  data-funcybox="floor2" target="_blank" />
-  <area shape="poly" id="93" class="93"  coords="236,771,236,782,247,783,249,771" href="/regis/seat84" alt=""  data-funcybox="floor2" target="_blank" />
-  <area shape="poly" id="94" class="94"  coords="95,861,93,872,104,872,104,862" href="/regis/seat85" alt=""  data-funcybox="floor2" target="_blank" />
-  <area shape="poly" id="95" class="95"  coords="110,862,110,873,120,873,120,862" href="/regis/seat86" alt=""  data-funcybox="floor2" target="_blank" />
-  <area shape="poly" id="96" class="96"  coords="124,862,124,871,134,873,134,862" href="/regis/seat87" alt=""  data-funcybox="floor2" target="_blank" />
-  <area shape="poly" id="97" class="97"  coords="142,863,141,872,151,873,151,863,143,864" href="/regis/seat88" alt="" data-funcybox="floor2" target="_blank"  />
-  <area shape="poly" id="98" class="98"  coords="159,863,158,871,170,872,169,861" href="/regis/seat89" alt="" data-funcybox="floor2" target="_blank"  />
-  <area shape="poly" id="99" class="99"  coords="176,862,175,871,185,872,184,861" href="/regis/seat90" alt=""  data-funcybox="floor2" target="_blank" />
-  <area shape="poly" id="100" class="100"  coords="190,864,188,873,200,872,199,863" href="/regis/seat91" alt=""  data-funcybox="floor2" target="_blank" />
-  <area shape="poly" id="101" class="101"  coords="206,864,204,873,214,873,215,863" href="/regis/seat92" alt="" data-funcybox="floor2" target="_blank" />
-</map>
-    </div>
+        
     <br>
     <p>{{workplace}}</p>
     <form action="/kintai" method="POST">
@@ -188,47 +81,22 @@
         })
     </script>
 
+    
     <script type="text/javascript">
-        var element = Number(document.getElementById("ikkai").lastElementChild.className);
-        alert(element);
-        for (var i = 39; i <= element; i++) {
+        var element = document.getElementById("toggle")
+        element.addEventListener("mouseover", function change_map(event) {
+            floor = document.getElementById("floor");
+            if (floor.textContent == "1F") {
+                elem = document.getElementById("F1");
+                elem.innerHTML = '<iframe src="/get_map/2F" width="1500" height="800"></iframe>';
+                floor.textContent = "2F";
+            } else {
+                elem = document.getElementById("F1");
+                elem.innerHTML = '<iframe src="/get_map/1F" width="1500" height="800"></iframe>';
+                floor.textContent = "1F";
+            }
 
-            var elem1 = document.getElementById("" + i);
-
-            elem1.addEventListener("mouseover", function send_text(event, elem1) {
-
-                var text1 = 'hogehoge'
-                var text2 = 'fugafuga'
-
-                var fData = new FormData();
-
-                fData.append('text1', text1);
-                fData.append('text2', text2);
-
-
-                $.ajax({
-                    //配信元のhttpsサーバーに返す場合
-                    url: '/search',
-                    //別サーバー（今回でいう画像処理サーバー）に返す場合
-                    //url: 'https://192.168.0.100:12345/register',   
-                    type: 'POST',
-                    data: fData,
-                    contentType: false,
-                    processData: false,
-                    success: function(data, dataType) {
-                        //非同期で通信成功時に読み出される [200 OK 時]
-                        console.log('Success', data);
-                    },
-                    error: function(XMLHttpRequest, textStatus, errorThrown) {
-                        //非同期で通信失敗時に読み出される
-                        console.log('Error : ' + errorThrown);
-                    }
-
-                })
-            }, false);
-        }
-    </script>
-    <script type="text/javascript">
+        }, false);
     </script>
 </body>
 
