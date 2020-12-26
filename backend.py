@@ -57,12 +57,9 @@ def search():
     text2 = request.form.get("text2")
     print(text1)
     return render_template("map.html",workplace=text1)
-@app.route('/get_map/<floor>')
-def get_map(floor):
-    if floor == "1F":
-        return render_template("ikkai.html")
-    else:
-        return render_template("nikai.html")
+@app.route('/get_map/<Page>')
+def get_map(Page):
+    return render_template(Page+".html")
         
 
     

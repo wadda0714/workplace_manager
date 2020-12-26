@@ -20,7 +20,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="/static/js/jquery.rwdImageMaps.min.js"></script>
     <!--クリッカブルマップをレスポンシブ化-->
-   
+
     <!--モーダルウィンドウと連携させる-->
     <link rel='stylesheet' type="text/css" href="/static/css/jquery.fancybox.min.css">
     <script src="/static/js/jquery.fancybox.min.js"></script>
@@ -28,8 +28,8 @@
     <!--less-->
 
 
-    
-    
+
+
 </head>
 
 
@@ -37,42 +37,35 @@
     <h1 class="greeding">HELLO {{username}} </h1>
     <nav class="menu">
         <ol>
-          <li class="menu-item"><a href="#0">Information</a></li>
-          <li class="menu-item"><a href="#0">Enter</a></li>
-          <li class="menu-item"><a href="#0">Leave</a></li>
-          <li class="menu-item">
-            <a href="#0">Search</a>
-            <ol class="sub-menu">
-              <li class="menu-item"><a href="#0">name</a></li>
-              <li class="menu-item"><a href="#0">Bigger Widgets</a></li>
-              <li class="menu-item"><a href="#0">Huge Widgets</a></li>
-            </ol>
-          </li>
-          <li class="menu-item"><a href="#0">Usage</a></li>
+            <li class="menu-item"><a href="#" id="information" onclick="disp_iframe()">Information</a></li>
+            <li class="menu-item"><a href="#" id="enter" onclick="disp_iframe()">Enter</a>
+                <ol class="sub-menu">
+                    <li class="menu-item"><a href="#" id="ikkai" onclick="disp_iframe()">1F</a></li>
+                    <li class="menu-item"><a href="#" id="nikai" onclick="disp_iframe()">2F</a></li>
+                </ol>
+            </li>
+            <li class="menu-item"><a href="#" id="leave" onclick="disp_iframe()">Leave</a></li>
+            <li class="menu-item">
+                <a href="#" id="search" onclick="disp_iframe()">Search</a>
+                <ol class="sub-menu">
+                    <li class="menu-item"><a href="#" id="name" onclick="disp_iframe()">name</a></li>
+                    <li class="menu-item"><a href="#" id="big" onclick="disp_iframe()">Bigger Widgets</a></li>
+                    <li class="menu-item"><a href="#" id="huge" onclick="disp_iframe()">Huge Widgets</a></li>
+                </ol>
+            </li>
+            <li class="menu-item"><a href="#" id="usage" onclick="disp_iframe()">Usage</a></li>
         </ol>
-      </nav>
-
-    <div class="hidden_box">
-        <input type="checkbox" id="label1" />
-        <p id="floor">1F</p>
-        <div class="hidden_show">
-            <!--表示ここから-->
-            <p id="toggle">切り替え</p>
-            <!--ここまで-->
-        </div>
-    </div>
+    </nav>
 
 
-    
     <div id="F1">
         <!---->
-        <iframe src="/get_map/1F" width="1500" height="800"></iframe>
 
     </div>
-        
+
     <br>
     <p>{{workplace}}</p>
- 
+
 
 
 
@@ -86,22 +79,32 @@
         })
     </script>
 
-    
-    <script type="text/javascript">
-        var element = document.getElementById("toggle")
-        element.addEventListener("mouseover", function change_map(event) {
-            floor = document.getElementById("floor");
-            if (floor.textContent == "1F") {
-                elem = document.getElementById("F1");
-                elem.innerHTML = '<iframe src="/get_map/2F" width="1500" height="800"></iframe>';
-                floor.textContent = "2F";
-            } else {
-                elem = document.getElementById("F1");
-                elem.innerHTML = '<iframe src="/get_map/1F" width="1500" height="800"></iframe>';
-                floor.textContent = "1F";
-            }
 
-        }, false);
+    <script type="text/javascript">
+        /*var element = document.getElementById("toggle")
+                        element.addEventListener("mouseover", function change_map(event) {
+                        floor = document.getElementById("floor");
+                        if (floor.textContent == "1F") {
+                            elem = document.getElementById("F1");
+                            elem.innerHTML = '<iframe src="/get_map/2F" width="1800" height="800"></iframe>';
+                            floor.textContent = "2F";
+                            } else {
+                            elem = document.getElementById("F1");
+                            elem.innerHTML = '<iframe src="/get_map/1F" width="1800" height="800"></iframe>';
+                            floor.textContent = "1F";
+                                                                                                                    }
+
+                             }, false);*/
+
+
+        function disp_iframe(e) {
+            var e = e || window.event;
+            var elem = e.target || e.srcElement;
+            var elemId = elem.id;
+            elem = document.getElementById("F1");
+            elem.innerHTML = '<iframe src="/get_map/' + elemId + '"width="1800" height="800"></iframe>';
+
+        }
     </script>
 </body>
 
