@@ -44,7 +44,7 @@ def signup():
 
 @app.route("/regis/<workplace>",methods = ["GET","POST"])
 def regis(workplace):
-    dbname = "systemdesign.sqlite"
+    dbname = "mainprogram.sqlite"
     con = sqlite3.connect(dbname)
     cursor = con.cursor()
     cursor.execute(sql_generateA())
