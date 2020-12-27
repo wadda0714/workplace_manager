@@ -19,7 +19,7 @@ def login():
             return render_template("map.html",username=un)
         else:
             msg = "usernameかpasswordが違います。入力しなおしてください。"
-            return render_template("login.html",err_msg=msg)
+            return render_template("new-login.html",err_msg=msg)
         
         
 @app.route("/admin",methods = ["GET","POST"])
@@ -30,19 +30,19 @@ def admin():
 def register():
     if request.method == "POST":
         un = request.form.get("username")
-        pwd = request.form.get("password")
-        place = request.form.get("working_place")
-        email = request.form.get("email_address")
-        dbname = "systemdesign.sqlite"
+        pwd1 = request.form.get("password1")
+        pwd2 = request.form.get("password2")
+        email = request.form.get("email")
+        dbname = "emp.sqlite"
         con = sqlite3.connect(dbname)
         cursor = con.cursor()
-        cursor.execute("INSERT INTO employeeDB values()")
+        cursor.execute("INSERT INTO emptable values(1)")
         con.commit()
         print(place)
       
 @app.route('/',methods = ['GET'])
 def login_form():
-    return render_template("login.html")
+    return render_template("new-login.html")
 
 @app.route('/signup',methods = ['GET'])
 def signup():
