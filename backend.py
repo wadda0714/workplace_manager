@@ -9,12 +9,18 @@ def login():
     if request.method == "POST":
         un = request.form.get("username")
         pwd = request.form.get("password")
-       # dbname = "systemdesign.sqlite"
-       # con = sqlite3.connect(dbname)
-        #cursor = con.cursor()
-       # cursor.execute("SELECT hashpass FROM employeeDB WHERE empname="+ un)
-      #  print(cursor.fetchall())
-        return render_template("map.html",username=un)
+        dbname = "emp.sqlite"
+        con = sqlite3.connect(dbname)
+        cursor = con.cursor()
+        cursor.execute("SELECT hashpass FROM emptable WHERE empname='"+un+"'")
+        li = cursor.fetchone()
+        print(li[0])
+        if li[0] == pwd:
+            return render_template("map.html",username=un)
+        else:
+            msg = "usernameかpasswordが違います。入力しなおしてください。"
+            return render_template("login.html",err_msg=msg)
+        
         
 @app.route("/admin",methods = ["GET","POST"])
 def admin():
@@ -47,7 +53,7 @@ def regis(workplace):
     dbname = "mainprogram.sqlite"
     con = sqlite3.connect(dbname)
     cursor = con.cursor()
-    cursor.execute(sql_generateA())
+    cursor.execute("SELECT ")
     con.close()
     return render_template("map.html")
 

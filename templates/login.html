@@ -1,43 +1,47 @@
 <!DOCTYPE html>
-<html lang="en"><!--おまじない-->
+<html lang="en">
+<!--おまじない-->
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>main</title>
-  <link rel="stylesheet" type="text/css" title="Cool stylesheet" href="/static/css/login.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>main</title>
+    <link rel="stylesheet" type="text/css" title="Cool stylesheet" href="/static/css/login.css">
 </head>
+
 <body>
-    
-    <form action="/login" method = "POST">
-         <h1>Sign in</h1>
-         <fieldset>
-             <legend>Please input some information!</legend>
-             <p>username</p>
-             <input type="text" name="username" class="un">
-             <br>
-             <p>password</p>
-             <input type="text" name="password"><!--input:userが入力する部分を作る-->
-             <br>
-             <br>
 
-             <a href="/signup">signup</a><!--a:リンクを張るタグ-->
+    <form action="/login" method="POST">
+        <h1>Sign in</h1>
+        <fieldset>
+            <legend>Please input some information!</legend>
+            <p>username</p>
+            <input type="text" name="username" class="un">
+            <br>
+            <p>password</p>
+            <input type="text" name="password">
+            <!--input:userが入力する部分を作る-->
+            <p>{{err_msg}}</p>
+            <br>
+            <br>
 
-             <button type="submit" id = "signup" class = "sp" >送信</button>
-            </fieldset>
-          <fieldset>
+            <a href="/signup">signup</a>
+            <!--a:リンクを張るタグ-->
+
+            <button type="submit" id="signup" class="sp">送信</button>
+        </fieldset>
+        <fieldset>
             <legend>schedule</legend>
             <p>
-              会議
-              2020/1/23 Ayano's 19th Birthday!
-              Celebrate her!
-              She want 好吃咖啡beans！
+                会議 2020/1/23 Ayano's 19th Birthday! Celebrate her! She want 好吃咖啡beans！
             </p>
-          </fieldset>
-        </form>
-    
-    
-    
+        </fieldset>
+    </form>
+
+
+
 
 </body>
 <script src="static/js/login.js"></script>
+
 </html>
