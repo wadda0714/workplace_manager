@@ -59,13 +59,24 @@ def regis(workplace):
 
 @app.route("/search",methods = ["POST"])
 def search():
-    text1 = request.form.get("text1")
-    text2 = request.form.get("text2")
-    print(text1)
+    employees_name = request.form.get("employees_name")
+    dbname = "mainprogram.sqlite"
+    con = sqlite3.connect(dbname)
+    cursor = con.cursor()
+    cursor.execute("SELECT defaultposition FROM emptable WHERE empname='"+employees_name+"'")
+    
     return render_template("map.html",workplace=text1)
 @app.route('/get_map/<Page>')
 def get_map(Page):
     return render_template(Page+".html")
+@app.route("/find/<seat>" ,methods = ["GET","POST"])
+def find(seat):
+    #dbname = "mainprogram.sqlite"
+    #con = sqlite3.connect(dbname)
+   # cursor = con.cursor()
+   # cursor.execute("SELECT empname FROM emptable WHERE position")
+    print(seat)
+    return render_template("ikkai.html",user=seat)
         
 
     
