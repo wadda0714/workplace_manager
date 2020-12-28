@@ -11,9 +11,7 @@ def login():
         
         un = request.form.get("username")
         pwd = request.form.get("password")
-        dbname = "emp.sqlite"
-        con = sqlite3.connect(dbname)
-        cursor = con.cursor()
+        cursor,con = connect_db()
         cursor.execute("SELECT hashpass FROM emptable WHERE empname='"+un+"'")
         li = cursor.fetchone()
         print(li[0])
@@ -35,9 +33,7 @@ def register():
         pwd1 = request.form.get("password1")
         pwd2 = request.form.get("password2")
         email = request.form.get("email")
-        dbname = "emp.sqlite"
-        con = sqlite3.connect(dbname)
-        cursor = con.cursor()
+        cursor,con = connect_db()
         cursor.execute("INSERT INTO emptable values(1)")
         con.commit()
         print(place)
@@ -62,9 +58,7 @@ def signup():
 @app.route("/search",methods = ["POST"])
 def search():
     employees_name = request.form.get("employees_name")
-    dbname = "mainprogram.sqlite"
-    con = sqlite3.connect(dbname)
-    cursor = con.cursor()
+    cursor,con = connect_db()
     cursor.execute("SELECT defaultposition FROM emptable WHERE empname='"+employees_name+"'")
     
     return render_template("map.html",workplace=text1)
@@ -73,11 +67,18 @@ def get_map(Page):
     return render_template(Page+".html")
 @app.route("/find/<seat>" ,methods = ["GET","POST"])
 def find(seat):
-    #dbname = "mainprogram.sqlite"
-    #con = sqlite3.connect(dbname)
-    #cursor = con.cursor()
-    #cursor.execute("SELECT empname FROM emptable WHERE position'"+seat+"'")
-    return render_template("ikkai.html",msg=seat)
+    cursor,con = connect_db()
+    query = "SELECT empname FROM emptable WHERE sheet =" + seat
+    cursor.execute(query)
+    names = cursor.fetchall()
+    name = list()
+    for i in names:
+        name.append(i[0]) 
+    if name == []:
+        return render_template("ikkai.html",name="この席は空いています")
+    else:
+        return render_template("ikkai.html",name=name)
+    
 @app.route("/kintai",methods = ["POST"])
 def kintai():
     kintai = request.form.get("kintai")
@@ -86,9 +87,15 @@ def kintai():
     print(seat)
     msg="登録完了しました"
     return render_template("ikkai.html",msg=msg)
+
 def checktime():
     now = datetime.datetime.now()
-    time = int("{0:%H}".format(now).lstrip("0"))
+    now_time = "{0:%H}".format(now) 
+    a = now_time.lstrip("0")
+    if now_time == "00":
+        a = 0;
+    print(now_time)
+    time = int(a)
     if time >= 5 and time < 12 :
         greeding = "Good Morning!"
     elif time >= 12 and time < 17:
@@ -96,7 +103,12 @@ def checktime():
     else:
         greeding = "Good Evening!"
     return greeding
-        
+def connect_db():
+    dbname = "systemdb.sqlite"
+    con = sqlite3.connect(dbname)
+    cursor= con.cursor()
+    return cursor,con
+    
 
     
 #def sql_generateA(dst_table,dst_data,ope):

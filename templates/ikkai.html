@@ -36,7 +36,11 @@
             <label><input type="submit" value="送信" ></label>
         </fieldset>
     </form>
-    <p>{{msg}}</p>
+    <ul>
+        {% for msg in name %}
+        <li>{{msg}}</li>
+        {% endfor %}
+    </ul>
     <img src="/static/pics/白浜社屋1F.png" usemap="#ImageMap1" alt="" />
     <div id="map1"><map name="ImageMap1" id="ikkai">
       <area shape="poly" class="1"  id="1"   coords="140,325,145,334,153,328,147,320,147,320" onclick="submit()" name="seat1" onmouseover = "get_class()" data-funcybox="floor1" target="_blank" alt="" />
@@ -80,7 +84,7 @@
       <area shape="poly" class="39" id="39"  coords="132,784,124,791,132,800,143,793" onclick="submit()" name="seat39" onmouseover = "get_class()" data-funcybox="floor1" target="_blank" alt="" />
       <area shape="poly" class="40" id="40"  coords="112,777,108,785,120,789,123,779" onclick="submit()" name="seat40" onmouseover = "get_class()" data-funcybox="floor1" target="_blank" alt="" />
       <area shape="poly" class="41" id="41"  coords="101,753,98,764,108,767,111,756" onclick="submit()" name="seat41" onmouseover = "get_class()" data-funcybox="floor1" target="_blank" alt="" />
-      <area shape="rect" class="42" id="42"  coords="285,28,384,175"   onmouseover = "get_class()" data-funcybox="floor1" target="_blank" name="cafe" alt="" />
+      <area shape="rect" class="42" id="42"  coords="285,28,384,175"  onclick="submit()" onmouseover = "get_class()" data-funcybox="floor1" target="_blank" name="cafe" alt="" />
       <area shape="rect" class="43" id="43"  coords="693,30,1024,177" onclick="submit()" onmouseover = "get_class()" data-funcybox="floor1" target="_blank" name="meetingroom" alt="" />
     </map>
     </div>
@@ -88,28 +92,28 @@
 
     <script type="text/javascript">
         /*var element = Number(document.getElementById("ikkai").lastElementChild.className);
-                                                                                                                          for (var i = 1; i <= element; i++) {
+                                                                                                                                                                                                                          for (var i = 1; i <= element; i++) {
 
-                                                                                                                              elem = document.getElementById("" + i);
-                                                                                                                              elem.addEventListener("mouseover", function send_text(event) {
+                                                                                                                                                                                                                              elem = document.getElementById("" + i);
+                                                                                                                                                                                                                              elem.addEventListener("mouseover", function send_text(event) {
 
-                                                                                                                              var form = document.createElement("form");
-                                                                                                                              var input = document.createElement("input");
-                                                                                                                              alert(elem.className);
-                                                                                                                              form.action = "/find/" + elem.className;
-                                                                                                                              form.method = "post";
-                                                                                                                              input.type = "hidden";
-                                                                                                                              input.value = elem.className;
-                                                                                                                              form.appendChild(input);
-                                                                                                                              document.body.appendChild(form);
-                                                                                                                              form.submit();
-
-
+                                                                                                                                                                                                                              var form = document.createElement("form");
+                                                                                                                                                                                                                              var input = document.createElement("input");
+                                                                                                                                                                                                                              alert(elem.className);
+                                                                                                                                                                                                                              form.action = "/find/" + elem.className;
+                                                                                                                                                                                                                              form.method = "post";
+                                                                                                                                                                                                                              input.type = "hidden";
+                                                                                                                                                                                                                              input.value = elem.className;
+                                                                                                                                                                                                                              form.appendChild(input);
+                                                                                                                                                                                                                              document.body.appendChild(form);
+                                                                                                                                                                                                                              form.submit();
 
 
-                                                                                                                                       })
 
-                                                                                                                              }*/
+
+                                                                                                                                                                                                                                       })
+
+                                                                                                                                                                                                                              }*/
     </script>
     <script type="text/javascript">
         function get_class(e) {
