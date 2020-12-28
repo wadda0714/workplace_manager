@@ -74,9 +74,15 @@ def find(seat):
     #dbname = "mainprogram.sqlite"
     #con = sqlite3.connect(dbname)
     #cursor = con.cursor()
-    #cursor.execute("SELECT empname FROM emptable WHERE position")
+    #cursor.execute("SELECT empname FROM emptable WHERE position'"+seat+"'")
     
-    return render_template("ikkai.html",user=seat)
+    return render_template("ikkai.html",msg=seat)
+@app.route("/kintai",methods = ["POST"])
+def kintai():
+    kintai = request.form.get("kintai")
+    print(kintai)
+    msg="登録完了しました"
+    return render_template("ikkai.html",msg=msg)
         
 
     

@@ -36,7 +36,7 @@
             <label><input type="submit" value="送信"></label>
         </fieldset>
     </form>
-    <p>ここにいるのは、{{user}}です</p>
+    <p>{{msg}}</p>
     <img src="/static/pics/白浜社屋1F.png" usemap="#ImageMap1" alt="" />
     <div id="map1"><map name="ImageMap1" id="ikkai">
       <area shape="poly" class="1"  id="1"   coords="140,325,145,334,153,328,147,320,147,320" href="/regis/seat1" onmouseover = "get_class()" data-funcybox="floor1" target="_blank" alt="" />
@@ -59,9 +59,9 @@
       <area shape="poly" class="18" id="18"  coords="186,515,194,526,204,517,195,509" href="/regis/seat18" onmouseover = "get_class()" data-funcybox="floor1" target="_blank"  alt="" />
       <area shape="poly" class="19" id="19"  coords="181,526,177,538,190,541,192,529" href="/regis/seat19" onmouseover = "get_class()" data-funcybox="floor1" target="_blank" alt="" />
       <area shape="poly" class="20" id="20"  coords="160,539,155,549,168,553,172,541" href="/regis/seat20" onmouseover = "get_class()" data-funcybox="floor1" target="_blank" alt="" />
-      <area shape="poly" class="21" id="21" coords="137,542,140,552,150,550,149,539" href="/regis/seat21" onmouseover = "get_class()" data-funcybox="floor1" target="_blank" alt="" />
-      <area shape="poly" class="22" id="22" coords="114,530,119,540,130,536,126,526" href="/regis/seat22" onmouseover = "get_class()"  data-funcybox="floor1" target="_blank" alt="" />
-      <area shape="poly" class="23" id="23" coords="77,595,77,605,88,606,88,596" href="/regis/seat23" onmouseover = "get_class()" data-funcybox="floor1" target="_blank" alt="" />
+      <area shape="poly" class="21" id="21"  coords="137,542,140,552,150,550,149,539" href="/regis/seat21" onmouseover = "get_class()" data-funcybox="floor1" target="_blank" alt="" />
+      <area shape="poly" class="22" id="22"  coords="114,530,119,540,130,536,126,526" href="/regis/seat22" onmouseover = "get_class()"  data-funcybox="floor1" target="_blank" alt="" />
+      <area shape="poly" class="23" id="23"  coords="77,595,77,605,88,606,88,596" href="/regis/seat23" onmouseover = "get_class()" data-funcybox="floor1" target="_blank" alt="" />
       <area shape="poly" class="24" id="24"  coords="77,617,77,627,88,627,87,616" href="/regis/seat24" onmouseover = "get_class()" data-funcybox="floor1" target="_blank" alt="" />
       <area shape="poly" class="25" id="25"  coords="77,638,76,652,88,652,90,638" href="/regis/seat25" onmouseover = "get_class()" data-funcybox="floor1" target="_blank" alt="" />
       <area shape="poly" class="26" id="26"  coords="82,715,83,726,94,727,95,715" href="/regis/seat26" onmouseover = "get_class()" data-funcybox="floor1" target="_blank" alt="" />
@@ -80,7 +80,7 @@
       <area shape="poly" class="39" id="39"  coords="132,784,124,791,132,800,143,793" href="/regis/seat39" onmouseover = "get_class()" data-funcybox="floor1" target="_blank" alt="" />
       <area shape="poly" class="40" id="40"  coords="112,777,108,785,120,789,123,779" href="/regis/seat40" onmouseover = "get_class()" data-funcybox="floor1" target="_blank" alt="" />
       <area shape="poly" class="41" id="41"  coords="101,753,98,764,108,767,111,756" href="/regis/seat41" onmouseover = "get_class()" data-funcybox="floor1" target="_blank" alt="" />
-      <area shape="rect" class="42" id="42"  coords="285,28,384,175"  onmouseover = "get_class()" data-funcybox="floor1" target="_blank" href="/regis/cafe" alt="" />
+      <area shape="rect" class="42" id="42"  coords="285,28,384,175"   onmouseover = "get_class()" data-funcybox="floor1" target="_blank" href="/regis/cafe" alt="" />
       <area shape="rect" class="43" id="43"  coords="693,30,1024,177"  onmouseover = "get_class()" data-funcybox="floor1" target="_blank" href="/regis/meetingroom" alt="" />
     </map>
     </div>
@@ -88,28 +88,28 @@
 
     <script type="text/javascript">
         /*var element = Number(document.getElementById("ikkai").lastElementChild.className);
-                                                                for (var i = 1; i <= element; i++) {
+                                                                                        for (var i = 1; i <= element; i++) {
 
-                                                                    elem = document.getElementById("" + i);
-                                                                    elem.addEventListener("mouseover", function send_text(event) {
+                                                                                            elem = document.getElementById("" + i);
+                                                                                            elem.addEventListener("mouseover", function send_text(event) {
 
-                                                                        var form = document.createElement("form");
-                                                                        var input = document.createElement("input");
-                                                                        alert(elem.className);
-                                                                        form.action = "/find/" + elem.className;
-                                                                        form.method = "post";
-                                                                        input.type = "hidden";
-                                                                        input.value = elem.className;
-                                                                        form.appendChild(input);
-                                                                        document.body.appendChild(form);
-                                                                        form.submit();
-
-
+                                                                                                var form = document.createElement("form");
+                                                                                                var input = document.createElement("input");
+                                                                                                alert(elem.className);
+                                                                                                form.action = "/find/" + elem.className;
+                                                                                                form.method = "post";
+                                                                                                input.type = "hidden";
+                                                                                                input.value = elem.className;
+                                                                                                form.appendChild(input);
+                                                                                                document.body.appendChild(form);
+                                                                                                form.submit();
 
 
-                                                                    })
 
-                                                                }*/
+
+                                                                                            })
+
+                                                                                        }*/
     </script>
     <script type="text/javascript">
         function get_class(e) {
