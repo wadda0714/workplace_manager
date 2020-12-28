@@ -1,12 +1,14 @@
 from flask import Flask, request, Response, abort, render_template,session, jsonify
 from flask_login import LoginManager, login_user, logout_user, login_required, UserMixin
 import sqlite3
+import datetime
 
 app = Flask(__name__)
 
 @app.route('/login',methods = ['POST'])
 def login():
     if request.method == "POST":
+        
         un = request.form.get("username")
         pwd = request.form.get("password")
         dbname = "emp.sqlite"
@@ -16,7 +18,7 @@ def login():
         li = cursor.fetchone()
         print(li[0])
         if li[0] == pwd:
-            return render_template("map.html",username=un)
+            return render_template("map.html",username=un,greeding = checktime())
         else:
             msg = "usernameかpasswordが違います。入力しなおしてください。"
             return render_template("new-login.html",err_msg=msg)
@@ -48,14 +50,14 @@ def login_form():
 def signup():
     return render_template("signup.html")
 
-@app.route("/regis/<workplace>",methods = ["GET","POST"])
-def regis(workplace):
-    dbname = "mainprogram.sqlite"
-    con = sqlite3.connect(dbname)
-    cursor = con.cursor()
-    cursor.execute("SELECT ")
-    con.close()
-    return render_template("map.html")
+#@app.route("/regis/<workplace>",methods = ["GET","POST"])
+#def regis(workplace):
+    #dbname = "mainprogram.sqlite"
+    #con = sqlite3.connect(dbname)
+    #cursor = con.cursor()
+    #cursor.execute("SELECT ")
+    #con.close()
+    #return render_template("map.html")
 
 @app.route("/search",methods = ["POST"])
 def search():
@@ -75,14 +77,25 @@ def find(seat):
     #con = sqlite3.connect(dbname)
     #cursor = con.cursor()
     #cursor.execute("SELECT empname FROM emptable WHERE position'"+seat+"'")
-    
     return render_template("ikkai.html",msg=seat)
 @app.route("/kintai",methods = ["POST"])
 def kintai():
     kintai = request.form.get("kintai")
+    seat = request.form.get("seat")
     print(kintai)
+    print(seat)
     msg="登録完了しました"
     return render_template("ikkai.html",msg=msg)
+def checktime():
+    now = datetime.datetime.now()
+    time = int("{0:%H}".format(now).lstrip("0"))
+    if time >= 5 and time < 12 :
+        greeding = "Good Morning!"
+    elif time >= 12 and time < 17:
+        greeding = "Hello!"
+    else:
+        greeding = "Good Evening!"
+    return greeding
         
 
     
