@@ -73,9 +73,9 @@ def get_map(Page):
 def find(seat):
     #dbname = "mainprogram.sqlite"
     #con = sqlite3.connect(dbname)
-   # cursor = con.cursor()
-   # cursor.execute("SELECT empname FROM emptable WHERE position")
-    print(seat)
+    #cursor = con.cursor()
+    #cursor.execute("SELECT empname FROM emptable WHERE position")
+    
     return render_template("ikkai.html",user=seat)
         
 

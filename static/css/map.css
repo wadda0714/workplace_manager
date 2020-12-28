@@ -1,48 +1,59 @@
-.greeding{
+.greeding {
     font-family: 'Anton', sans-serif;
-    font-size:100px;
+    font-size: 100px;
     text-align: center;
     margin-top: 100px;
 }
 
 
 /*写真の設定*/
-.layer-img2{
+
+.layer-img2 {
     width: 100%;
     height: 100%;
 }
 
-
-.swich:active + .F1{
+.swich:active+.F1 {
     display: none;
 }
 
-.F2{
+.F2 {
     display: none;
 }
-.swich:active + .F2{
+
+.swich:active+.F2 {
     display: block;
 }
 
+
 /* 画面変える設定の試し */
+
+
 /* 全体 */
-.hidden_box{
+
+.hidden_box {
     margin: 2em 0;
     padding: 0;
 }
+
+
 /*ボタン装飾*/
-.hidden_box label{
+
+.hidden_box label {
     padding: 15px;
     font-weight: bold;
     background: #efefef;
     border-radius: 5px;
-    cursor : pointer;
+    cursor: pointer;
     transition: .5s;
 }
+
+
 /* アイコンを表示 */
-.hidden_box label:before{
+
+.hidden_box label:before {
     display: inline-block;
-    content:'\f078';
+    content: '\f078';
     font-family: 'FontAwesome';
     padding-right: 5px;
     transition: 0.2s;
