@@ -10,12 +10,20 @@
 <body>
     <fieldset>
         <legend>出勤中</legend>
-        <p>和田皓翔</p>
+        <ul>
+            {% for msg in employees %}
+            <li>{{msg}}</li>
+            {% endfor %}
+        </ul>
     </fieldset>
     <fieldset>
         <legend>イベント予定</legend>
         <p>ミーティング 1/1 15:00～</p>
     </fieldset>
+    <form action="/at_info" method="POST">
+        <input type="submit" value="確認"></form>
+    <script>
+    </script>
 </body>
 
 </html>

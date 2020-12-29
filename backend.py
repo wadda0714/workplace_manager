@@ -4,7 +4,6 @@ import sqlite3
 import datetime
 
 app = Flask(__name__)
-
 @app.route('/login',methods = ['POST'])
 def login():
     if request.method == "POST":
@@ -25,7 +24,17 @@ def login():
 @app.route("/admin",methods = ["GET","POST"])
 def admin():
     return render_template("admin.html")
-
+@app.route("/at_info", methods = ["POST"])
+def info():
+    cursor,con = connect_db()
+    query = "SELECT empname FROM emptable WHERE status='" + "出勤" +"'"
+    cursor.execute(query)
+    employees = cursor.fetchall()
+    employee = list()
+    for i in employees:
+        employee.append(i[0]) 
+    return render_template("information.html",employees=employee)
+    
 @app.route('/register',methods = ['POST'])
 def register():
     if request.method == "POST":
@@ -59,11 +68,13 @@ def signup():
 def search():
     employees_name = request.form.get("employees_name")
     cursor,con = connect_db()
-    cursor.execute("SELECT defaultposition FROM emptable WHERE empname='"+employees_name+"'")
-    
-    return render_template("map.html",workplace=text1)
+    cursor.execute("SELECT sheet FROM emptable WHERE empname='"+employees_name+"'")
+    seat = cursor.fetchone()
+    msg = employees_name + "さんは" + str(seat[0]) + "にいます"
+    return render_template("search.html",msg = msg )
 @app.route('/get_map/<Page>')
 def get_map(Page):
+    
     return render_template(Page+".html")
 @app.route("/find/<seat>" ,methods = ["GET","POST"])
 def find(seat):
@@ -86,6 +97,7 @@ def kintai():
     print(kintai)
     print(seat)
     msg="登録完了しました"
+    
     return render_template("ikkai.html",msg=msg)
 
 def checktime():
