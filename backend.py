@@ -7,7 +7,6 @@ app = Flask(__name__)
 @app.route('/login',methods = ['POST'])
 def login():
     if request.method == "POST":
-        
         un = request.form.get("username")
         pwd = request.form.get("password")
         cursor,con = connect_db()
