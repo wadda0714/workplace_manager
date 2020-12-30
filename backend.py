@@ -102,46 +102,44 @@ def find(seat):
 @app.route("/kintai",methods = ["POST"])
 def kintai():
     seat = request.form.get("seat")
-    if seat != None:
-        seat = int(seat)
-        kintai = request.form.get("kintai")
-        name = request.form.get("name")
-        flag = request.form.get("flag")
-        print(flag)
-        print(name)
-        print(kintai)
-        print(seat)
-        if flag == "on":
-            try:
-                
-                cursor,con = connect_db()
-                cursor.execute("UPDATE emptable set sheet = ?,status = ?, defaultposition = ? WHERE empname = ?",(seat,kintai,seat,name))
-                con.commit()
-                con.close()
-                msg="登録完了しました"
+    if seat == None:
+        seat = 0
+    seat = int(seat)
+    kintai = request.form.get("kintai")
+            
+    name = request.form.get("name")
+    flag = request.form.get("flag")
+    print(flag)
+    print(name)
+    print(kintai)
+    print(seat)
+    if flag == "on":
+        try:
+            
+            cursor,con = connect_db()
+            cursor.execute("UPDATE emptable set sheet = ?,status = ?, defaultposition = ? WHERE empname = ?",(seat,kintai,seat,name))
+            con.commit()
+            con.close()
+            msg="登録完了しました"
         
-            except sqlite3.Error as e:
-                msg = "登録失敗しました"
+        except sqlite3.Error as e:
+            msg = "登録失敗しました"
     
             
-        else:
-            try:
-                
-                cursor,con = connect_db()
-                cursor.execute("UPDATE emptable set sheet = ?,status = ? WHERE empname = ?",(seat,kintai,name))
-                con.commit()
-                con.close()
-                msg="登録完了しました"
-        
-            except sqlite3.Error as e:
-                msg = "登録失敗しました"
-    
-        return render_template("ikkai.html",msg=msg)
-            
-        
     else:
-        msg = "登録失敗しました"
-        return render_template("ikkai.html",msg=msg)
+        try:
+                
+            cursor,con = connect_db()
+            cursor.execute("UPDATE emptable set sheet = ?,status = ? WHERE empname = ?",(seat,kintai,name))
+            con.commit()
+            con.close()
+            msg="登録完了しました"
+        
+        except sqlite3.Error as e:
+             msg = "登録失敗しました"
+    
+    return render_template("ikkai.html",msg=msg)
+            
         
 
 def checktime():
