@@ -14,6 +14,11 @@ def login():
         li = cursor.fetchone()
         print(li[0])
         if li[0] == pwd:
+            cursor.execute("SELECT defaultposition FROM emptable WHERE empname='"+un+"'")
+            record = cursor.fetchone()
+            cursor.execute("UPDATE emptable SET sheet = ? WHERE empname=?",(record[0],un))
+            con.commit()
+            con.close()
             return render_template("map.html",username=un,greeding = checktime())
         else:
             msg = "usernameかpasswordが違います。入力しなおしてください。"
@@ -85,19 +90,57 @@ def find(seat):
     for i in names:
         name.append(i[0]) 
     if name == []:
-        return render_template("ikkai.html",name="この席は空いています")
+        a  = "この席は空いています"
+        msg = list()
+        msg.append(a)
+        return render_template("ikkai.html",name=msg)
     else:
         return render_template("ikkai.html",name=name)
     
 @app.route("/kintai",methods = ["POST"])
 def kintai():
-    kintai = request.form.get("kintai")
     seat = request.form.get("seat")
-    print(kintai)
-    print(seat)
-    msg="登録完了しました"
+    if seat != None:
+        seat = int(seat)
+        kintai = request.form.get("kintai")
+        name = request.form.get("name")
+        flag = request.form.get("flag")
+        print(flag)
+        print(name)
+        print(kintai)
+        print(seat)
+        if flag == "on":
+            try:
+                
+                cursor,con = connect_db()
+                cursor.execute("UPDATE emptable set sheet = ?,status = ?, defaultposition = ? WHERE empname = ?",(seat,kintai,seat,name))
+                con.commit()
+                con.close()
+                msg="登録完了しました"
+        
+            except sqlite3.Error as e:
+                msg = "登録失敗しました"
     
-    return render_template("ikkai.html",msg=msg)
+            
+        else:
+            try:
+                
+                cursor,con = connect_db()
+                cursor.execute("UPDATE emptable set sheet = ?,status = ? WHERE empname = ?",(seat,kintai,name))
+                con.commit()
+                con.close()
+                msg="登録完了しました"
+        
+            except sqlite3.Error as e:
+                msg = "登録失敗しました"
+    
+        return render_template("ikkai.html",msg=msg)
+            
+        
+    else:
+        msg = "登録失敗しました"
+        return render_template("ikkai.html",msg=msg)
+        
 
 def checktime():
     now = datetime.datetime.now()

@@ -31,9 +31,9 @@
     </select>
             <br>
 
-            <label class="always"><input type="checkbox">毎日この席に座る</label>
+            <label class="always"><input type="checkbox"  id ="flag" >毎日この席に座る</label>
             <br>
-            <label><input type="submit" value="送信" ></label>
+            <label><input type="submit" value="送信" onclick="flag_check()" ></label>
         </fieldset>
     </form>
     <p>{{msg}}</p>
@@ -93,28 +93,28 @@
 
     <script type="text/javascript">
         /*var element = Number(document.getElementById("ikkai").lastElementChild.className);
-                                                                                                                                                                                                                                          for (var i = 1; i <= element; i++) {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  for (var i = 1; i <= element; i++) {
 
-                                                                                                                                                                                                                                              elem = document.getElementById("" + i);
-                                                                                                                                                                                                                                              elem.addEventListener("mouseover", function send_text(event) {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      elem = document.getElementById("" + i);
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      elem.addEventListener("mouseover", function send_text(event) {
 
-                                                                                                                                                                                                                                              var form = document.createElement("form");
-                                                                                                                                                                                                                                              var input = document.createElement("input");
-                                                                                                                                                                                                                                              alert(elem.className);
-                                                                                                                                                                                                                                              form.action = "/find/" + elem.className;
-                                                                                                                                                                                                                                              form.method = "post";
-                                                                                                                                                                                                                                              input.type = "hidden";
-                                                                                                                                                                                                                                              input.value = elem.className;
-                                                                                                                                                                                                                                              form.appendChild(input);
-                                                                                                                                                                                                                                              document.body.appendChild(form);
-                                                                                                                                                                                                                                              form.submit();
-
-
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      var form = document.createElement("form");
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      var input = document.createElement("input");
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      alert(elem.className);
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      form.action = "/find/" + elem.className;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      form.method = "post";
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      input.type = "hidden";
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      input.value = elem.className;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      form.appendChild(input);
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      document.body.appendChild(form);
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      form.submit();
 
 
-                                                                                                                                                                                                                                                       })
 
-                                                                                                                                                                                                                                              }*/
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               })
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      }*/
     </script>
     <script type="text/javascript">
         function get_class(e) {
@@ -141,17 +141,55 @@
                 elem.parentNode.removeChild(elem);
             }
             var e = e || window.event;
+
             var elem = e.target || e.srcElement;
+
             var elem_id = elem.id;
+
             var form = document.getElementById("submit");
+
+            var parent_username = window.parent.document.getElementById("username");
+
+            var username = parent_username.textContent;
+
             var input = document.createElement("input");
+
+            var name_input = document.createElement("input");
+
+            name_input.type = "hidden";
+
+            name_input.name = "name";
+
+            name_input.value = username;
+
+            form.appendChild(name_input);
+
             input.type = "hidden";
+
             input.name = "seat";
+
             input.value = elem.className;
+
             input.id = "seat";
+
             form.appendChild(input);
 
 
+        }
+    </script>
+    <script type="text/javascript">
+        function flag_check() {
+            var checkbox = document.getElementById("flag");
+            var input = document.createElement("input");
+            var form = document.getElementById("submit");
+            input.name = "flag"
+            input.type = "hidden"
+            if (checkbox.checked == true) {
+                input.value = "on";
+            } else {
+                input.value = "off";
+            }
+            form.appendChild(input)
         }
     </script>
 </body>
