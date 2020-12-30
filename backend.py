@@ -82,6 +82,8 @@ def get_map(Page):
     return render_template(Page+".html")
 @app.route("/find/<seat>" ,methods = ["GET","POST"])
 def find(seat):
+    scroll = request.form.get("scroll")
+    print(scroll)
     cursor,con = connect_db()
     query = "SELECT empname FROM emptable WHERE sheet =" + seat
     cursor.execute(query)
@@ -93,9 +95,9 @@ def find(seat):
         a  = "この席は空いています"
         msg = list()
         msg.append(a)
-        return render_template("ikkai.html",name=msg)
+        return render_template("ikkai.html",name=msg,scr=scroll)
     else:
-        return render_template("ikkai.html",name=name)
+        return render_template("ikkai.html",name=name,scr=scroll)
     
 @app.route("/kintai",methods = ["POST"])
 def kintai():
