@@ -19,6 +19,23 @@
         <input type="password" id="pass" placeholder="Password" name="password">
         <input type="submit" value="Login">
 
+
         <p class="err">{{err_msg}}</p>
 
     </form>
+</div>
+<h1 class="title">Sign up</h1>
+<div id="login">
+    <form name='form-login' action="/account_register" method="POST">
+        <span class="fontawesome-user"></span>
+        <input type="text" id="user" placeholder="Username" name="username">
+
+        <span class="fontawesome-lock"></span>
+        <input type="password" id="pass" placeholder="Password" name="password">
+        <input type="submit" value="Login">
+
+
+        <p class="err">{{err_msg}}</p>
+
+    </form>
+</div>

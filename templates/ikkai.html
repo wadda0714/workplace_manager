@@ -39,13 +39,15 @@
         </fieldset>
     </form>
     <p>{{msg}}</p>
+    <p id="submit_msg"></p>
     <ul>
         {% for msg in name %}
         <li>{{msg}}</li>
         {% endfor %}
     </ul>
-    <img src="/static/pics/白浜社屋1F.png" usemap="#ImageMap1" alt="" />
-    <div id="map1"><map name="ImageMap1" id="ikkai">
+    <div class="contents">
+        <img src="/static/pics/白浜社屋1F.png" usemap="#ImageMap1" alt="" />
+        <div id="map1"><map name="ImageMap1" id="ikkai">
       <area shape="poly" class="1"  id="1"   coords="140,325,145,334,153,328,147,320,147,320" onclick="submit()" name="seat1" onmouseenter = "get_class()" data-funcybox="floor1" target="_blank" alt="" />
       <area shape="poly" class="2"  id="2"   coords="126,334,132,342,140,337,134,328,133,329" onclick="submit()" name="seat2" onmouseenter = "get_class()" data-funcybox="floor1" target="_blank" alt="" />
       <area shape="poly" class="3"  id="3"   coords="111,343,116,352,127,347,121,336,123,338" onclick="submit()" name="seat3" onmouseenter = "get_class()" data-funcybox="floor1" target="_blank" alt="" />
@@ -90,7 +92,10 @@
       <area shape="rect" class="42" id="42"  coords="285,28,384,175"  onclick="submit()" onmouseenter = "get_class()" data-funcybox="floor1" target="_blank" name="cafe" alt="" />
       <area shape="rect" class="43" id="43"  coords="693,30,1024,177" onclick="submit()" onmouseenter = "get_class()" data-funcybox="floor1" target="_blank" name="meetingroom" alt="" />
     </map>
+        </div>
+
     </div>
+
 
 
 
@@ -99,21 +104,26 @@
             var e = e || window.event;
             var elem = e.target || e.srcElement;
             var elem_id = elem.id;
-            var form = document.createElement("form");
-            var input = document.createElement("input");
-            var scroll = document.createElement("input");
-            scroll.name = "scroll";
-            scroll.type = "hidden";
-            scroll.value = document.documentElement.scrollTop;
-            form.appendChild(scroll);
-            form.action = "/find/" + elem.id;
-            form.method = "post";
-            input.type = "hidden";
-            input.value = elem.className;
-            form.appendChild(input);
-            document.body.appendChild(form);
+            var seat = "{{seat}}";
+            if (seat != elem_id) {
+                var form = document.createElement("form");
+                var input = document.createElement("input");
+                var scroll = document.createElement("input");
+                scroll.name = "scroll";
+                scroll.type = "hidden";
+                scroll.value = document.documentElement.scrollTop;
+                form.appendChild(scroll);
+                form.action = "/find/" + elem.id;
+                form.method = "post";
+                input.type = "hidden";
+                input.value = elem.className;
+                form.appendChild(input);
+                document.body.appendChild(form);
 
-            form.submit();
+                form.submit();
+
+            }
+
 
 
 
@@ -126,26 +136,27 @@
             if (elem != null) {
                 elem.parentNode.removeChild(elem);
             }
+            var form = document.getElementById("submit");
             var e = e || window.event;
 
             var elem = e.target || e.srcElement;
 
             var elem_id = elem.id;
-
-
-
             var input = document.createElement("input");
+            var input2 = document.createElement("input");
+            var msg = document.getElementById("submit_msg");
 
 
-            input.type = "hidden";
+            input2.type = "hidden";
 
-            input.name = "seat";
+            input2.name = "seat";
 
-            input.value = elem.className;
+            input2.value = elem.className;
 
-            input.id = "seat";
+            input2.id = "seat";
+            msg.textContent = elem.id + "を選択しました";
 
-            form.appendChild(input);
+            form.appendChild(input2);
 
 
         }
@@ -187,7 +198,7 @@
         try {
             s = "{{scr}}";
             if (s != "") {
-                document.documentElement.scrollTop = Number(s) - 10;
+                document.documentElement.scrollTop = Number(s);
             }
 
 

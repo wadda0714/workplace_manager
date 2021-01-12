@@ -7,11 +7,12 @@
     <!--パソコンとか携帯とかの幅に自動で合わせてくれる-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--キャッシュ無効化-->
-    <meta http-equiv="Cache-Control" content="no-cache">
+
     <link rel="stylesheet" type="text/less" href="/static/css/style.less">
     <script src="http://cdnjs.cloudflare.com/ajax/libs/less.js/2.5.1/less.min.js"></script>
 
     <link rel="stylesheet" type="text/css" title="Cool stylesheet" href="/static/css/map.css">
+    <meta http-equiv="Cache-Control" content="no-cache">
     <title>Document</title>
 
     <!--フォント-->
@@ -33,38 +34,47 @@
 </head>
 
 
-<body background="/static/pics/subtle-light-tile-pattern-vol5.jpg">
-    <h1 class="greeding">{{greeding}} <span id="username">{{username}}</span>! </h1>
-    <nav class="menu">
-        <ol>
-            <li class="menu-item"><a href="#" id="information" onclick="disp_iframe()">Information</a></li>
-            <li class="menu-item"><a href="#" id="enter">Enter</a>
-                <ol class="sub-menu">
-                    <li class="menu-item"><a href="#" id="ikkai" onclick="disp_iframe()">1F</a></li>
-                    <li class="menu-item"><a href="#" id="nikai" onclick="disp_iframe()">2F</a></li>
-                </ol>
-            </li>
-            <li class="menu-item"><a href="#" id="leave" onclick="disp_iframe()">Leave</a></li>
-            <li class="menu-item">
-                <a href="#" id="search" onclick="disp_iframe()">Search</a>
-                <ol class="sub-menu">
-                    <li class="menu-item"><a href="#" id="name" onclick="disp_iframe()">name</a></li>
-                    <li class="menu-item"><a href="#" id="big" onclick="disp_iframe()">Bigger Widgets</a></li>
-                    <li class="menu-item"><a href="#" id="huge" onclick="disp_iframe()">Huge Widgets</a></li>
-                </ol>
-            </li>
-            <li class="menu-item"><a href="#" id="usage" onclick="disp_iframe()">Usage</a></li>
-        </ol>
-    </nav>
+<body>
 
 
-    <div id="F1">
-        <!---->
+    <video src="https://tech-dig.jp/wp/wp-content/uploads/2018/05/test.mp4" autoplay playsinline muted loop></video>
+    <div class="contents">
+        <h1 class="greeding">{{greeding}} <span id="username">{{username}}</span>! </h1>
+        <nav class="menu" onclick="change_background()">
+            <ol>
+                <li class="menu-item"><a href="#" id="information" onclick="disp_iframe()">Information</a></li>
+                <li class="menu-item"><a href="#" id="enter">Enter</a>
+                    <ol class="sub-menu">
+                        <li class="menu-item"><a href="#" id="ikkai" onclick="disp_iframe()">1F</a></li>
+                        <li class="menu-item"><a href="#" id="nikai" onclick="disp_iframe()">2F</a></li>
+                    </ol>
+                </li>
+                <li class="menu-item"><a href="/" id="leave">logout</a></li>
+                <li class="menu-item">
+                    <a href="#" id="search" onclick="disp_iframe()">Search</a>
+                    <ol class="sub-menu">
+                        <li class="menu-item"><a href="#" id="name" onclick="disp_iframe()">name</a></li>
+                        <li class="menu-item"><a href="#" id="big" onclick="disp_iframe()">Bigger Widgets</a></li>
+                        <li class="menu-item"><a href="#" id="huge" onclick="disp_iframe()">Huge Widgets</a></li>
+                    </ol>
+                </li>
+                <li class="menu-item"><a href="#" id="usage" onclick="disp_iframe()">Usage</a></li>
+            </ol>
+        </nav>
+        <div id="F1">
 
+
+        </div>
+        <footer>Copyright © 2020 hiroka wada,ayano tanaka,yuusuke kimura,erika kimura,koutaro isimoto Inc. All Rights Reserved.</footer>
     </div>
 
-    <br>
-    <p>{{workplace}}</p>
+
+
+
+
+
+
+
 
 
 
@@ -82,32 +92,36 @@
 
     <script type="text/javascript">
         /*var element = document.getElementById("toggle")
-                                                                                                                                                element.addEventListener("mouseover", function change_map(event) {
-                                                                                                                                                floor = document.getElementById("floor");
-                                                                                                                                                if (floor.textContent == "1F") {
-                                                                                                                                                    elem = document.getElementById("F1");
-                                                                                                                                                    elem.innerHTML = '<iframe src="/get_map/2F" width="1800" height="800"></iframe>';
-                                                                                                                                                    floor.textContent = "2F";
-                                                                                                                                                    } else {
-                                                                                                                                                    elem = document.getElementById("F1");
-                                                                                                                                                    elem.innerHTML = '<iframe src="/get_map/1F" width="1800" height="800"></iframe>';
-                                                                                                                                                    floor.textContent = "1F";
-                                                                                                                                                                                                                                            }
+                                                                                                                                                                                                                                                                                                                                                        element.addEventListener("mouseover", function change_map(event) {
+                                                                                                                                                                                                                                                                                                                                                        floor = document.getElementById("floor");
+                                                                                                                                                                                                                                                                                                                                                        if (floor.textContent == "1F") {
+                                                                                                                                                                                                                                                                                                                                                            elem = document.getElementById("F1");
+                                                                                                                                                                                                                                                                                                                                                            elem.innerHTML = '<iframe src="/get_map/2F" width="1800" height="800"></iframe>';
+                                                                                                                                                                                                                                                                                                                                                            floor.textContent = "2F";
+                                                                                                                                                                                                                                                                                                                                                            } else {
+                                                                                                                                                                                                                                                                                                                                                            elem = document.getElementById("F1");
+                                                                                                                                                                                                                                                                                                                                                            elem.innerHTML = '<iframe src="/get_map/1F" width="1800" height="800"></iframe>';
+                                                                                                                                                                                                                                                                                                                                                            floor.textContent = "1F";
+                                                                                                                                                                                                                                                                                                                                                                                                                                                    }
 
-                                                                                                                                                     }, false);*/
-
+                                                                                                                                                                                                                                                                                                                                                             }, false);*/
 
         function disp_iframe(e) {
             var e = e || window.event;
             var elem = e.target || e.srcElement;
             var elemId = elem.id;
             elem = document.getElementById("F1");
-            elem.innerHTML = '<iframe src="/get_map/' + elemId + '"width="1800" height="800"></iframe>';
-
+            elem.innerHTML = '<iframe src="/get_map/' + elemId + '"width="1800" height="500"></iframe>';
+        }
+    </script>
+    <script>
+        function change_background() {
+            const element = document.querySelector('video')
+            element.remove()
         }
     </script>
 </body>
 
-<footer>Copyright © 2020 hiroka wada,ayano tanaka,yuusuke kimura,erika kimura,koutaro isimoto Inc. All Rights Reserved.</footer>
+
 
 </html>

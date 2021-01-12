@@ -24,6 +24,19 @@ def login():
             msg = "usernameかpasswordが違います。入力しなおしてください。"
             return render_template("new-login.html",err_msg=msg)
         
+@app.route('/account_register',methods = ["POST"])
+def account_register():
+    if request.method == "GET":
+        return render_template("account_register.html")
+    elif request.method == "POST":
+        un = request.form.get("username")
+        pwd = request.form.get("password")
+        cursor,con = connect_db()
+        cursor.execute("INSERT INTO emptable values(?,?,?,0,0)",(un,pwd,"出勤"))
+        con.commit()
+        con.close()
+        return render_template("map.html",username=un,greeding = checktime())
+        
         
 @app.route("/admin",methods = ["GET","POST"])
 def admin():
@@ -39,17 +52,7 @@ def info():
         employee.append(i[0]) 
     return render_template("information.html",employees=employee)
     
-@app.route('/register',methods = ['POST'])
-def register():
-    if request.method == "POST":
-        un = request.form.get("username")
-        pwd1 = request.form.get("password1")
-        pwd2 = request.form.get("password2")
-        email = request.form.get("email")
-        cursor,con = connect_db()
-        cursor.execute("INSERT INTO emptable values(1)")
-        con.commit()
-        print(place)
+
       
 @app.route('/',methods = ['GET'])
 def login_form():
@@ -82,23 +85,27 @@ def get_map(Page):
     return render_template(Page+".html")
 @app.route("/find/<seat>" ,methods = ["GET","POST"])
 def find(seat):
-    scroll = request.form.get("scroll")
-    print(scroll)
-    cursor,con = connect_db()
-    query = "SELECT empname FROM emptable WHERE sheet =" + seat
-    cursor.execute(query)
-    names = cursor.fetchall()
-    name = list()
-    for i in names:
-        name.append(i[0]) 
-    if name == []:
-        a  = "この席は空いています"
-        msg = list()
-        msg.append(a)
-        return render_template("ikkai.html",name=msg,scr=scroll)
+    if False:
+        pass
     else:
-        return render_template("ikkai.html",name=name,scr=scroll)
-    
+        previous_seat = seat
+        scroll = request.form.get("scroll")
+        print(scroll)
+        cursor,con = connect_db()
+        query = "SELECT empname FROM emptable WHERE sheet =" + seat
+        cursor.execute(query)
+        names = cursor.fetchall()
+        name = list()
+        for i in names:
+            name.append(i[0]) 
+        if name == []:
+            a  = "この席は空いています"
+            msg = list()
+            msg.append(a)
+            return render_template("ikkai.html",name=msg,scr=scroll,seat=seat)
+        else:
+            return render_template("ikkai.html",name=name,scr=scroll,seat=seat)
+        
 @app.route("/kintai",methods = ["POST"])
 def kintai():
     seat = request.form.get("seat")
