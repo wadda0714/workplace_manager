@@ -32,10 +32,16 @@ def account_register():
         un = request.form.get("username")
         pwd = request.form.get("password")
         cursor,con = connect_db()
-        cursor.execute("INSERT INTO emptable values(?,?,?,0,0)",(un,pwd,"出勤"))
-        con.commit()
-        con.close()
-        return render_template("map.html",username=un,greeding = checktime())
+        cursor.execute("SELECT empname FROM emptable WHERE empname=?",(un,))
+        if cursor.fetchone() == None:
+            cursor.execute("INSERT INTO emptable values(?,?,?,0,0)",(un,pwd,"出勤"))
+            con.commit()
+            con.close()
+            return render_template("map.html",username=un,greeding = checktime())
+        else:
+            return render_template("new-login.html",msg2="既に存在するユーザーです")
+            
+        
         
         
 @app.route("/admin",methods = ["GET","POST"])
