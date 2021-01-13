@@ -95,6 +95,7 @@ def find(seat):
         pass
     else:
         previous_seat = seat
+        filename = request.form.get("filename")
         scroll = request.form.get("scroll")
         print(scroll)
         cursor,con = connect_db()
@@ -108,13 +109,14 @@ def find(seat):
             a  = "この席は空いています"
             msg = list()
             msg.append(a)
-            return render_template("ikkai.html",name=msg,scr=scroll,seat=seat)
+            return render_template(filename+".html",name=msg,scr=scroll,seat=seat)
         else:
-            return render_template("ikkai.html",name=name,scr=scroll,seat=seat)
+            return render_template(filename+".html",name=name,scr=scroll,seat=seat)
         
 @app.route("/kintai",methods = ["POST"])
 def kintai():
     seat = request.form.get("seat")
+    filename = request.form.get("filename")
     if seat == None:
         seat = 0
     seat = int(seat)
@@ -151,7 +153,7 @@ def kintai():
         except sqlite3.Error as e:
              msg = "登録失敗しました"
     
-    return render_template("ikkai.html",msg=msg)
+    return render_template(filename+".html",msg=msg)
             
         
 

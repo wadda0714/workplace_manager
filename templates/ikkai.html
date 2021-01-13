@@ -104,6 +104,7 @@
             var e = e || window.event;
             var elem = e.target || e.srcElement;
             var elem_id = elem.id;
+            var filename = document.getElementsByTagName("map")[0].id;
             var seat = "{{seat}}";
             if (seat != elem_id) {
                 var form = document.createElement("form");
@@ -115,8 +116,9 @@
                 form.appendChild(scroll);
                 form.action = "/find/" + elem.id;
                 form.method = "post";
+                input.name = "filename";
                 input.type = "hidden";
-                input.value = elem.className;
+                input.value = filename;
                 form.appendChild(input);
                 document.body.appendChild(form);
 
@@ -145,8 +147,13 @@
             var input = document.createElement("input");
             var input2 = document.createElement("input");
             var msg = document.getElementById("submit_msg");
+            var filename = document.getElementsByTagName("map")[0].id;
+            input.name = "filename"
+            input.value = filename
+            input.type = "hidden";
+            form.appendChild(input)
 
-
+     
             input2.type = "hidden";
 
             input2.name = "seat";
