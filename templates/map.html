@@ -10,6 +10,9 @@
 
     <link rel="stylesheet" type="text/less" href="/static/css/style.less">
     <script src="http://cdnjs.cloudflare.com/ajax/libs/less.js/2.5.1/less.min.js"></script>
+    <script src="dist/image-map-creator.bundle.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.0/p5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.0/addons/p5.dom.min.js"></script>
 
     <link rel="stylesheet" type="text/css" title="Cool stylesheet" href="/static/css/map.css">
     <meta http-equiv="Cache-Control" content="no-cache">
@@ -39,6 +42,7 @@
 
     <video src="https://tech-dig.jp/wp/wp-content/uploads/2018/05/test.mp4" autoplay playsinline muted loop></video>
     <div class="contents">
+        <p>{{admin_msg}}</p>
         <h1 class="greeding">{{greeding}} <span id="username">{{username}}</span>! </h1>
         <nav class="menu" onclick="change_background()">
             <ol>
@@ -83,30 +87,7 @@
     </script>
 
 
-    <script type="text/javascript">
-        /*var element = document.getElementById("toggle")
-                                                                                                                                                                                                                                                                                                                                                        element.addEventListener("mouseover", function change_map(event) {
-                                                                                                                                                                                                                                                                                                                                                        floor = document.getElementById("floor");
-                                                                                                                                                                                                                                                                                                                                                        if (floor.textContent == "1F") {
-                                                                                                                                                                                                                                                                                                                                                            elem = document.getElementById("F1");
-                                                                                                                                                                                                                                                                                                                                                            elem.innerHTML = '<iframe src="/get_map/2F" width="1800" height="800"></iframe>';
-                                                                                                                                                                                                                                                                                                                                                            floor.textContent = "2F";
-                                                                                                                                                                                                                                                                                                                                                            } else {
-                                                                                                                                                                                                                                                                                                                                                            elem = document.getElementById("F1");
-                                                                                                                                                                                                                                                                                                                                                            elem.innerHTML = '<iframe src="/get_map/1F" width="1800" height="800"></iframe>';
-                                                                                                                                                                                                                                                                                                                                                            floor.textContent = "1F";
-                                                                                                                                                                                                                                                                                                                                                                                                                                                    }
 
-                                                                                                                                                                                                                                                                                                                                                             }, false);*/
-
-        function disp_iframe(e) {
-            var e = e || window.event;
-            var elem = e.target || e.srcElement;
-            var elemId = elem.id;
-            elem = document.getElementById("F1");
-            elem.innerHTML = '<iframe src="/get_map/' + elemId + '"width="1800" height="500"></iframe>';
-        }
-    </script>
     <script>
         function change_background() {
             const element = document.querySelector('video')
