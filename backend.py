@@ -154,6 +154,11 @@ def kintai():
              msg = "登録失敗しました"
     
     return render_template(filename+".html",msg=msg)
+@app.route('/register_map',methods=["POST"])
+def register_map():
+    html = request.form.get("imagemap")
+    print(html)
+    return render_template("index.html",msg="登録完了しました")
             
         
 
