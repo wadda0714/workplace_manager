@@ -117,9 +117,10 @@ def find(seat):
 def kintai():
     seat = request.form.get("seat")
     filename = request.form.get("filename")
+    seat = seat.split(" ")
     if seat == None:
-        seat = 0
-    seat = int(seat)
+        seat[1] = 0
+    seat[1] = int(seat[1])
     kintai = request.form.get("kintai")
             
     name = request.form.get("name")
@@ -127,12 +128,12 @@ def kintai():
     print(flag)
     print(name)
     print(kintai)
-    print(seat)
+    print(seat[1])
     if flag == "on":
         try:
             
             cursor,con = connect_db()
-            cursor.execute("UPDATE emptable set sheet = ?,status = ?, defaultposition = ? WHERE empname = ?",(seat,kintai,seat,name))
+            cursor.execute("UPDATE emptable set sheet = ?,status = ?, defaultposition = ? WHERE empname = ?",(seat[1],kintai,seat[1],name))
             con.commit()
             con.close()
             msg="登録完了しました"
@@ -145,7 +146,7 @@ def kintai():
         try:
                 
             cursor,con = connect_db()
-            cursor.execute("UPDATE emptable set sheet = ?,status = ? WHERE empname = ?",(seat,kintai,name))
+            cursor.execute("UPDATE emptable set sheet = ?,status = ? WHERE empname = ?",(seat[1],kintai,name))
             con.commit()
             con.close()
             msg="登録完了しました"
