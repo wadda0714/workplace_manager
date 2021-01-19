@@ -39,29 +39,38 @@
 
     <video src="https://tech-dig.jp/wp/wp-content/uploads/2018/05/test.mp4" autoplay playsinline muted loop></video>
     <div class="contents">
-        <<<<<<< HEAD=======< p>{{admin_msg}}</p>
-            >>>>>>> 9249cd1cded85b8d07aedc235e99a348c207721b
-            <h1 class="greeding">{{greeding}} <span id="username">{{username}}</span>! </h1>
-            <nav class="menu" onclick="change_background()">
-                <ol>
-                    <li class="menu-item"><a href="#" id="information" onclick="disp_iframe()">Information</a></li>
-                    <li class="menu-item"><a href="#" id="enter">Enter</a>
-                        <ol class="sub-menu">
-                            <li class="menu-item"><a href="#" id="search" onclick="disp_iframe()">従業員から検索</a></li>
-                            <li class="menu-item"><a href="#" id="ikkai" onclick="disp_iframe()">1F</a></li>
-                            <li class="menu-item"><a href="#" id="nikai" onclick="disp_iframe()">2F</a></li>
-                        </ol>
-                    </li>
-                    <li class="menu-item"><a href="/" id="leave">logout</a></li>
-                    <li class="menu-item"><a href="#" id="index" onclick="disp_iframe()">Admin</a></li>
-                    <li class="menu-item"><a href="#" id="usage" onclick="disp_iframe()">Usage</a></li>
-                </ol>
-            </nav>
-            <div id="F1">
+        <p>{{admin_msg}}</p>
+
+        <h1 class="greeding">{{greeding}} <span id="username">{{username}}</span>! </h1>
+        <nav class="menu" onclick="change_background()">
+            <ol>
+                <li class="menu-item"><a href="#" id="information" onclick="disp_iframe()">Information</a></li>
+                <li class="menu-item"><a href="#" id="enter">Enter</a>
+                    <ol class="sub-menu">
+                        <li class="menu-item"><a href="#" id="search" onclick="disp_iframe()">従業員から検索</a></li>
+                        <li class="menu-item"><a href="#" id="ikkai" onclick="disp_iframe()">1F</a></li>
+                        <li class="menu-item"><a href="#" id="nikai" onclick="disp_iframe()">2F</a></li>
+                    </ol>
+                </li>
+                <li class="menu-item"><a href="/" id="leave">logout</a></li>
+                <li class="menu-item"><a href="#" id="index" onclick="disp_iframe()">Admin</a>
+                </li>
+                <li class="menu-item"><a href="#" id="usage" onclick="disp_iframe()">Usage</a>
+                    <ol class="sub-menu">
+                        <li class="menu-item"><a href="#" id="u_shukkin" onclick="disp_iframe()">出勤</a></li>
+                        <li class="menu-item"><a href="#" id="u_taikin" onclick="disp_iframe()">退勤時</a></li>
+                        <li class="menu-item"><a href="#" id="u_lunch" onclick="disp_iframe()">私用外出</a></li>
+                        <li class="menu-item"><a href="#" id="u_goout" onclick="disp_iframe()">外出</a></li>
+                        <li class="menu-item"><a href="#" id="u_etc" onclick="disp_iframe()">その他</a></li>
+                    </ol>
+                </li>
+            </ol>
+        </nav>
+        <div id="F1">
 
 
-            </div>
-            <footer>Copyright © 2020 hiroka wada,ayano tanaka,yuusuke kimura,erika kimura,koutaro isimoto Inc. All Rights Reserved.</footer>
+        </div>
+        <footer>Copyright © 2020 hiroka wada,ayano tanaka,yuusuke kimura,erika kimura,koutaro isimoto Inc. All Rights Reserved.</footer>
     </div>
 
 
@@ -86,19 +95,22 @@
     </script>
 
 
-    <<<<<<< HEAD <script type="text/javascript">
-        /*var element = document.getElementById("toggle") element.addEventListener("mouseover", function change_map(event) { floor = document.getElementById("floor"); if (floor.textContent == "1F") { elem = document.getElementById("F1"); elem.innerHTML = '
-        <iframe
-            src="/get_map/2F" width="1800" height="800"></iframe>'; floor.textContent = "2F"; } else { elem = document.getElementById("F1"); elem.innerHTML = '<iframe src="/get_map/1F" width="1800" height="800"></iframe>'; floor.textContent = "1F"; } }, false);*/ function disp_iframe(e) { var e = e
-            || window.event; var elem = e.target || e.srcElement; var elemId = elem.id; elem = document.getElementById("F1"); elem.innerHTML = '<iframe src="/get_map/' + elemId + '" width="1800" height="500"></iframe>'; }
-            </script>
-            ======= >>>>>>> 9249cd1cded85b8d07aedc235e99a348c207721b
-            <script>
-                function change_background() {
-                    const element = document.querySelector('video')
-                    element.remove()
-                }
-            </script>
+    <script type="text/javascript">
+        function disp_iframe(e) {
+            var e = e || window.event;
+            var elem = e.target || e.srcElement;
+            var elemId = elem.id;
+            elem = document.getElementById("F1");
+            elem.innerHTML = '<iframe src="/get_map/' + elemId + '" width="1800" height="500"></iframe>';
+        }
+    </script>
+
+    <script>
+        function change_background() {
+            const element = document.querySelector('video')
+            element.remove()
+        }
+    </script>
 </body>
 
 
