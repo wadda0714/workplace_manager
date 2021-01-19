@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Images-map creator Demo</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+
+    <!-- All you need is these JS libraries -->
+    <script src="/static/js/image-map-creator.bundle.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.0/p5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.0/addons/p5.dom.min.js"></script>
+    <!--  End of JS libraries requierments  -->
+
+</head>
+
+<body>
+
+    <!-- A <div> with an id -->
+    <div id="div-1" style="position: relative;"></div>
+
+    <!-- Optionnal control buttons -->
+    <button onclick="logMap()">Log Map</button>
+    <button onclick="logP5()">Log P5</button>
+
+    <!-- A <script> to enable the tool on the disired div -->
+    <script type="text/javascript">
+        let imcreator = new imageMapCreator("div-1");
+    </script>
+    <form action="/register_map" method="POST">
+        <input type="text" name="imagemap" placeholder="htmlをコピペしてください">
+        <input type="submit" value="送信">
+    </form>
+    <p>{{msg}}</p>
+
+    <!-- Another <script> (optionnal) for the optionnal buttons -->
+    <script type="text/javascript">
+        function logMap() {
+            console.log(imcreator.map);
+        }
+
+        function logP5() {
+            console.log(imcreator.p5);
+        }
+    </script>
+
+</body>
+
+</html>
