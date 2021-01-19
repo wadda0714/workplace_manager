@@ -132,6 +132,15 @@
 
         }
     </script>
+    <script>
+        var form = document.getElementById("submit");
+        var filename = document.getElementsByTagName("map")[0].id;
+        var input = document.createElement("input");
+        input.name = "filename"
+        input.value = filename
+        input.type = "hidden";
+        form.appendChild(input)
+    </script>
     <script type="text/javascript">
         function submit(e) {
             var elem = document.getElementById("seat");
@@ -144,21 +153,17 @@
             var elem = e.target || e.srcElement;
 
             var elem_id = elem.id;
-            var input = document.createElement("input");
+
             var input2 = document.createElement("input");
             var msg = document.getElementById("submit_msg");
-            var filename = document.getElementsByTagName("map")[0].id;
-            input.name = "filename"
-            input.value = filename
-            input.type = "hidden";
-            form.appendChild(input)
+
 
 
             input2.type = "hidden";
 
             input2.name = "seat";
 
-            input2.value = filename + " " + elem.id;
+            input2.value = elem.id;
 
             input2.id = "seat";
             msg.textContent = elem.id + "を選択しました";

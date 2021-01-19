@@ -34,7 +34,7 @@ def account_register():
         cursor,con = connect_db()
         cursor.execute("SELECT empname FROM emptable WHERE empname=?",(un,))
         if cursor.fetchone() == None:
-            cursor.execute("INSERT INTO emptable values(?,?,?,0,0)",(un,pwd,"出勤"))
+            cursor.execute("INSERT INTO emptable values(?,?,?," "," ")",(un,pwd,"出勤"))
             con.commit()
             con.close()
             return render_template("map.html",username=un,greeding = checktime())
@@ -94,13 +94,13 @@ def find(seat):
     if False:
         pass
     else:
-        previous_seat = seat
+
         filename = request.form.get("filename")
         scroll = request.form.get("scroll")
         print(scroll)
         cursor,con = connect_db()
-        query = "SELECT empname FROM emptable WHERE sheet =" + seat
-        cursor.execute(query)
+        
+        cursor.execute("SELECT empname FROM emptable WHERE sheet =?",(filename + " " + seat,) )
         names = cursor.fetchall()
         name = list()
         for i in names:
@@ -117,10 +117,9 @@ def find(seat):
 def kintai():
     seat = request.form.get("seat")
     filename = request.form.get("filename")
-    seat = seat.split(" ")
     if seat == None:
-        seat[1] = 0
-    seat[1] = int(seat[1])
+        seat = "0"
+        filename = ""
     kintai = request.form.get("kintai")
             
     name = request.form.get("name")
@@ -128,12 +127,12 @@ def kintai():
     print(flag)
     print(name)
     print(kintai)
-    print(seat[1])
+    print(seat)
     if flag == "on":
         try:
             
             cursor,con = connect_db()
-            cursor.execute("UPDATE emptable set sheet = ?,status = ?, defaultposition = ? WHERE empname = ?",(seat[1],kintai,seat[1],name))
+            cursor.execute("UPDATE emptable set sheet = ?,status = ?, defaultposition = ? WHERE empname = ?",(filename+" "+seat,kintai,filename+" "+seat,name))
             con.commit()
             con.close()
             msg="登録完了しました"
@@ -146,7 +145,7 @@ def kintai():
         try:
                 
             cursor,con = connect_db()
-            cursor.execute("UPDATE emptable set sheet = ?,status = ? WHERE empname = ?",(seat[1],kintai,name))
+            cursor.execute("UPDATE emptable set sheet = ?,status = ? WHERE empname = ?",(filename+" "+seat,kintai,name))
             con.commit()
             con.close()
             msg="登録完了しました"
@@ -179,7 +178,7 @@ def checktime():
         greeding = "Good Evening!"
     return greeding
 def connect_db():
-    dbname = "systemdb.sqlite"
+    dbname = "userinfo.sqlite"
     con = sqlite3.connect(dbname)
     cursor= con.cursor()
     return cursor,con
