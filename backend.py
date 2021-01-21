@@ -82,9 +82,10 @@ def search():
     employees_name = request.form.get("employees_name")
     cursor,con = connect_db()
     cursor.execute("SELECT sheet FROM emptable WHERE empname='"+employees_name+"'")
-    seat = cursor.fetchone()
-    msg = employees_name + "さんは" + str(seat[0]) + "にいます"
-    return render_template("search.html",msg = msg )
+    record = cursor.fetchone()
+    seat = record[0].split(" ")
+    msg = employees_name + "さんは" + record[0] + "にいます"
+    return render_template(seat[0]+".html",msg = msg,dst="/static/pics/四星球.jpeg",seat=str(seat[1]))
 @app.route('/get_map/<Page>')
 def get_map(Page):
     
@@ -119,7 +120,6 @@ def kintai():
     filename = request.form.get("filename")
     if seat == None:
         seat = "0"
-        filename = ""
     kintai = request.form.get("kintai")
             
     name = request.form.get("name")

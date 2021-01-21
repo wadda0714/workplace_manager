@@ -171,5 +171,15 @@
         }
     }
 </script>
+<script>
+    var offset = $("#pointer").offset();
+    var seat = "{{seat}}";
+    console.log(seat)
+    console.log(offset);
+    var seat_offset = $("#" + seat).offset({
+        top: offset.top,
+        left: offset.left
+    });
+</script>
 
 </html>

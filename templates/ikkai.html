@@ -91,10 +91,13 @@
       <area shape="poly" class="41" id="41"  coords="101,753,98,764,108,767,111,756" onclick="submit()" name="seat41" onmouseenter = "get_class()" data-funcybox="floor1" target="_blank" alt="" />
       <area shape="rect" class="42" id="42"  coords="285,28,384,175"  onclick="submit()" onmouseenter = "get_class()" data-funcybox="floor1" target="_blank" name="cafe" alt="" />
       <area shape="rect" class="43" id="43"  coords="693,30,1024,177" onclick="submit()" onmouseenter = "get_class()" data-funcybox="floor1" target="_blank" name="meetingroom" alt="" />
+      
     </map>
         </div>
+        <img id="pointer" src="{{dst}}" alt="">
 
     </div>
+
 
 
 
@@ -217,6 +220,21 @@
         } catch (error) {
             alert(error);
         }
+    }
+</script>
+<script>
+    window.onload = seat_position()
+
+    function seat_position() {
+        var seat = "{{seat}}";
+        var seat_offset = $("#" + seat).offset()
+        var offset = $("#pointer").offset({
+            top: seat_offset.top,
+            left: seat_offset.left
+        })
+
+        console.log(seat_offset)
+        console.log(offset);
     }
 </script>
 
