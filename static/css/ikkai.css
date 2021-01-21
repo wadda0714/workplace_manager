@@ -5,3 +5,8 @@ body {
 .contents {
     text-align: center;
 }
+
+#pointer {
+    width: 50px;
+    height: auto;
+}

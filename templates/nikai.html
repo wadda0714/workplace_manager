@@ -108,6 +108,7 @@
 <area shape="poly"  class="101" id="101" coords="206,864,204,873,214,873,215,863"  alt="" onclick="submit()" onmouseover="get_class()" />
 </map>
     </div>
+    <img id="pointer" src="{{dst}}" alt="">
 
 
 
@@ -166,7 +167,7 @@
             input.type = "hidden";
             form.appendChild(input)
 
-     
+
             input2.type = "hidden";
 
             input2.name = "seat";
@@ -226,6 +227,16 @@
             alert(error);
         }
     }
+</script>
+<script>
+    var offset = $("#pointer").offset();
+    var seat = "{{seat}}";
+    console.log(seat)
+    console.log(offset);
+    var seat_offset = $("#" + seat).offset({
+        top: offset.top,
+        left: offset.left
+    });
 </script>
 
 </html>
