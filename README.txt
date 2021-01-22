@@ -1,5 +1,4 @@
 # workplace_manager
-ファイルはmasterブランチにあるのでmainから切り替えてください
 使い方
 git clone https://github.com/wada-nitwc/workplace_manager
 でコピーする
