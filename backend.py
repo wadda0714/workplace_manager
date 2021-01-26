@@ -390,14 +390,16 @@ def register_map():
 </html>""")
     html = upper_html+html+lower_html
     selecter = '<li class="menu-item"><a href="#" id="'+mapname+'" onclick="disp_iframe()">'+mapname+'</a></li>'
-    with open('/templates/map.html','r',encoding="utf-8") as m:
+    with open('templates/test.html','r',encoding="utf-8") as m:
         lines = m.readlines()
-    with open('/templates/map.html','w') as m:
+    with open('templates/test.html','w',encoding="utf-8") as m:
+        target = "<!--ここにはいる-->"
         for line in lines:
-            if line.strip("\n") in "<!--ここにはいる-->":
-                f.write(line+selecter)
+            if line == target.replace(' ',''):
+                m.write(line+selecter)
+                print("selecter is inserted!")
             else:
-                f.write(line)
+                m.write(line)
     with open(path,'x',encoding="utf-8") as f:
         f.write(html)
     return render_template("index.html",msg="登録完了しました")
