@@ -395,7 +395,7 @@ def register_map():
     with open('templates/test.html','w',encoding="utf-8") as m:
         target = "<!--ここにはいる-->"
         for line in lines:
-            if line == target.replace(' ',''):
+            if line.replace(' ','')[1].strip("\n") in target[1] and line.replace(' ','')[2].strip("\n") in target[2]:
                 m.write(line+selecter)
                 print("selecter is inserted!")
             else:
