@@ -39,7 +39,7 @@
 
     <video src="https://tech-dig.jp/wp/wp-content/uploads/2018/05/test.mp4" autoplay playsinline muted loop></video>
     <div class="contents">
-        <p>{{admin_msg}}</p>
+        <p id="admin">{{admin_msg}}</p>
 
         <h1 class="greeding">{{greeding}} <span id="username">{{username}}</span>! </h1>
         <nav class="menu" onclick="change_background()">
@@ -50,9 +50,15 @@
                         <li class="menu-item"><a href="#" id="search" onclick="disp_iframe()">従業員から検索</a></li>
                         <li class="menu-item"><a href="#" id="ikkai" onclick="disp_iframe()">1F</a></li>
                         <li class="menu-item"><a href="#" id="nikai" onclick="disp_iframe()">2F</a></li>
+                        <li class="menu-item"><a href="#" id="IMG_-8qap0f" onclick="disp_iframe()">3f</a></li>
+                        <!--ここにはいる-->
                     </ol>
                 </li>
-                <li class="menu-item"><a href="#" id="index" onclick="disp_iframe()">Admin</a>
+                <li class="menu-item"><a href="#">Admin</a>
+                    <ol class="sub-menu">
+                        <li class="menu-item"><a href="#" id="index">マップ追加</a></li>
+                        <li class="menu-item"><a href="#" id="del">従業員削除</a></li>
+                    </ol>
                 </li>
                 <li class="menu-item"><a href="#" id="usage">Usage</a>
                     <ol class="sub-menu">
@@ -102,6 +108,19 @@
             var elemId = elem.id;
             elem = document.getElementById("F1");
             elem.innerHTML = '<iframe src="/get_map/' + elemId + '" width="1800" height="500"></iframe>';
+        }
+    </script>
+    <script>
+        var msg = document.getElementById("admin")
+        if (msg.textContent == "管理者でログイン中") {
+            var index = document.getElementById("index")
+            var del = document.getElementById("del")
+            index.onclick = function onclick(event) {
+                disp_iframe()
+            }
+            del.onclick = function onclick(event) {
+                disp_iframe()
+            }
         }
     </script>
 

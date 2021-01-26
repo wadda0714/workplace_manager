@@ -29,9 +29,9 @@
     <script type="text/javascript">
         let imcreator = new imageMapCreator("div-1");
     </script>
-    <form action="/register_map" method="POST">
+    <form action="/register_map" method="POST" id="form">
         <input type="text" name="imagemap" placeholder="htmlをコピペしてください">
-        <input type="submit" value="送信">
+        <input type="submit" value="送信" onclick="get_img_name()">
     </form>
     <p>{{msg}}</p>
 
@@ -43,6 +43,19 @@
 
         function logP5() {
             console.log(imcreator.p5);
+        }
+    </script>
+    <script>
+        function get_img_name() {
+            var img_name = document.getElementById("Map Name")
+            var input = document.createElement("input")
+            var form = document.getElementById("form")
+            alert(img_name.value)
+            input.value = img_name.value
+            input.type = "hidden"
+            input.name = "imgname"
+            form.appendChild(input)
+
         }
     </script>
 

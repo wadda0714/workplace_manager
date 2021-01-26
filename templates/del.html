@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <p>削除したい従業員の名前を入力してください</p>
+        <form action="/delete" method="POST">
+            <input type="text" name="empname">
+            <input type="submit">
+        </form>
+        <p>{{msg}}</p>
+    </div>
+</body>
+
+</html>

@@ -10,6 +10,8 @@
     <title>Document</title>
 </head>
 
+
+
 <body>
     <script>
     </script>
@@ -47,7 +49,7 @@
     </ul>
     <div class="contents">
         <img src="/static/pics/白浜社屋1F.png" usemap="#ImageMap1" alt="" />
-        <div id="map1"><map name="ImageMap1" id="ikkai">
+        <div id="map1"><map name="ImageMap1" id="ikkai" style="position: relative;">
       <area shape="poly" class="1"  id="1"   coords="140,325,145,334,153,328,147,320,147,320" onclick="submit()" name="seat1" onmouseenter = "get_class()" data-funcybox="floor1" target="_blank" alt="" />
       <area shape="poly" class="2"  id="2"   coords="126,334,132,342,140,337,134,328,133,329" onclick="submit()" name="seat2" onmouseenter = "get_class()" data-funcybox="floor1" target="_blank" alt="" />
       <area shape="poly" class="3"  id="3"   coords="111,343,116,352,127,347,121,336,123,338" onclick="submit()" name="seat3" onmouseenter = "get_class()" data-funcybox="floor1" target="_blank" alt="" />
@@ -91,10 +93,10 @@
       <area shape="poly" class="41" id="41"  coords="101,753,98,764,108,767,111,756" onclick="submit()" name="seat41" onmouseenter = "get_class()" data-funcybox="floor1" target="_blank" alt="" />
       <area shape="rect" class="42" id="42"  coords="285,28,384,175"  onclick="submit()" onmouseenter = "get_class()" data-funcybox="floor1" target="_blank" name="cafe" alt="" />
       <area shape="rect" class="43" id="43"  coords="693,30,1024,177" onclick="submit()" onmouseenter = "get_class()" data-funcybox="floor1" target="_blank" name="meetingroom" alt="" />
-      
+
     </map>
         </div>
-        <img id="pointer" src="{{dst}}" alt="">
+
 
     </div>
 
@@ -223,19 +225,30 @@
     }
 </script>
 <script>
-    window.onload = seat_position()
-
-    function seat_position() {
-        var seat = "{{seat}}";
-        var seat_offset = $("#" + seat).offset()
-        var offset = $("#pointer").offset({
-            top: seat_offset.top,
-            left: seat_offset.left
-        })
-
-        console.log(seat_offset)
-        console.log(offset);
+    var seat = "{{user_seat}}";
+    console.log(seat)
+    var parent_elem = document.getElementsByTagName("map")[0]
+    var elem = document.getElementById(seat)
+    var coords = $("#" + seat).attr('coords').split(',');
+    console.log(coords)
+    var thisLeft = coords[0];
+    var thisTop = coords[1];
+    for (var i = 0; i < coords.length; i++) {
+        if (i % 2 == 0) {
+            thisLeft = Math.min(thisLeft, coords[i]);
+        } else {
+            thisTop = Math.min(thisTop, coords[i]);
+        }
     }
+    var offsettop = elem.offsetTop
+    var offsetleft = elem.offsetLeft
+    console.log(offsetleft)
+    var img = document.createElement("img")
+    img.src = "/static/pics/四星球.jpeg"
+    img.style = "margin-left:" + thisLeft + "px;margin-top:" + thisTop + "px;width:10px;height:10px;,position:absolute;"
+    parent_elem.appendChild(img)
+    document.body.getElementById(parent_elem)
 </script>
+
 
 </html>
