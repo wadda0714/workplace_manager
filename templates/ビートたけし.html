@@ -46,7 +46,7 @@
         {% endfor %}
     </ul>
     <div class="contents">
-        <img src="/static/pics/aaa.png" usemap="#ImageMap1" alt="" /><map name="ImageMap1" id="2019-09-16(2).png"> 	<area shape="poly"  onclick="submit()" onmouseenter = "get_class()" coords="1280,438,1674,438,1674,835,1280,835,1280,438" nohref alt=""  /> 	<area shape="poly" onclick="submit()" onmouseenter = "get_class()" coords="486,403,1069,403,1069,813,486,813,486,403" nohref alt=""  /> </map></div>
+        <img src="/static/pics/ビートたけし.jpg" usemap="#ImageMap1" alt="" /><map name="#ImageMap1" id="ビートたけし"> 	<area shape="poly" onclick="submit()" onmouseenter = "get_class()" coords="404,872,796,872,796,1215,404,1215,404,872" nohref alt=""  /> 	<area shape="poly" onclick="submit()" onmouseenter = "get_class()" coords="453,439,721,439,721,730,453,730,453,439" nohref alt=""  /> </map></div>
 
 
 
@@ -56,7 +56,7 @@
             var e = e || window.event;
             var elem = e.target || e.srcElement;
             var elem_id = elem.id;
-            var filename = document.getElementsByTagName("map")[0].id;
+            var filename = document.getElementsByTagName("map")[0].id.split(".")[0];
             var seat = "{{seat}}";
             if (seat != elem_id) {
                 var form = document.createElement("form");
@@ -85,8 +85,19 @@
         }
     </script>
     <script>
+        var map = document.getElementsByTagName("map")
+        var count = 0
+        var i = 0
+        var child = map[0].childNodes
+        for (i = 0; i < child.length; i++) {
+            child.item(i).id = String(i)
+            print(child.item(i).id)
+            count++
+        }
+    </script>
+    <script>
         var form = document.getElementById("submit");
-        var filename = document.getElementsByTagName("map")[0].id;
+        var filename = document.getElementsByTagName("map")[0].id.split(".")[0];
         var input = document.createElement("input");
         input.name = "filename"
         input.value = filename
@@ -108,7 +119,7 @@
             var input = document.createElement("input");
             var input2 = document.createElement("input");
             var msg = document.getElementById("submit_msg");
-            var filename = document.getElementsByTagName("map")[0].id;
+            var filename = document.getElementsByTagName("map")[0].id.split(".")[0];
             input.name = "filename"
             input.value = filename
             input.type = "hidden";
@@ -119,7 +130,7 @@
 
             input2.name = "seat";
 
-            input2.value = filename + " " + elem.id;
+            input2.value = elem.id;
 
             input2.id = "seat";
             msg.textContent = elem.id + "を選択しました";
@@ -145,14 +156,6 @@
         }
     </script>
 </body>
-<script>
-    var map = document.getElementsByTagName("map")
-    var count=0
-    for (i in map[0].childNodes){
-        i.id = String(count)
-        count++
-    }
-</script>
 <script type="text/javascript">
     scroll();
     var form = document.getElementById("submit");
@@ -186,7 +189,7 @@
 <script>
     var seat = "{{user_seat}}";
     console.log(seat)
-    var parent_elem = document.getElementsByTagName("map")[0]
+    var parent_elem = document.getElementsByTagName("map")[0].split(".")[0]
     var elem = document.getElementById(seat)
     var coords = $("#" + seat).attr('coords').split(',');
     console.log(coords)

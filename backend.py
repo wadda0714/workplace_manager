@@ -145,6 +145,7 @@ def kintai():
             
     name = request.form.get("name")
     flag = request.form.get("flag")
+
     print(flag)
     print(name)
     print(kintai)
@@ -316,7 +317,7 @@ def register_map():
 
             input2.name = "seat";
 
-            input2.value = filename + " " + elem.id;
+            input2.value = elem.id;
 
             input2.id = "seat";
             msg.textContent = elem.id + "を選択しました";
@@ -401,7 +402,7 @@ def register_map():
 
 </html>""")
     html = upper_html+html+lower_html
-    selecter = '<!--ここにはいる-->\n<li class="menu-item"><a href="#" id="'+mapname+'" onclick="disp_iframe()">'+mapname+'</a></li>'
+    selecter = '<!--ここにはいる-->\n<li class="menu-item"><a href="#" id="'+mapname+'" onclick="disp_iframe()">'+mapname+'</a></li>\n'
     replace_setA = ('<!--ここにはいる-->', selecter)
     replace_func("templates/map.html",replace_setA)
     with open(path,'x',encoding="utf-8") as f:

@@ -46,7 +46,7 @@
         {% endfor %}
     </ul>
     <div class="contents">
-        <img src="/static/pics/kokinntyann.jpg" usemap="#ImageMap1" alt="" /><map name="#ImageMap1" id="kokinntyann.jpg"> 	<area shape="poly" onclick="submit()" onmouseenter = "get_class()" coords="21,41,62,41,62,142,21,142,21,41" nohref alt=""  /> 	<area shape="poly" onclick="submit()" onmouseenter = "get_class()" coords="151,64,199,64,199,135,151,135,151,64" nohref alt=""  /> 	<area shape="poly" onclick="submit()" onmouseenter = "get_class()" coords="138,166,178,166,178,229,138,229,138,166" nohref alt=""  /> 	<area shape="poly" onclick="submit()" onmouseenter = "get_class()" coords="63,151,103,151,103,198,63,198,63,151" nohref alt=""  /> 	<area shape="poly" onclick="submit()" onmouseenter = "get_class()" coords="63,55,132,55,132,114,63,114,63,55" nohref alt=""  /> </map></div>
+        <img src="/static/pics/54191310_454505278422522_266283781128555549_n.png" usemap="#ImageMap1" alt="" /><map name="#ImageMap1" id="54191310_454505278422522_266283781128555549_n.png"> 	<area shape="poly" onclick="submit()" onmouseenter = "get_class()" coords="384,462,843,462,843,1170,384,1170,384,462" nohref alt=""  /> </map></div>
 
 
 
@@ -85,14 +85,16 @@
         }
     </script>
     <script>
-    var map = document.getElementsByTagName("map")
-    var i =0
-    var child = map[0].childNodes
-    for (i=0;i<child.length;i++){
-        child.item(i).id = String(i)
-        print(child.item(i).id)
-    }
-</script>
+        var map = document.getElementsByTagName("map")
+        var count = 0
+        var i = 0
+        var child = map[0].childNodes
+        for (i = 0; i < child.length; i++) {
+            child.item(i).id = String(i)
+            print(child.item(i).id)
+            count++
+        }
+    </script>
     <script>
         var form = document.getElementById("submit");
         var filename = document.getElementsByTagName("map")[0].id.split(".")[0];
@@ -117,7 +119,7 @@
             var input = document.createElement("input");
             var input2 = document.createElement("input");
             var msg = document.getElementById("submit_msg");
-            var filename = document.getElementsByTagName("map")[0].id;
+            var filename = document.getElementsByTagName("map")[0].id.split(".")[0];
             input.name = "filename"
             input.value = filename
             input.type = "hidden";
@@ -128,7 +130,7 @@
 
             input2.name = "seat";
 
-            input2.value = filename + " " + elem.id;
+            input2.value = elem.id;
 
             input2.id = "seat";
             msg.textContent = elem.id + "を選択しました";
@@ -187,7 +189,7 @@
 <script>
     var seat = "{{user_seat}}";
     console.log(seat)
-    var parent_elem = document.getElementsByTagName("map")[0]
+    var parent_elem = document.getElementsByTagName("map")[0].split(".")[0]
     var elem = document.getElementById(seat)
     var coords = $("#" + seat).attr('coords').split(',');
     console.log(coords)
