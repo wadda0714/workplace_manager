@@ -59,6 +59,7 @@
                         <li class="menu-item"><a href="#" id="index">マップ追加</a></li>
                         <li class="menu-item"><a href="#" id="del" >従業員削除</a></li>
                         <li class="menu-item"><a href="#" id="eve">イベント登録</a></li>
+                        <li class="menu-item"><a href="#" id="log">チェックイン履歴</a></li>
                     </ol>
                 </li>
                 <li class="menu-item"><a href="#" id="usage">Usage</a>
@@ -117,6 +118,8 @@
             var index = document.getElementById("index")
             var del = document.getElementById("del")
             var eve = document.getElementById("eve")
+            var log = document.getElementById("log")
+            
             index.onclick = function onclick(event) {
                 disp_iframe()
             }
@@ -124,6 +127,9 @@
                 disp_iframe()
             }
             eve.onclick = function onclick(event) {
+                disp_iframe()
+            }
+            log.onclick = function onclick(event) {
                 disp_iframe()
             }
         }
