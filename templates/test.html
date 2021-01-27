@@ -1,1 +1,136 @@
 <!DOCTYPE html>
+<html>
+
+<head>
+    <!--UTF8(ってゆう種類)でエンコード(規則を設けて数字を文字にする)するよ-->
+    <meta charset="UTF-8">
+    <!--パソコンとか携帯とかの幅に自動で合わせてくれる-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--キャッシュ無効化-->
+
+    <link rel="stylesheet" type="text/less" href="/static/css/style.less">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/less.js/2.5.1/less.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" title="Cool stylesheet" href="/static/css/map.css">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <title>Document</title>
+
+    <!--フォント-->
+    <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="/static/js/jquery.rwdImageMaps.min.js"></script>
+    <!--クリッカブルマップをレスポンシブ化-->
+
+    <!--モーダルウィンドウと連携させる-->
+    <link rel='stylesheet' type="text/css" href="/static/css/jquery.fancybox.min.css">
+    <script src="/static/js/jquery.fancybox.min.js"></script>
+
+    <!--less-->
+
+
+
+
+</head>
+
+
+<body>
+
+
+    <video src="https://tech-dig.jp/wp/wp-content/uploads/2018/05/test.mp4" autoplay playsinline muted loop></video>
+    <div class="contents">
+        <p id="admin">{{admin_msg}}</p>
+
+        <h1 class="greeding">{{greeding}} <span id="username">{{username}}</span>! </h1>
+        <nav class="menu" onclick="change_background()">
+            <ol>
+                <li class="menu-item"><a href="#" id="information" onclick="disp_iframe()">Information</a></li>
+                <li class="menu-item"><a href="#" id="enter">Enter</a>
+                    <ol class="sub-menu">
+                        <li class="menu-item"><a href="#" id="search" onclick="disp_iframe()">従業員から検索</a></li>
+                        <li class="menu-item"><a href="#" id="ikkai" onclick="disp_iframe()">1F</a></li>
+                        <li class="menu-item"><a href="#" id="nikai" onclick="disp_iframe()">2F</a></li>
+                        <li class="menu-item"><a href="#" id="IMG_-8qap0f" onclick="disp_iframe()">3f</a></li>
+<li class="menu-item"><a href="#" id="2020-10-13" onclick="disp_iframe()">2020-10-13</a></li>                    </ol>
+                </li>
+                <li class="menu-item"><a href="#">Admin</a>
+                    <ol class="sub-menu">
+                        <li class="menu-item"><a href="#" id="index">マップ追加</a></li>
+                        <li class="menu-item"><a href="#" id="del">従業員削除</a></li>
+                    </ol>
+                </li>
+                <li class="menu-item"><a href="#" id="usage">Usage</a>
+                    <ol class="sub-menu">
+                        <li class="menu-item"><a href="#" id="u_shukkin" onclick="disp_iframe()">出勤</a></li>
+                        <li class="menu-item"><a href="#" id="u_taikin" onclick="disp_iframe()">退勤時</a></li>
+                        <li class="menu-item"><a href="#" id="u_lunch" onclick="disp_iframe()">検索</a></li>
+                        <li class="menu-item"><a href="#" id="u_goout" onclick="disp_iframe()">外出</a></li>
+                        <li class="menu-item"><a href="#" id="u_etc" onclick="disp_iframe()">その他</a></li>
+                    </ol>
+                </li>
+                <li class="menu-item"><a href="/" id="leave">logout</a></li>
+            </ol>
+        </nav>
+        <div id="F1">
+
+
+        </div>
+        <footer>Copyright © 2020 hiroka wada,ayano tanaka,yuusuke kimura,erika kimura,koutaro isimoto Inc. All Rights Reserved.</footer>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+    <script>
+        /*fancybox設定*/
+        $('[data-fancybox="floor1"]').fancybox({
+            smallBtn: true
+        })
+        $('[data-fancybox="floor2"]').fancybox({
+            smallBtn: true
+        })
+    </script>
+
+
+    <script type="text/javascript">
+        function disp_iframe(e) {
+            var e = e || window.event;
+            var elem = e.target || e.srcElement;
+            var elemId = elem.id;
+            elem = document.getElementById("F1");
+            elem.innerHTML = '<iframe src="/get_map/' + elemId + '" width="1800" height="500"></iframe>';
+        }
+    </script>
+    <script>
+        var msg = document.getElementById("admin")
+        if (msg.textContent == "管理者でログイン中") {
+            var index = document.getElementById("index")
+            var del = document.getElementById("del")
+            index.onclick = function onclick(event) {
+                disp_iframe()
+            }
+            del.onclick = function onclick(event) {
+                disp_iframe()
+            }
+        }
+    </script>
+
+    <script>
+        function change_background() {
+            const element = document.querySelector('video')
+            element.remove()
+        }
+    </script>
+</body>
+
+
+
+</html>

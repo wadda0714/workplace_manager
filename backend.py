@@ -390,16 +390,8 @@ def register_map():
 </html>""")
     html = upper_html+html+lower_html
     selecter = '<li class="menu-item"><a href="#" id="'+mapname+'" onclick="disp_iframe()">'+mapname+'</a></li>'
-    with open('templates/test.html','r',encoding="utf-8") as m:
-        lines = m.readlines()
-    with open('templates/test.html','w',encoding="utf-8") as m:
-        target = "<!--ここにはいる-->"
-        for line in lines:
-            if line.replace(' ','')[1].strip("\n") in target[1] and line.replace(' ','')[2].strip("\n") in target[2]:
-                m.write(line+selecter)
-                print("selecter is inserted!")
-            else:
-                m.write(line)
+    replace_setA = ('<!--ここにはいる-->', selecter)
+    replace_func("templates/test.html",replace_setA)
     with open(path,'x',encoding="utf-8") as f:
         f.write(html)
     return render_template("index.html",msg="登録完了しました")
@@ -438,8 +430,23 @@ def connect_db():
     cursor= con.cursor()
     return cursor,con
     
-
     
+
+def replace_func(fname, replace_set):
+    target, replace = replace_set
+    
+    with open(fname, 'r',encoding="utf-8") as f1:
+        tmp_list =[]
+        for row in f1:
+            if row.find(target) != -1:
+                tmp_list.append(replace)
+            else:
+                tmp_list.append(row)
+    
+    with open(fname, 'w',encoding="utf-8") as f2:
+        for i in range(len(tmp_list)):
+            f2.write(tmp_list[i])
+        print("inserted!")
 #def sql_generateA(dst_table,dst_data,ope):
    # if ope == "insert":
       #  pass
