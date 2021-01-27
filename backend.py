@@ -178,6 +178,7 @@ def kintai():
 @app.route('/register_map',methods=["POST"])
 def register_map():
     html = request.form.get("imagemap")
+    list(html)[11] = ""
     imgname = request.form.get("imgname")
     mapname = imgname.split(".")[0]
     print(mapname)
@@ -241,7 +242,7 @@ def register_map():
             var e = e || window.event;
             var elem = e.target || e.srcElement;
             var elem_id = elem.id;
-            var filename = document.getElementsByTagName("map")[0].id;
+            var filename = document.getElementsByTagName("map")[0].id.split(".")[0];
             var seat = "{{seat}}";
             if (seat != elem_id) {
                 var form = document.createElement("form");
@@ -270,8 +271,19 @@ def register_map():
         }
     </script>
     <script>
+    var map = document.getElementsByTagName("map")
+    var count=0
+    var i =0
+    var child = map[0].childNodes
+    for (i=0;i<child.length;i++){
+        child.item(i).id = String(i)
+        print(child.item(i).id)
+        count++
+    }
+</script>
+    <script>
         var form = document.getElementById("submit");
-        var filename = document.getElementsByTagName("map")[0].id;
+        var filename = document.getElementsByTagName("map")[0].id.split(".")[0];
         var input = document.createElement("input");
         input.name = "filename"
         input.value = filename
@@ -293,7 +305,7 @@ def register_map():
             var input = document.createElement("input");
             var input2 = document.createElement("input");
             var msg = document.getElementById("submit_msg");
-            var filename = document.getElementsByTagName("map")[0].id;
+            var filename = document.getElementsByTagName("map")[0].id.split(".")[0];
             input.name = "filename"
             input.value = filename
             input.type = "hidden";
@@ -363,7 +375,7 @@ def register_map():
 <script>
     var seat = "{{user_seat}}";
     console.log(seat)
-    var parent_elem = document.getElementsByTagName("map")[0]
+    var parent_elem = document.getElementsByTagName("map")[0].split(".")[0]
     var elem = document.getElementById(seat)
     var coords = $("#" + seat).attr('coords').split(',');
     console.log(coords)
@@ -389,9 +401,9 @@ def register_map():
 
 </html>""")
     html = upper_html+html+lower_html
-    selecter = '<li class="menu-item"><a href="#" id="'+mapname+'" onclick="disp_iframe()">'+mapname+'</a></li>'
+    selecter = '<!--ここにはいる-->\n<li class="menu-item"><a href="#" id="'+mapname+'" onclick="disp_iframe()">'+mapname+'</a></li>'
     replace_setA = ('<!--ここにはいる-->', selecter)
-    replace_func("templates/test.html",replace_setA)
+    replace_func("templates/map.html",replace_setA)
     with open(path,'x',encoding="utf-8") as f:
         f.write(html)
     return render_template("index.html",msg="登録完了しました")

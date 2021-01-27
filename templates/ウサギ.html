@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <link rel="stylesheet" href="/static/css/ikkai.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+    </script>
+    <form action="/kintai" method="POST" id="submit">
+
+        <fieldset>
+
+            <legend>勤怠情報変更フォーム</legend>
+            <p>勤務状況</p><select name="kintai" id="kintai">
+      <option>出勤</option>
+      <option>社用外出</option>
+      <option>私用外出</option>
+      <option>遅刻</option>
+      <option>早退</option>
+      <option>休み</option>
+      <option>午前休</option>
+      <option>午後休</option>
+      <option>在宅勤務</option>
+      <option>退社</option>
+      <option>出張</option>
+    </select>
+            <br>
+
+            <label class="always"><input type="checkbox"  id ="flag" >毎日この席に座る</label>
+            <br>
+            <label><input type="submit" value="送信" onclick="flag_check()" ></label>
+        </fieldset>
+    </form>
+    <p>{{msg}}</p>
+    <p id="submit_msg"></p>
+    <ul>
+        {% for msg in name %}
+        <li>{{msg}}</li>
+        {% endfor %}
+    </ul>
+    <div class="contents">
+        <img src="/static/pics/ウサギ.jpg" usemap="#ImageMap1" alt="" /><map name="ImageMap1" id="ウサギ.jpg"> 	<area shape="poly" onclick="submit()" onmouseenter = "get_class()" coords="48,72,159,72,159,93,48,93,48,72" nohref alt=""  /> 	<area shape="poly" onclick="submit()" onmouseenter = "get_class()" coords="140,103,236,103,236,250,140,250,140,103" nohref alt=""  /> 	<area shape="poly" onclick="submit()" onmouseenter = "get_class()" coords="26,117,104,117,104,169,26,169,26,117" nohref alt=""  /> </map></div>
+
+
+
+
+    <script type="text/javascript">
+        function get_class(e) {
+            var e = e || window.event;
+            var elem = e.target || e.srcElement;
+            var elem_id = elem.id;
+            var filename = document.getElementsByTagName("map")[0].id.split(".")[0];
+            var seat = "{{seat}}";
+            if (seat != elem_id) {
+                var form = document.createElement("form");
+                var input = document.createElement("input");
+                var scroll = document.createElement("input");
+                scroll.name = "scroll";
+                scroll.type = "hidden";
+                scroll.value = document.documentElement.scrollTop;
+                form.appendChild(scroll);
+                form.action = "/find/" + elem.id;
+                form.method = "post";
+                input.name = "filename";
+                input.type = "hidden";
+                input.value = filename;
+                form.appendChild(input);
+                document.body.appendChild(form);
+
+                form.submit();
+
+            }
+
+
+
+
+
+        }
+    </script>
+    <script>
+    var map = document.getElementsByTagName("map")
+    var count=0
+    var i =0
+    var child = map[0].childNodes
+    for (i=0;i<child.length;i++){
+        child.item(i).id = String(i)
+        print(child.item(i).id)
+        count++
+    }
+</script>
+    <script>
+        var form = document.getElementById("submit");
+        var filename = document.getElementsByTagName("map")[0].id.split(".")[0];
+        var input = document.createElement("input");
+        input.name = "filename"
+        input.value = filename
+        input.type = "hidden";
+        form.appendChild(input)
+    </script>
+    <script type="text/javascript">
+        function submit(e) {
+            var elem = document.getElementById("seat");
+            if (elem != null) {
+                elem.parentNode.removeChild(elem);
+            }
+            var form = document.getElementById("submit");
+            var e = e || window.event;
+
+            var elem = e.target || e.srcElement;
+
+            var elem_id = elem.id;
+            var input = document.createElement("input");
+            var input2 = document.createElement("input");
+            var msg = document.getElementById("submit_msg");
+            var filename = document.getElementsByTagName("map")[0].id.split(".")[0];
+            input.name = "filename"
+            input.value = filename
+            input.type = "hidden";
+            form.appendChild(input)
+
+
+            input2.type = "hidden";
+
+            input2.name = "seat";
+
+            input2.value = filename + " " + elem.id;
+
+            input2.id = "seat";
+            msg.textContent = elem.id + "を選択しました";
+
+            form.appendChild(input2);
+
+
+        }
+    </script>
+    <script type="text/javascript">
+        function flag_check() {
+            var checkbox = document.getElementById("flag");
+            var input = document.createElement("input");
+            var form = document.getElementById("submit");
+            input.name = "flag"
+            input.type = "hidden"
+            if (checkbox.checked == true) {
+                input.value = "on";
+            } else {
+                input.value = "off";
+            }
+            form.appendChild(input)
+        }
+    </script>
+</body>
+<script type="text/javascript">
+    scroll();
+    var form = document.getElementById("submit");
+
+    var parent_username = window.parent.document.getElementById("username");
+
+    var username = parent_username.textContent;
+    var name_input = document.createElement("input");
+
+    name_input.type = "hidden";
+
+    name_input.name = "name";
+
+    name_input.value = username;
+
+    form.appendChild(name_input);
+
+    function scroll() {
+        try {
+            s = "{{scr}}";
+            if (s != "") {
+                document.documentElement.scrollTop = Number(s);
+            }
+
+
+        } catch (error) {
+            alert(error);
+        }
+    }
+</script>
+<script>
+    var seat = "{{user_seat}}";
+    console.log(seat)
+    var parent_elem = document.getElementsByTagName("map")[0].split(".")[0]
+    var elem = document.getElementById(seat)
+    var coords = $("#" + seat).attr('coords').split(',');
+    console.log(coords)
+    var thisLeft = coords[0];
+    var thisTop = coords[1];
+    for (var i = 0; i < coords.length; i++) {
+        if (i % 2 == 0) {
+            thisLeft = Math.min(thisLeft, coords[i]);
+        } else {
+            thisTop = Math.min(thisTop, coords[i]);
+        }
+    }
+    var offsettop = elem.offsetTop
+    var offsetleft = elem.offsetLeft
+    console.log(offsetleft)
+    var img = document.createElement("img")
+    img.src = "/static/pics/四星球.jpeg"
+    img.style = "margin-left:" + thisLeft + "px;margin-top:" + thisTop + "px;width:10px;height:10px;,position:absolute;"
+    parent_elem.appendChild(img)
+    document.body.getElementById(parent_elem)
+</script>
+
+
+</html>

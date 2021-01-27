@@ -140,7 +140,7 @@ export class ImageMap {
 				areas.push('\t' + a.toHtml(scale));
 			}
 		});
-		return '<map name="#ImageMap1" id="' + this.name + '">\n' + areas.join('\n') + '\n</map>';
+		return '<map name="ImageMap1" id="' + this.name + '">\n' + areas.join('\n') + '\n</map>';
 	}
 
 	toSvg(scale = 1): string {
