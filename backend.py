@@ -273,13 +273,10 @@ def register_map():
     </script>
     <script>
     var map = document.getElementsByTagName("map")
-    var count=0
     var i =0
     var child = map[0].childNodes
     for (i=0;i<child.length;i++){
         child.item(i).id = String(i)
-        print(child.item(i).id)
-        count++
     }
 </script>
     <script>
@@ -409,7 +406,7 @@ def register_map():
         f.write(html)
     return render_template("index.html",msg="登録完了しました")
 @app.route('/delete',methods = ["POST"])
-def delete_emp():
+def delete_employee():
     name = request.form.get("empname")
     cursor,con = connect_db()
     cursor.execute("DELETE from emptable WHERE empname=? ",(name,))
@@ -417,6 +414,14 @@ def delete_emp():
     con.close()
     msg = "削除完了しました"
     return render_template("del.html",msg=msg)
+@app.route('/del_map',methods = ["POST"])
+def delete_map():
+    name = request.form.get("map_name")
+    print(name)
+    target = '<li class="menu-item"><a href="#" id="'+name+'" onclick="disp_iframe()">'+name+'</a></li>'
+    replace_setA = ('',target)
+    replace_func("templates/map.html",replace_setA)
+    return "success!"
     
 
             

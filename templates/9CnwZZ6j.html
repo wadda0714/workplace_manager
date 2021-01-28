@@ -85,16 +85,15 @@
         }
     </script>
     <script>
-    var map = document.getElementsByTagName("map")
-    var count=0
-    var i =0
-    var child = map[0].childNodes
-    for (i=0;i<child.length;i++){
-        child.item(i).id = String(i)
-        print(child.item(i).id)
-        count++
-    }
-</script>
+        var map = document.getElementsByTagName("map")
+        var count = 0
+        var i = 0
+        var child = map[0].childNodes
+        for (i = 0; i < child.length; i++) {
+            child.item(i).id = String(i)
+
+        }
+    </script>
     <script>
         var form = document.getElementById("submit");
         var filename = document.getElementsByTagName("map")[0].id.split(".")[0];

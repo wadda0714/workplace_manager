@@ -46,15 +46,15 @@
             <ol>
                 <li class="menu-item"><a href="#" id="information" onclick="disp_iframe()">Information</a></li>
                 <li class="menu-item"><a href="#" id="enter">Enter</a>
-                    <ol class="sub-menu">
+                    <ol class="sub-menu" id="maplist">
                         <li class="menu-item"><a href="#" id="search" onclick="disp_iframe()">従業員から検索</a></li>
                         <li class="menu-item"><a href="#" id="ikkai" onclick="disp_iframe()">1F</a></li>
                         <li class="menu-item"><a href="#" id="nikai" onclick="disp_iframe()">2F</a></li>
                         <li class="menu-item"><a href="#" id="IMG_-8qap0f" onclick="disp_iframe()">3f</a></li>
-<!--ここにはいる-->
-<li class="menu-item"><a href="#" id="9CnwZZ6j" onclick="disp_iframe()">9CnwZZ6j</a></li>
-<li class="menu-item"><a href="#" id="ビートたけし" onclick="disp_iframe()">ビートたけし</a></li>
-                        <li class="menu-item"><a href="#" id="54191310_454505278422522_266283781128555549_n" onclick="disp_iframe()">54191310_454505278422522_266283781128555549_n</a></li>
+                        <!--ここにはいる-->
+                        <li class="menu-item"><a href="#" id="oppau" onclick="disp_iframe()">oppau</a></li>
+                        <li class="menu-item"><a href="#" id="9CnwZZ6j" onclick="disp_iframe()">9CnwZZ6j</a></li>
+                        <li class="menu-item"><a href="#" id="ビートたけし" onclick="disp_iframe()">ビートたけし</a></li>
                         <li class="menu-item"><a href="#" id="20200630_170052" onclick="disp_iframe()">20200630_170052</a></li>
                     </ol>
                 </li>
@@ -64,6 +64,8 @@
                         <li class="menu-item"><a href="#" id="del">従業員削除</a></li>
                         <li class="menu-item"><a href="#" id="eve">イベント登録</a></li>
                         <li class="menu-item"><a href="#" id="log">チェックイン履歴</a></li>
+                        <li class="menu-item"><a href="#" id="del_map">マップ削除</a></li>
+
                     </ol>
                 </li>
                 <li class="menu-item"><a href="#" id="usage">Usage</a>
@@ -134,6 +136,9 @@
                 disp_iframe()
             }
             log.onclick = function onclick(event) {
+                disp_iframe()
+            }
+            del_map.onclick = function onclick(event) {
                 disp_iframe()
             }
         }

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>削除したいマップを選択してください</p>
+    <form action="/del_map" method="POST" id="mapname">
+        <input type="submit" value="送信">
+    </form>
+
+
+</body>
+<script>
+    var list = window.parent.document.getElementById("maplist")
+    var select = document.createElement("select")
+    var form = document.getElementById("mapname")
+    select.name = "map_name"
+    form.appendChild(select)
+    for (var i = 0; i < list.childElementCount; i++) {
+        var elem = list.children[i]
+        var mapname = elem.children[0]
+        console.log(mapname.id)
+        var option = document.createElement("option")
+        option.label = mapname.id
+        option.value = mapname.id
+        select.appendChild(option)
+    }
+</script>
+
+</html>

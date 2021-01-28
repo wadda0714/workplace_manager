@@ -18,7 +18,8 @@
         <fieldset>
 
             <legend>勤怠情報変更フォーム</legend>
-            <p>勤務状況</p><select name="kintai" id="kintai">
+            <p>勤務状況</p>
+            <select name="kintai" id="kintai">
       <option>出勤</option>
       <option>社用外出</option>
       <option>私用外出</option>
@@ -46,7 +47,7 @@
         {% endfor %}
     </ul>
     <div class="contents">
-        <img src="/static/pics/54191310_454505278422522_266283781128555549_n.png" usemap="#ImageMap1" alt="" /><map name="#ImageMap1" id="54191310_454505278422522_266283781128555549_n.png"> 	<area shape="poly" onclick="submit()" onmouseenter = "get_class()" coords="384,462,843,462,843,1170,384,1170,384,462" nohref alt=""  /> </map></div>
+        <img src="/static/pics/oppau.png" usemap="#ImageMap1" alt="" /><map name="#ImageMap1" id="oppau.png"> 	<area shape="circle" onclick="submit()" onmouseenter = "get_class()" coords="357,480,154" nohref alt=""  /> 	<area shape="circle" onclick="submit()" onmouseenter = "get_class()" coords="216,546,162" nohref alt=""  /> </map></div>
 
 
 
@@ -86,13 +87,10 @@
     </script>
     <script>
         var map = document.getElementsByTagName("map")
-        var count = 0
         var i = 0
         var child = map[0].childNodes
         for (i = 0; i < child.length; i++) {
             child.item(i).id = String(i)
-            print(child.item(i).id)
-            count++
         }
     </script>
     <script>
