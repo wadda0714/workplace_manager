@@ -5,6 +5,7 @@ import sqlite3
 import datetime
 import sys
 import io
+import os
 
 app = Flask(__name__)
 
@@ -421,6 +422,8 @@ def delete_map():
     target = '<li class="menu-item"><a href="#" id="'+name+'" onclick="disp_iframe()">'+name+'</a></li>'
     replace_setA = (target,'')
     replace_func("templates/map.html",replace_setA)
+    path = 'templates/'+name + ".html"
+    os.remove(path)
     return "success!"
     
 
