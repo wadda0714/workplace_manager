@@ -419,7 +419,7 @@ def delete_map():
     name = request.form.get("map_name")
     print(name)
     target = '<li class="menu-item"><a href="#" id="'+name+'" onclick="disp_iframe()">'+name+'</a></li>'
-    replace_setA = ('',target)
+    replace_setA = (target,'')
     replace_func("templates/map.html",replace_setA)
     return "success!"
     
