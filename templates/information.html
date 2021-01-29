@@ -13,7 +13,7 @@
         <legend>出勤中</legend>
         <ul>
             {% for msg in employees %}
-            <li>{{msg}}</li>
+            <li>{{msg[0]}} {{msg[1]}}</li>
             {% endfor %}
         </ul>
     </fieldset>

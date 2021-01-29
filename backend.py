@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*
-from flask import Flask, request, Response, abort, render_template,session, jsonify
+from flask import Flask, request, Response, abort, render_template,session, jsonify,send_from_directory
 from flask_login import LoginManager, login_user, logout_user, login_required, UserMixin
 import sqlite3
 import datetime
@@ -8,6 +8,9 @@ import io
 import os
 
 app = Flask(__name__)
+UPLOAD_FOLDER = 'static/pics'
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+app.config['SECRET_KEY'] = os.urandom(24)
 
 @app.route('/login',methods = ['POST'])
 def login():
@@ -56,21 +59,26 @@ def account_register():
             return render_template("new-login.html",msg2="既に存在するユーザーです")
             
         
-        
-        
-@app.route("/admin",methods = ["GET","POST"])
-def admin():
-    return render_template("admin.html")
+@app.route("/event_register", methods = ["POST"])
+def event_register():
+    event_name = request.form.get("event_name")
+    date = request.form.get("date")
+    location = request.form.get("location")
+    print(event_name)
+    print(date)
+    print(location)
+    return "登録完了しました"
 @app.route("/at_info", methods = ["POST"])
 def info():
     cursor,con = connect_db()
-    query = "SELECT empname FROM emptable WHERE status='" + "出勤" +"'"
+    query = "SELECT sheet,empname FROM emptable WHERE status='" + "出勤" +"'"
     cursor.execute(query)
     employees = cursor.fetchall()
+    print(employees)
     employee = list()
-    for i in employees:
-        employee.append(i[0]) 
-    return render_template("information.html",employees=employee)
+    #for i in employees:
+     #   employee.append(i[0]) 
+    return render_template("information.html",employees=employees)
     
 
       
@@ -140,12 +148,19 @@ def find(seat):
 def kintai():
     seat = request.form.get("seat")
     filename = request.form.get("filename")
-    if seat == None:
-        seat = "0"
     kintai = request.form.get("kintai")
             
     name = request.form.get("name")
     flag = request.form.get("flag")
+    if seat == None:
+        seat = ""
+        cursor,con = connect_db()
+        cursor.execute('UPDATE emptable set sheet = "",status = "" WHERE empname = ?',(name,))
+        con.commit()
+        con.close()
+        return render_template(filename+".html",msg="登録完了しました")
+        
+    
 
     print(flag)
     print(name)
@@ -405,6 +420,10 @@ def register_map():
     replace_func("templates/map.html",replace_setA)
     with open(path,'x',encoding="utf-8") as f:
         f.write(html)
+    img_file = request.files['image']
+    
+    filename = img_file.filename
+    img_file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
     return render_template("index.html",msg="登録完了しました")
 @app.route('/delete',methods = ["POST"])
 def delete_employee():
@@ -419,10 +438,15 @@ def delete_employee():
 def delete_map():
     name = request.form.get("map_name")
     print(name)
+    cursor,con = connect_db()
+    cursor.execute('UPDATE emptable SET sheet = "",status = "" WHERE sheet LIKE "' + name +'%"')
+    con.commit()
+    con.close()
     target = '<li class="menu-item"><a href="#" id="'+name+'" onclick="disp_iframe()">'+name+'</a></li>'
     replace_setA = (target,'')
     replace_func("templates/map.html",replace_setA)
     path = 'templates/'+name + ".html"
+    
     os.remove(path)
     return "success!"
     
@@ -483,5 +507,6 @@ def replace_func(fname, replace_set):
     #return query
     
 if __name__ == '__main__':
+    app.debug = True
     app.run(host="127.0.0.1", port=5555, debug=True)
     

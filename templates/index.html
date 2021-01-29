@@ -29,8 +29,9 @@
     <script type="text/javascript">
         let imcreator = new imageMapCreator("div-1");
     </script>
-    <form action="/register_map" method="POST" id="form">
+    <form action="/register_map" method="POST" id="form" enctype="multipart/form-data">
         <input type="text" name="imagemap" placeholder="htmlをコピペしてください">
+        <input type="file" name="image" placeholder="画像ファイルを入れてください" accept="image/*">
         <input type="submit" value="送信" onclick="get_img_name()">
     </form>
     <p>{{msg}}</p>

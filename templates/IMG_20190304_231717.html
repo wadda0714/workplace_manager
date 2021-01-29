@@ -18,8 +18,7 @@
         <fieldset>
 
             <legend>勤怠情報変更フォーム</legend>
-            <p>勤務状況</p>
-            <select name="kintai" id="kintai">
+            <p>勤務状況</p><select name="kintai" id="kintai">
       <option>出勤</option>
       <option>社用外出</option>
       <option>私用外出</option>
@@ -47,7 +46,7 @@
         {% endfor %}
     </ul>
     <div class="contents">
-        <img src="/static/pics/oppau.png" usemap="#ImageMap1" alt="" /><map name="#ImageMap1" id="oppau.png"> 	<area shape="circle" onclick="submit()" onmouseenter = "get_class()" coords="357,480,154" nohref alt=""  /> 	<area shape="circle" onclick="submit()" onmouseenter = "get_class()" coords="216,546,162" nohref alt=""  /> </map></div>
+        <img src="/static/pics/IMG_20190304_231717.jpg" usemap="#ImageMap1" alt="" /><map name="#ImageMap1" id="IMG_20190304_231717.jpg"> 	<area shape="poly" onclick="submit()" onmouseenter = "get_class()" coords="251,577,532,577,532,689,251,689,251,577" nohref alt=""  /> 	<area shape="poly" onclick="submit()" onmouseenter = "get_class()" coords="258,288,490,288,490,466,258,466,258,288" nohref alt=""  /> </map></div>
 
 
 
@@ -86,13 +85,13 @@
         }
     </script>
     <script>
-        var map = document.getElementsByTagName("map")
-        var i = 0
-        var child = map[0].childNodes
-        for (i = 0; i < child.length; i++) {
-            child.item(i).id = String(i)
-        }
-    </script>
+    var map = document.getElementsByTagName("map")
+    var i =0
+    var child = map[0].childNodes
+    for (i=0;i<child.length;i++){
+        child.item(i).id = String(i)
+    }
+</script>
     <script>
         var form = document.getElementById("submit");
         var filename = document.getElementsByTagName("map")[0].id.split(".")[0];

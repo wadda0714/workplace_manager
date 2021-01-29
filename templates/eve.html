@@ -10,22 +10,19 @@
 
 <body>
     <t2><b>イベント情報登録</b></t2>
-    <p>
-        イベント名：<input type="text" size="40" maxlength="20" name="event_name">　(未入力の場合、イベント名は「会議」になります。)
-    </p>
-    <p>
-        日時　　　：<input type="datetime-local" name="date">
-    </p>
-    <p>場所　　　：
-        <select>
-            <option>セミナー室A</option>
-            <option>コワーキングスペースA</option>
-            <option>コワーキングスペースB</option>
-          </select>
-    </p>
-    <p>
+    <form action="/event_register" method="POST">
+        <p>
+            イベント名：</p><input type="text" size="40" maxlength="20" name="event_name">
+        <p> 日時　　　： </p><input type="datetime-local" name="date">
+        <p>場所</p>
+        <select name="location">
+                <option>セミナー室A</option>
+                <option>コワーキングスペースA</option>
+                <option>コワーキングスペースB</option>
+              </select>
+
         <input type="submit" value="送信">
-    </p>
+    </form>
 </body>
 
 </html>

@@ -46,7 +46,7 @@
         {% endfor %}
     </ul>
     <div class="contents">
-        <img src="/static/pics/20200630_170052.jpg" usemap="#ImageMap1" alt="" /><map name="#ImageMap1" id="20200630_170052.jpg"> 	<area shape="poly" onclick="submit()" onmouseenter = "get_class()" coords="245,347,282,347,282,444,245,444,245,347" nohref alt=""  /> 	<area shape="poly" onclick="submit()" onmouseenter = "get_class()" coords="239,215,314,215,314,280,239,280,239,215" nohref alt=""  /> </map></div>
+        <img src="/static/pics/20200630_170052.jpg" usemap="#ImageMap1" alt="" /><map name="#ImageMap1" id="20200630_170052.jpg"> 	<area shape="poly" onclick="submit()" onmouseenter = "get_class()" coords="197,437,378,437,378,549,197,549,197,437" nohref alt=""  /> 	<area shape="poly" onclick="submit()" onmouseenter = "get_class()" coords="200,210,347,210,347,346,200,346,200,210" nohref alt=""  /> 	<area shape="poly" onclick="submit()" onmouseenter = "get_class()" coords="208,46,337,46,337,182,208,182,208,46" nohref alt=""  /> </map></div>
 
 
 
@@ -85,15 +85,13 @@
         }
     </script>
     <script>
-        var map = document.getElementsByTagName("map")
-        var count = 0
-        var i = 0
-        var child = map[0].childNodes
-        for (i = 0; i < child.length; i++) {
-            child.item(i).id = String(i)
-            count++
-        }
-    </script>
+    var map = document.getElementsByTagName("map")
+    var i =0
+    var child = map[0].childNodes
+    for (i=0;i<child.length;i++){
+        child.item(i).id = String(i)
+    }
+</script>
     <script>
         var form = document.getElementById("submit");
         var filename = document.getElementsByTagName("map")[0].id.split(".")[0];
