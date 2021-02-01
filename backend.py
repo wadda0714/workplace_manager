@@ -104,7 +104,9 @@ def search():
     employees_name = request.form.get("employees_name")
     cursor,con = connect_db()
     cursor.execute("SELECT sheet FROM emptable WHERE empname='"+employees_name+"'")
+    
     record = cursor.fetchone()
+    print(record)
     print(record)
     if record is None:
         msg = "ユーザーは存在しません"
@@ -155,7 +157,7 @@ def kintai():
     if seat == None:
         seat = ""
         cursor,con = connect_db()
-        cursor.execute('UPDATE emptable set sheet = "",status = "" WHERE empname = ?',(name,))
+        cursor.execute('UPDATE emptable set sheet = "",status = ? WHERE empname = ?',(kintai,name))
         con.commit()
         con.close()
         return render_template(filename+".html",msg="登録完了しました")
@@ -199,6 +201,9 @@ def register_map():
     imgname = request.form.get("imgname")
     mapname = imgname.split(".")[0]
     print(mapname)
+    img_file = request.files['image']
+    
+    filename = img_file.filename
     path = "templates/"+mapname+".html"
     upper_html = ("""<!DOCTYPE html>
 <html>
@@ -248,7 +253,7 @@ def register_map():
         {% endfor %}
     </ul>
     <div class="contents">
-        <img src="/static/pics/"""+imgname+"""" usemap="#ImageMap1" alt="" />""")
+        <img src="/static/pics/"""+filename+"""" usemap="#ImageMap1" alt="" />""")
     lower_html = ("""</div>
 
 
@@ -420,9 +425,7 @@ def register_map():
     replace_func("templates/map.html",replace_setA)
     with open(path,'x',encoding="utf-8") as f:
         f.write(html)
-    img_file = request.files['image']
     
-    filename = img_file.filename
     img_file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
     return render_template("index.html",msg="登録完了しました")
 @app.route('/delete',methods = ["POST"])
@@ -446,8 +449,16 @@ def delete_map():
     replace_setA = (target,'')
     replace_func("templates/map.html",replace_setA)
     path = 'templates/'+name + ".html"
-    
     os.remove(path)
+    extention = list()
+    extention.append(".png")
+    extention.append(".jpeg")
+    extention.append(".jpg")
+    for i in extention:
+        try:
+            os.remove(UPLOAD_FOLDER+"/"+name+i)
+        except :
+            pass
     return "success!"
     
 
