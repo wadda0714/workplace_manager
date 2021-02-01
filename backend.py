@@ -160,6 +160,8 @@ def kintai():
         cursor.execute('UPDATE emptable set sheet = "",status = ? WHERE empname = ?',(kintai,name))
         con.commit()
         con.close()
+        result = add_checklog(name)
+        print(result)
         return render_template(filename+".html",msg="登録完了しました")
         
     
@@ -175,6 +177,8 @@ def kintai():
             cursor.execute("UPDATE emptable set sheet = ?,status = ?, defaultposition = ? WHERE empname = ?",(filename+" "+seat,kintai,filename+" "+seat,name))
             con.commit()
             con.close()
+            result = add_checklog(name)
+            print(result)
             msg="登録完了しました"
         
         except sqlite3.Error as e:
@@ -188,12 +192,25 @@ def kintai():
             cursor.execute("UPDATE emptable set sheet = ?,status = ? WHERE empname = ?",(filename+" "+seat,kintai,name))
             con.commit()
             con.close()
+            result = add_checklog(name)
+            print(result)
             msg="登録完了しました"
         
         except sqlite3.Error as e:
              msg = "登録失敗しました"
     
     return render_template(filename+".html",msg=msg)
+
+@app.route('/checklog',methods=["POST"])
+def checklog():
+     cursor,con = connect_db()
+     cursor.execute("SELECT * FROM checkinlog")
+     record = cursor.fetchall()
+     print(record)
+     lst = list()
+     for i in record:
+         lst.append(i[0]+" "+i[1])
+     return render_template('log.html',lst = lst)
 @app.route('/register_map',methods=["POST"])
 def register_map():
     html = request.form.get("imagemap")
@@ -503,6 +520,18 @@ def replace_func(fname, replace_set):
         for i in range(len(tmp_list)):
             f2.write(tmp_list[i])
         print("inserted!")
+
+def add_checklog(name):
+    try:
+        time = datetime.datetime.now()
+        cursor,con = connect_db()
+        cursor.execute('INSERT INTO checkinlog values(?,?)',(name,time))
+        con.commit()
+        con.close()
+    except:
+        import traceback
+        traceback.print_exc()
+    
 #def sql_generateA(dst_table,dst_data,ope):
    # if ope == "insert":
       #  pass

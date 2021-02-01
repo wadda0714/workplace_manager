@@ -1,12 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/static/css/admin.css">
     <title>Document</title>
 </head>
+
 <body>
-    <h1>チェックイン履歴</h1>
+    <fieldset>
+        <legend>チェックイン履歴</legend>
+        {% for msg in lst %}
+        <li>{{msg}}</li>
+        {% endfor %}
+
+    </fieldset>
+    <form action="/checklog" method="POST">
+        <input type="submit" value="確認">
+    </form>
+
 </body>
+
 </html>
