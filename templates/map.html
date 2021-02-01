@@ -44,15 +44,19 @@
         <h1 class="greeding">{{greeding}} <span id="username">{{username}}</span>さん! </h1>
         <nav class="menu" onclick="change_background()">
             <ol>
-                <li class="menu-item"><a href="#" id="information" onclick="disp_iframe()">Information</a></li>
+                <li class="menu-item"><a href="#">Info</a>
+                    <ol class="sub-menu">
+                        <li class="menu-item"><a href="#" id="search" onclick="disp_iframe()">従業員から検索</a></li>
+                        <li class="menu-item"><a href="#" id="information" onclick="disp_iframe()">その他情報</a></li>
+                    </ol>
+                </li>
                 <li class="menu-item"><a href="#" id="enter">Enter</a>
                     <ol class="sub-menu" id="maplist">
-                        <li class="menu-item"><a href="#" id="search" onclick="disp_iframe()">従業員から検索</a></li>
+
                         <li class="menu-item"><a href="#" id="ikkai" onclick="disp_iframe()">1F</a></li>
                         <li class="menu-item"><a href="#" id="nikai" onclick="disp_iframe()">2F</a></li>
 <!--ここにはいる-->
-<li class="menu-item"><a href="#" id="P4150174" onclick="disp_iframe()">P4150174</a></li>
-<li class="menu-item"><a href="#" id="IMG_8714" onclick="disp_iframe()">IMG_8714</a></li>
+<li class="menu-item"><a href="#" id="images" onclick="disp_iframe()">images</a></li>
 
 
                     </ol>
