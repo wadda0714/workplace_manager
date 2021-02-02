@@ -18,6 +18,7 @@ def login():
         un = request.form.get("username")
         pwd = request.form.get("password")
         admin_password = request.form.get("admin_password")
+        ID = request.form.get("id")
         cursor,con = connect_db()
         cursor.execute("SELECT hashpass FROM emptable WHERE empname='"+un+"'")
         li = cursor.fetchone()
@@ -67,7 +68,13 @@ def event_register():
     print(event_name)
     print(date)
     print(location)
+    event = event_name+" "+date+" "+location
+    cursor,con = connect_db()
+    cursor.execute("INSERT INTO eventinfo (event) values(?)",(event,))
+    con.commit()
+    con.close()
     return "登録完了しました"
+
 @app.route("/at_info", methods = ["POST"])
 def info():
     cursor,con = connect_db()
@@ -76,9 +83,11 @@ def info():
     employees = cursor.fetchall()
     print(employees)
     employee = list()
-    #for i in employees:
-     #   employee.append(i[0]) 
-    return render_template("information.html",employees=employees)
+    cursor,con = connect_db()
+    cursor.execute("SELECT * FROM eventinfo")
+    event = cursor.fetchall()
+    print(event)
+    return render_template("information.html",employees=employees,event=event)
     
 
       
@@ -477,12 +486,18 @@ def delete_map():
         except :
             pass
     return "success!"
+@app.route("/del_log",methods = ["POST"])
+def delete_log():
+    cursor,con = connect_db()
+    cursor.execute("delete from checkinlog ")
+    con.commit()
+    con.close()
+    return render_template("log.html",msg="ログの削除完了しました")
     
 
             
         
-
-def checktime():
+def fetchtime():
     now = datetime.datetime.now()
     now_time = "{0:%H}".format(now) 
     a = now_time.lstrip("0")
@@ -490,6 +505,9 @@ def checktime():
         a = 0;
     print(now_time)
     time = int(a)
+    return time
+def checktime():
+    time = fetchtime()
     if time >= 5 and time < 12 :
         greeding = "Good Morning!"
     elif time >= 12 and time < 17:
