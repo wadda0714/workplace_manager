@@ -20,16 +20,16 @@ def login():
         admin_password = request.form.get("admin_password")
         ID = request.form.get("id")
         cursor,con = connect_db()
-        cursor.execute("SELECT hashpass FROM emptable WHERE empname='"+un+"'")
+        cursor.execute("SELECT hashpass FROM emptable WHERE id='"+ID+"'")
         li = cursor.fetchone()
         if li is None:
             msg = "usernameかpasswordが違います。入力しなおしてください。"
             return render_template("new-login.html",err_msg=msg)
         else:
             if li[0] == pwd:
-                cursor.execute("SELECT defaultposition FROM emptable WHERE empname='"+un+"'")
+                cursor.execute("SELECT defaultposition FROM emptable WHERE id='"+ID+"'")
                 record = cursor.fetchone()
-                cursor.execute("UPDATE emptable SET sheet = ? WHERE empname=?",(record[0],un))
+                cursor.execute("UPDATE emptable SET sheet = ? WHERE id=?",(record[0],ID))
                 con.commit()
                 con.close()
                 if admin_password == "jugon":
@@ -49,10 +49,11 @@ def account_register():
     elif request.method == "POST":
         un = request.form.get("username")
         pwd = request.form.get("password")
+        ID = request.form.get("id")
         cursor,con = connect_db()
-        cursor.execute("SELECT empname FROM emptable WHERE empname=?",(un,))
+        cursor.execute("SELECT id FROM emptable WHERE id=?",(ID,))
         if cursor.fetchone() == None:
-            cursor.execute("INSERT INTO emptable values(?,?,?,?,?)",(un,pwd,"出勤","",""))
+            cursor.execute("INSERT INTO emptable values(?,?,?,?,?,?)",(ID,un,pwd,"出勤","",""))
             con.commit()
             con.close()
             return render_template("map.html",username=un,greeding = checktime())
