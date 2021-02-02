@@ -16,20 +16,22 @@ app.config['SECRET_KEY'] = os.urandom(24)
 def login():
     if request.method == "POST":
         un = request.form.get("username")
+        ID = request.form.get("id")
+        session["un"] = un
+        session["id"] = ID
         pwd = request.form.get("password")
         admin_password = request.form.get("admin_password")
-        ID = request.form.get("id")
         cursor,con = connect_db()
-        cursor.execute("SELECT hashpass FROM emptable WHERE id='"+ID+"'")
+        cursor.execute("SELECT hashpass FROM emptable WHERE id='"+session["id"]+"'")
         li = cursor.fetchone()
         if li is None:
             msg = "usernameかpasswordが違います。入力しなおしてください。"
             return render_template("new-login.html",err_msg=msg)
         else:
             if li[0] == pwd:
-                cursor.execute("SELECT defaultposition FROM emptable WHERE id='"+ID+"'")
+                cursor.execute("SELECT defaultposition FROM emptable WHERE id='"+session["id"]+"'")
                 record = cursor.fetchone()
-                cursor.execute("UPDATE emptable SET sheet = ? WHERE id=?",(record[0],ID))
+                cursor.execute("UPDATE emptable SET sheet = ? WHERE id=?",(record[0],session["id"]))
                 con.commit()
                 con.close()
                 if admin_password == "jugon":
@@ -50,10 +52,12 @@ def account_register():
         un = request.form.get("username")
         pwd = request.form.get("password")
         ID = request.form.get("id")
+        session["id"] = ID
+        session["un"] = un
         cursor,con = connect_db()
-        cursor.execute("SELECT id FROM emptable WHERE id=?",(ID,))
+        cursor.execute("SELECT id FROM emptable WHERE id=?",(session["id"],))
         if cursor.fetchone() == None:
-            cursor.execute("INSERT INTO emptable values(?,?,?,?,?,?)",(ID,un,pwd,"出勤","",""))
+            cursor.execute("INSERT INTO emptable values(?,?,?,?,?,?)",(session["id"],un,pwd,"","",""))
             con.commit()
             con.close()
             return render_template("map.html",username=un,greeding = checktime())
@@ -88,6 +92,7 @@ def info():
     cursor.execute("SELECT * FROM eventinfo")
     event = cursor.fetchall()
     print(event)
+    print(session["un"])
     return render_template("information.html",employees=employees,event=event)
     
 
@@ -108,7 +113,25 @@ def signup():
     #cursor.execute("SELECT ")
     #con.close()
     #return render_template("map.html")
-
+@app.route("/id_search",methods = ["POST"])
+def id_search():
+    id = request.form.get("id")
+    cursor,con = connect_db()
+    cursor.execute("SELECT sheet,empname FROM emptable WHERE id='"+id+"'")
+    
+    record = cursor.fetchone()
+    print(record)
+    print(record)
+    if record is None:
+        msg = "ユーザーは存在しません"
+        return render_template("search.html",msg=msg)
+    elif record[0] == "":
+        msg = record[1] + "さんは出勤していません"
+        return render_template("search.html",msg = msg)
+    else:
+        seat = record[0].split(" ")
+        msg = record[1] + "さんは" + record[0] + "にいます"
+        return render_template(seat[0]+".html",msg = msg,dst="/static/pics/四星球.jpeg",user_seat=str(seat[1]))
 @app.route("/search",methods = ["POST"])
 def search():
     employees_name = request.form.get("employees_name")
@@ -161,16 +184,18 @@ def kintai():
     seat = request.form.get("seat")
     filename = request.form.get("filename")
     kintai = request.form.get("kintai")
-            
+    name = request.form.get("name")
+    flag = request.form.get("flag")
+    if kintai != "出勤":
+        seat = None
     name = request.form.get("name")
     flag = request.form.get("flag")
     if seat == None:
-        seat = ""
         cursor,con = connect_db()
-        cursor.execute('UPDATE emptable set sheet = "",status = ? WHERE empname = ?',(kintai,name))
+        cursor.execute('UPDATE emptable set sheet = "",status = ? WHERE id = ?',(kintai,session["id"]))
         con.commit()
         con.close()
-        result = add_checklog(name)
+        result = add_checklog(name,"チェックアウト","")
         print(result)
         return render_template(filename+".html",msg="登録完了しました")
         
@@ -184,10 +209,10 @@ def kintai():
         try:
             
             cursor,con = connect_db()
-            cursor.execute("UPDATE emptable set sheet = ?,status = ?, defaultposition = ? WHERE empname = ?",(filename+" "+seat,kintai,filename+" "+seat,name))
+            cursor.execute("UPDATE emptable set sheet = ?,status = ?, defaultposition = ? WHERE id = ?",(filename+" "+seat,kintai,filename+" "+seat,session["id"]))
             con.commit()
             con.close()
-            result = add_checklog(name)
+            result = add_checklog(name,"チェックイン",filename+" "+seat)
             print(result)
             msg="登録完了しました"
         
@@ -199,10 +224,10 @@ def kintai():
         try:
                 
             cursor,con = connect_db()
-            cursor.execute("UPDATE emptable set sheet = ?,status = ? WHERE empname = ?",(filename+" "+seat,kintai,name))
+            cursor.execute("UPDATE emptable set sheet = ?,status = ? WHERE id = ?",(filename+" "+seat,kintai,session["id"]))
             con.commit()
             con.close()
-            result = add_checklog(name)
+            result = add_checklog(name,"チェックイン",filename+" "+seat)
             print(result)
             msg="登録完了しました"
         
@@ -221,6 +246,16 @@ def checklog():
      for i in record:
          lst.append(i[0]+" "+i[1])
      return render_template('log.html',lst = lst)
+@app.route('/del_from_id',methods=["POST"])
+def delete_from_id():
+    ID = request.form.get("id")
+    cursor,con = connect_db()
+    cursor.execute("DELETE from emptable WHERE id=? ",(ID,))
+    con.commit()
+    con.close()
+    msg = "削除完了しました"
+    return render_template("del.html",msg=msg)
+    
 @app.route('/register_map',methods=["POST"])
 def register_map():
     html = request.form.get("imagemap")
@@ -421,27 +456,10 @@ def register_map():
 <script>
     var seat = "{{user_seat}}";
     console.log(seat)
-    var parent_elem = document.getElementsByTagName("map")[0].split(".")[0]
+    var parent_elem = document.getElementsByTagName("map")[0]
     var elem = document.getElementById(seat)
-    var coords = $("#" + seat).attr('coords').split(',');
-    console.log(coords)
-    var thisLeft = coords[0];
-    var thisTop = coords[1];
-    for (var i = 0; i < coords.length; i++) {
-        if (i % 2 == 0) {
-            thisLeft = Math.min(thisLeft, coords[i]);
-        } else {
-            thisTop = Math.min(thisTop, coords[i]);
-        }
-    }
-    var offsettop = elem.offsetTop
-    var offsetleft = elem.offsetLeft
-    console.log(offsetleft)
-    var img = document.createElement("img")
-    img.src = "/static/pics/四星球.jpeg"
-    img.style = "margin-left:" + thisLeft + "px;margin-top:" + thisTop + "px;width:10px;height:10px;,position:absolute;"
-    parent_elem.appendChild(img)
-    document.body.getElementById(parent_elem)
+    console.log(elem.scrollTop)
+    document.documentElement.scrollTop = elem.scrollTop
 </script>
 
 
@@ -454,7 +472,7 @@ def register_map():
         f.write(html)
     
     img_file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-    return render_template("index.html",msg="登録完了しました")
+    return "登録完了しました！F5を押してページを更新してください！"
 @app.route('/delete',methods = ["POST"])
 def delete_employee():
     name = request.form.get("empname")
@@ -486,7 +504,7 @@ def delete_map():
             os.remove(UPLOAD_FOLDER+"/"+name+i)
         except :
             pass
-    return "success!"
+    return "削除完了しました！F5を押してページを更新してください！"
 @app.route("/del_log",methods = ["POST"])
 def delete_log():
     cursor,con = connect_db()
@@ -540,11 +558,11 @@ def replace_func(fname, replace_set):
             f2.write(tmp_list[i])
         print("inserted!")
 
-def add_checklog(name):
+def add_checklog(name,at,location):
     try:
         time = datetime.datetime.now()
         cursor,con = connect_db()
-        cursor.execute('INSERT INTO checkinlog values(?,?)',(name,time))
+        cursor.execute('INSERT INTO checkinlog values(?,?)',(location+" "+name+" "+at,time))
         con.commit()
         con.close()
     except:

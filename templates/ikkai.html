@@ -47,7 +47,7 @@
     </ul>
     <div class="contents">
         <img src="/static/pics/白浜社屋1F.png" usemap="#ImageMap1" alt="" />
-        <div id="map1"><map name="ImageMap1" id="ikkai">
+        <div id="map1"><map name="ImageMap1" id="ikkai" style="position: relative;">
       <area shape="poly" class="1"  id="1"   coords="140,325,145,334,153,328,147,320,147,320" onclick="submit()" name="seat1" onmouseenter = "get_class()" data-funcybox="floor1" target="_blank" alt="" />
       <area shape="poly" class="2"  id="2"   coords="126,334,132,342,140,337,134,328,133,329" onclick="submit()" name="seat2" onmouseenter = "get_class()" data-funcybox="floor1" target="_blank" alt="" />
       <area shape="poly" class="3"  id="3"   coords="111,343,116,352,127,347,121,336,123,338" onclick="submit()" name="seat3" onmouseenter = "get_class()" data-funcybox="floor1" target="_blank" alt="" />
@@ -91,6 +91,7 @@
       <area shape="poly" class="41" id="41"  coords="101,753,98,764,108,767,111,756" onclick="submit()" name="seat41" onmouseenter = "get_class()" data-funcybox="floor1" target="_blank" alt="" />
       <area shape="rect" class="42" id="42"  coords="285,28,384,175"  onclick="submit()" onmouseenter = "get_class()" data-funcybox="floor1" target="_blank" name="cafe" alt="" />
       <area shape="rect" class="43" id="43"  coords="693,30,1024,177" onclick="submit()" onmouseenter = "get_class()" data-funcybox="floor1" target="_blank" name="meetingroom" alt="" />
+      <img src="/static/pics/四星球.jpeg" style = "position: absolute;"alt="">
     </map>
         </div>
 
@@ -208,6 +209,16 @@
             alert(error);
         }
     }
+</script>
+<script>
+    var seat = "{{user_seat}}";
+    console.log(seat)
+    var offset = $("#" + seat).offset();
+
+    $(".img").offset({
+        top: offset.top - 100 + "px",
+        left: offset.left + "px"
+    })
 </script>
 <script>
     var filename = document.getElementsByTagName("map")[0].id;

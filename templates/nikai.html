@@ -229,14 +229,12 @@
     }
 </script>
 <script>
-    var offset = $("#pointer").offset();
-    var seat = "{{seat}}";
+    var seat = "{{user_seat}}";
     console.log(seat)
-    console.log(offset);
-    var seat_offset = $("#" + seat).offset({
-        top: offset.top,
-        left: offset.left
-    });
+    var parent_elem = document.getElementsByTagName("map")[0]
+    var elem = document.getElementById(seat)
+    console.log(elem.scrollTop)
+    document.documentElement.scrollTop = elem.scrollTop
 </script>
 
 </html>
