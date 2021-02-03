@@ -1,5 +1,6 @@
 body {
     color: aliceblue;
+    position: relative;
 }
 
 .contents {
@@ -9,4 +10,10 @@ body {
 #pointer {
     width: 50px;
     height: auto;
+}
+
+.msg {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
 }

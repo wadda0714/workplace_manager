@@ -13,38 +13,40 @@
 <body>
     <script>
     </script>
-    <form action="/kintai" method="POST" id="submit">
+    <div class="msg">
+        <form action="/kintai" method="POST" id="submit">
 
-        <fieldset>
+            <fieldset>
 
-            <legend>勤怠情報変更フォーム</legend>
-            <p>勤務状況</p><select name="kintai" id="kintai">
-      <option>出勤</option>
-      <option>社用外出</option>
-      <option>私用外出</option>
-      <option>遅刻</option>
-      <option>早退</option>
-      <option>休み</option>
-      <option>午前休</option>
-      <option>午後休</option>
-      <option>在宅勤務</option>
-      <option>退社</option>
-      <option>出張</option>
-    </select>
-            <br>
+                <legend>勤怠情報変更フォーム</legend>
+                <p>勤務状況</p><select name="kintai" id="kintai">
+          <option>出勤</option>
+          <option>社用外出</option>
+          <option>私用外出</option>
+          <option>遅刻</option>
+          <option>早退</option>
+          <option>休み</option>
+          <option>午前休</option>
+          <option>午後休</option>
+          <option>在宅勤務</option>
+          <option>退社</option>
+          <option>出張</option>
+        </select>
+                <br>
 
-            <label class="always"><input type="checkbox"  id ="flag" >毎日この席に座る</label>
-            <br>
-            <label><input type="submit" value="送信" onclick="flag_check()" ></label>
-        </fieldset>
-    </form>
-    <p>{{msg}}</p>
-    <p id="submit_msg"></p>
-    <ul>
-        {% for msg in name %}
-        <li>{{msg}}</li>
-        {% endfor %}
-    </ul>
+                <label class="always"><input type="checkbox"  id ="flag" >毎日この席に座る</label>
+                <br>
+                <label><input type="submit" value="送信" onclick="flag_check()" ></label>
+            </fieldset>
+        </form>
+        <p>{{msg}}</p>
+        <p id="submit_msg"></p>
+        <ul>
+            {% for msg in name %}
+            <li>{{msg}}</li>
+            {% endfor %}
+        </ul>
+    </div>
     <div class="contents">
         <img src="/static/pics/白浜社屋2F.png" usemap="#ImageMap2" alt="" />
         <map name="ImageMap2" id="nikai">
