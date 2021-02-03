@@ -68,6 +68,8 @@ def account_register():
 @app.route("/event_register", methods = ["POST"])
 def event_register():
     event_name = request.form.get("event_name")
+    if event_name is None:
+        event_name = "会議"
     date = request.form.get("date")
     location = request.form.get("location")
     print(event_name)
@@ -79,7 +81,13 @@ def event_register():
     con.commit()
     con.close()
     return "登録完了しました"
-
+@app.route("/del_event", methods =["POST"])
+def del_event():
+    cursor,con = connect_db()
+    cursor.execute("DELETE FROM eventinfo")
+    con.commit()
+    con.close()
+    return render_template("information.html")
 @app.route("/at_info", methods = ["POST"])
 def info():
     cursor,con = connect_db()
