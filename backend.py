@@ -35,6 +35,7 @@ def login():
                 con.commit()
                 con.close()
                 if admin_password == "jugon":
+                    session["admin"] = un
                     return render_template("map.html",username=un,greeding = checktime(),admin_msg="管理者でログイン中")
                 else:
                     return render_template("map.html",username=un,greeding = checktime())
@@ -143,7 +144,7 @@ def id_search():
 @app.route("/search",methods = ["POST"])
 def search():
     employees_name = request.form.get("employees_name")
-    cursor,con = connect_db()
+    cursor,con = connect_db()   
     cursor.execute("SELECT sheet FROM emptable WHERE empname='"+employees_name+"'")
     
     record = cursor.fetchone()
