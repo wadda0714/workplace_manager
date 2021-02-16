@@ -13,6 +13,7 @@
 
     <link rel="stylesheet" type="text/css" title="Cool stylesheet" href="/static/css/map.css">
     <meta http-equiv="Cache-Control" content="no-cache">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
     <title>Document</title>
 
     <!--フォント-->
@@ -46,7 +47,6 @@
             <ol>
                 <li class="menu-item"><a href="#">Info</a>
                     <ol class="sub-menu">
-                        <li class="menu-item"><a href="#" id="search" onclick="disp_iframe()">従業員から検索</a></li>
                         <li class="menu-item"><a href="#" id="id_search" onclick="disp_iframe()">IDから検索</a></li>
                         <li class="menu-item"><a href="#" id="information" onclick="disp_iframe()">その他情報</a></li>
                     </ol>
@@ -64,11 +64,11 @@
                 <li class="menu-item"><a href="#">Admin</a>
                     <ol class="sub-menu">
                         <li class="menu-item"><a href="#" id="index">マップ追加</a></li>
-                        <li class="menu-item"><a href="#" id="del">従業員削除</a></li>
                         <li class="menu-item"><a href="#" id="delid">IDから削除</a></li>
                         <li class="menu-item"><a href="#" id="eve">イベント登録</a></li>
                         <li class="menu-item"><a href="#" id="log">チェックイン履歴</a></li>
                         <li class="menu-item"><a href="#" id="del_map">マップ削除</a></li>
+                        <li class="menu-item"><a href="#" id="employee_all">全社員確認</a></li>
 
                     </ol>
                 </li>
@@ -78,6 +78,7 @@
                         <li class="menu-item"><a href="#" id="u_map" onclick="disp_iframe()">マップの登録/削除</a></li>
                         <li class="menu-item"><a href="#" id="u_event" onclick="disp_iframe()">イベントの登録/確認</a></li>
                         <li class="menu-item"><a href="#" id="u_etc" onclick="disp_iframe()">出勤中の社員確認</a></li>
+
                     </ol>
                 </li>
                 <li class="menu-item"><a href="/" id="leave">logout</a></li>
@@ -125,14 +126,11 @@
         var msg = document.getElementById("admin")
         if (msg.textContent == "管理者でログイン中") {
             var index = document.getElementById("index")
-            var del = document.getElementById("del")
             var eve = document.getElementById("eve")
             var log = document.getElementById("log")
+            var all = document.getElementById("employee_all")
 
             index.onclick = function onclick(event) {
-                disp_iframe()
-            }
-            del.onclick = function onclick(event) {
                 disp_iframe()
             }
             eve.onclick = function onclick(event) {
@@ -145,6 +143,9 @@
                 disp_iframe()
             }
             delid.onclick = function onclick(event) {
+                disp_iframe()
+            }
+            all.onclick = function onclick(event) {
                 disp_iframe()
             }
         }

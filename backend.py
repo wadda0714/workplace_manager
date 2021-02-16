@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*
-from flask import Flask, request, Response, abort, render_template,session, jsonify,send_from_directory
+from flask import Flask, request, Response, abort, render_template,session, jsonify,send_from_directory,send_file
 from flask_login import LoginManager, login_user, logout_user, login_required, UserMixin
 import sqlite3
 import datetime
@@ -12,6 +12,9 @@ UPLOAD_FOLDER = 'static/pics'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['SECRET_KEY'] = os.urandom(24)
 
+@app.route("/favicon.ico")
+def favicon():
+    return app.send_static_file("favicon.ico")
 @app.route('/login',methods = ['POST'])
 def login():
     if request.method == "POST":
@@ -187,6 +190,22 @@ def find(seat):
             return render_template(filename+".html",name=msg,scr=scroll,seat=seat)
         else:
             return render_template(filename+".html",name=name,scr=scroll,seat=seat)
+
+@app.route("/employee_all",methods = ['POST'])
+def CheckAllEmployee():
+    cursor,con = connect_db()
+    cursor.execute("SELECT id,empname FROM emptable")
+    info = list()
+    tmp = ""
+    for i in cursor.fetchall():
+        for j in i:
+            tmp+=" "+j
+        info.append(tmp)
+        tmp=""
+    return render_template("employee_all.html",info=info)
+            
+        
+    
         
 @app.route("/kintai",methods = ["POST"])
 def kintai():
@@ -578,19 +597,6 @@ def add_checklog(name,at,location):
         import traceback
         traceback.print_exc()
     
-#def sql_generateA(dst_table,dst_data,ope):
-   # if ope == "insert":
-      #  pass
-   # else if ope == "login":
-     #   pass
-        
-   # else if ope == "update":
-      #  pass
-    #else if ope == "delete":
-      #  pass
-    
-   # query = "SELECT" + dst_data + "FROM" + dst_table
-    #return query
     
 if __name__ == '__main__':
     app.debug = True
