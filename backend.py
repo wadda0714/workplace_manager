@@ -129,7 +129,7 @@ def signup():
 def id_search():
     id = request.form.get("id")
     cursor,con = connect_db()
-    cursor.execute("SELECT sheet,empname FROM emptable WHERE id='"+id+"'")
+    cursor.execute("SELECT sheet,empname,status FROM emptable WHERE id='"+id+"'")
     
     record = cursor.fetchone()
     print(record)
@@ -138,7 +138,7 @@ def id_search():
         msg = "ユーザーは存在しません"
         return render_template("search.html",msg=msg)
     elif record[0] == "":
-        msg = record[1] + "さんは出勤していません"
+        msg = record[1] + "さんは出勤していません "+record[2]
         return render_template("search.html",msg = msg)
     else:
         seat = record[0].split(" ")
