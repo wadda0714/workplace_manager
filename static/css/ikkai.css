@@ -17,3 +17,7 @@ body {
     position: sticky;
     top: 0;
 }
+
+.form {
+    float: right;
+}

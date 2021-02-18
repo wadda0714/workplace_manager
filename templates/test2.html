@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+    <script src="/static/js/jquery.imagemapster.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <img src="/static/pics/2019-10-10 (5).png" usemap="#ImageMap" alt="" id="pic" />
+    <map name="ImageMap">
+      <area id = "a" shape="rect" coords="91,63,1057,669" href="#" alt="" />
+    </map>
+    <script>
+        /*$(document).ready(function() {
+                                                                                    var image = $("#pic")
+                                                                                    image.mapster({
+                                                                                        mapKey: 'id',
+                                                                                        fillColor: 'ff0000',
+                                                                                        fillOpacity: 0,
+                                                                                        strokeColor: 'ff0000',
+                                                                                        strokeOpacity: 1
+                                                                                    });
+                                                                                    image.mapster('set', true, "a");
+                                                                                });*/
+        $(document).ready(function() {
+            $('#pic').mapster({
+                clickNavigate: true,
+                render_highlight: {
+                    fillColor: 'ff0000',
+                },
+                mapKey: 'id',
+                fillOpacity: 1,
+            });
+        });
+    </script>
+</body>
+
+</html>
