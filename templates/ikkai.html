@@ -40,65 +40,66 @@
                     <label class="always"><input type="checkbox"  id ="flag" >毎日この席に座る</label>
                     <br>
                     <label><input type="submit" value="送信" onclick="flag_check()" ></label>
-                    <p>{{msg}}</p>
-                    <p id="submit_msg"></p>
-                    <ul>
-                        {% for msg in name %}
-                        <li>{{msg}}</li>
-                        {% endfor %}
-                    </ul>
-                </div>
-            </fieldset>
         </form>
+        <p>{{msg}}</p>
+        <p id="submit_msg"></p>
+        <ul id="list">
+
+        </ul>
+        <form action="/fetch_distribution" method="post" id="check_dist">
+            <input type="submit" value="分布確認"></form>
+        </div>
+        </fieldset>
+
 
     </div>
 
     <div class="contents">
         <img src="/static/pics/白浜社屋1F.png" usemap="#ImageMap1" alt="" id="pic" href="#" />
         <map name="ImageMap1" id="ikkai" href="#">
-      <area shape="poly"   id="1"   coords="140,325,145,334,153,328,147,320,147,320" onclick="submit()" name="seat1" onmouseenter = "get_class()" data-funcybox="floor1" target="_blank" alt="" />
-      <area shape="poly"   id="2"   coords="126,334,132,342,140,337,134,328,133,329" onclick="submit()" name="seat2" onmouseenter = "get_class()" data-funcybox="floor1" target="_blank" alt="" />
-      <area shape="poly"   id="3"   coords="111,343,116,352,127,347,121,336,123,338" onclick="submit()" name="seat3" onmouseenter = "get_class()" data-funcybox="floor1" target="_blank" alt="" />
-      <area shape="poly"   id="4"   coords="86,354,81,362,94,368,97,356,97,356" onclick="submit()" name="seat4" onmouseenter = "get_class()" data-funcybox="floor1" target="_blank" alt="" />
-      <area shape="poly"   id="5"   coords="80,383,78,393,91,393,92,382" onclick="submit()" name="seat5" onmouseenter = "get_class()" data-funcybox="floor1" target="_blank" alt="" />
-      <area shape="poly"   id="6"   coords="82,415,81,424,95,426,95,414" onclick="submit()" name="seat6" onmouseenter = "get_class()" data-funcybox="floor1" target="_blank" alt="" />
-      <area shape="poly"   id="7"   coords="80,447,81,458,93,459,95,446" onclick="submit()" name="seat7" onmouseenter = "get_class()" data-funcybox="floor1" target="_blank" alt="" />
-      <area shape="poly"   id="8"   coords="81,462,80,472,94,472,94,461" onclick="submit()" name="seat8" onmouseenter = "get_class()" data-funcybox="floor1" target="_blank" alt="" />
-      <area shape="poly"   id="9"   coords="82,489,81,501,95,502,93,488" onclick="submit()" name="seat9" onmouseenter = "get_class()" data-funcybox="floor1" target="_blank" alt="" />
-      <area shape="poly"   id="10"  coords="81,502,80,513,92,514,93,502" onclick="submit()" name="seat10" onmouseenter = "get_class()" data-funcybox="floor1" target="_blank"  alt="" />
-      <area shape="poly"   id="11"  coords="109,424,103,434,115,440,121,429" onclick="submit()" name="seat11" onmouseenter = "get_class()" data-funcybox="floor1" target="_blank" alt="" />
-      <area shape="poly"   id="12"  coords="131,420,125,430,138,436,142,427" onclick="submit()"  name="seat12" onmouseenter = "get_class()" data-funcybox="floor1" target="_blank" alt="" />
-      <area shape="poly"   id="13"  coords="116,479,128,482,131,473,120,469" onclick="submit()" name="seat13" onmouseenter = "get_class()" data-funcybox="floor1" target="_blank" alt="" />
-      <area shape="poly"   id="14"  coords="139,457,137,467,150,471,152,459" onclick="submit()" name="seat14" onmouseenter = "get_class()" data-funcybox="floor1" target="_blank" alt="" />
-      <area shape="poly"  id="15"  coords="159,462,161,472,173,470,169,458" onclick="submit()" name="seat15" onmouseenter = "get_class()" data-funcybox="floor1" target="_blank" alt="" />
-      <area shape="poly"  id="16"  coords="177,476,181,486,191,482,188,472" onclick="submit()" name="seat16" onmouseenter = "get_class()" data-funcybox="floor1" target="_blank" alt="" />
-      <area shape="poly"  id="17"  coords="185,492,192,500,200,492,193,484" onclick="submit()" name="seat17" onmouseenter = "get_class()" data-funcybox="floor1" target="_blank" alt="" />
-      <area shape="poly"  id="18"  coords="186,515,194,526,204,517,195,509" onclick="submit()" name="seat18" onmouseenter = "get_class()" data-funcybox="floor1" target="_blank"  alt="" />
-      <area shape="poly"  id="19"  coords="181,526,177,538,190,541,192,529" onclick="submit()" name="seat19" onmouseenter = "get_class()" data-funcybox="floor1" target="_blank" alt="" />
-      <area shape="poly"  id="20"  coords="160,539,155,549,168,553,172,541" onclick="submit()" name="seat20" onmouseenter = "get_class()" data-funcybox="floor1" target="_blank" alt="" />
-      <area shape="poly"  id="21"  coords="137,542,140,552,150,550,149,539" onclick="submit()" name="seat21" onmouseenter = "get_class()" data-funcybox="floor1" target="_blank" alt="" />
-      <area shape="poly"  id="22"  coords="114,530,119,540,130,536,126,526" onclick="submit()" name="seat22" onmouseenter = "get_class()"  data-funcybox="floor1" target="_blank" alt="" />
-      <area shape="poly"  id="23"  coords="77,595,77,605,88,606,88,596" onclick="submit()" name="seat23" onmouseenter = "get_class()" data-funcybox="floor1" target="_blank" alt="" />
-      <area shape="poly"  id="24"  coords="77,617,77,627,88,627,87,616" onclick="submit()" name="seat24" onmouseenter = "get_class()" data-funcybox="floor1" target="_blank" alt="" />
-      <area shape="poly"  id="25"  coords="77,638,76,652,88,652,90,638" onclick="submit()" name="seat25" onmouseenter = "get_class()" data-funcybox="floor1" target="_blank" alt="" />
-      <area shape="poly"  id="26"  coords="82,715,83,726,94,727,95,715" onclick="submit()" name="seat26" onmouseenter = "get_class()" data-funcybox="floor1" target="_blank" alt="" />
-      <area shape="poly"  id="27"  coords="82,797,82,808,94,806,94,796,92,795" onclick="submit()" name="seat27" onmouseenter = "get_class()" data-funcybox="floor1" target="_blank" alt="" />
-      <area shape="poly"  id="28"  coords="120,664,118,673,131,678,134,666" onclick="submit()" name="seat28" onmouseenter = "get_class()" data-funcybox="floor1" target="_blank" alt="" />
-      <area shape="poly"  id="29"  coords="99,676,95,686,108,689,113,679" onclick="submit()" name="seat29" onmouseenter = "get_class()" data-funcybox="floor1" target="_blank" alt="" />
-      <area shape="poly"  id="30"  coords="166,667,168,679,181,677,176,663" onclick="submit()" name="seat30" onmouseenter = "get_class()" data-funcybox="floor1" target="_blank" alt="" />
-      <area shape="poly"  id="31"  coords="185,681,189,693,201,688,197,677" onclick="submit()" name="seat31" onmouseenter = "get_class()" data-funcybox="floor1" target="_blank" alt="" />
-      <area shape="poly"  id="32"  coords="123,709,133,718,142,710,133,701" onclick="submit()" name="seat32" onmouseenter = "get_class()" data-funcybox="floor1" target="_blank" alt="" />
-      <area shape="poly"  id="33"  coords="148,710,155,718,165,712,154,703" onclick="submit()" name="seat33"  onmouseenter = "get_class()" data-funcybox="floor1" target="_blank" alt="" />
-      <area shape="poly"  id="34"  coords="169,724,177,729,181,718,169,715" onclick="submit()" name="seat34"  onmouseenter = "get_class()" data-funcybox="floor1" target="_blank" alt="" />
-      <area shape="poly"  id="35"  coords="181,738,179,748,190,750,192,740,191,742" onclick="submit()" name="seat35" onmouseenter = "get_class()" data-funcybox="floor1" target="_blank" alt="" />
-      <area shape="poly"  id="36"  coords="178,757,179,766,193,764,189,753" onclick="submit()" name="seat36" onmouseenter = "get_class()"data-funcybox="floor1" target="_blank" alt="" />
-      <area shape="poly"  id="37"  coords="167,779,169,789,182,788,179,775" onclick="submit()" name="seat37" onmouseenter = "get_class()"data-funcybox="floor1" target="_blank" alt="" />
-      <area shape="poly"  id="38"  coords="147,792,156,799,166,791,156,782" onclick="submit()" name="seat38" onmouseenter = "get_class()" data-funcybox="floor1" target="_blank" alt="" />
-      <area shape="poly"  id="39"  coords="132,784,124,791,132,800,143,793" onclick="submit()" name="seat39" onmouseenter = "get_class()" data-funcybox="floor1" target="_blank" alt="" />
-      <area shape="poly"  id="40"  coords="112,777,108,785,120,789,123,779" onclick="submit()" name="seat40" onmouseenter = "get_class()" data-funcybox="floor1" target="_blank" alt="" />
-      <area shape="poly"  id="41"  coords="101,753,98,764,108,767,111,756" onclick="submit()" name="seat41" onmouseenter = "get_class()" data-funcybox="floor1" target="_blank" alt="" />
-      <area shape="rect"  id="42"  coords="285,28,384,175"  onclick="submit()" onmouseenter = "get_class()" data-funcybox="floor1" target="_blank" name="cafe" alt="" />
-      <area shape="rect" data-key="43" id="43"  coords="693,30,1024,177" onclick="submit()"  data-funcybox="floor1" href="#"  />
+      <area shape="poly"   id="1"   coords="140,325,145,334,153,328,147,320,147,320" onclick="submit()" name="seat1"   href="#" data-funcybox="floor1"  alt="" />
+      <area shape="poly"   id="2"   coords="126,334,132,342,140,337,134,328,133,329" onclick="submit()" name="seat2"  href="#" data-funcybox="floor1"  alt="" />
+      <area shape="poly"   id="3"   coords="111,343,116,352,127,347,121,336,123,338" onclick="submit()" name="seat3"  href="#" data-funcybox="floor1"  alt="" />
+      <area shape="poly"   id="4"   coords="86,354,81,362,94,368,97,356,97,356" onclick="submit()" name="seat4"  href="#" data-funcybox="floor1"  alt="" />
+      <area shape="poly"   id="5"   coords="80,383,78,393,91,393,92,382" onclick="submit()" name="seat5"  href="#" data-funcybox="floor1"  alt="" />
+      <area shape="poly"   id="6"   coords="82,415,81,424,95,426,95,414" onclick="submit()" name="seat6"  href="#" data-funcybox="floor1"  alt="" />
+      <area shape="poly"   id="7"   coords="80,447,81,458,93,459,95,446" onclick="submit()" name="seat7"  href="#"data-funcybox="floor1"  alt="" />
+      <area shape="poly"   id="8"   coords="81,462,80,472,94,472,94,461" onclick="submit()" name="seat8"  href="#" data-funcybox="floor1"  alt="" />
+      <area shape="poly"   id="9"   coords="82,489,81,501,95,502,93,488" onclick="submit()" name="seat9" href="#" data-funcybox="floor1"  alt="" />
+      <area shape="poly"   id="10"  coords="81,502,80,513,92,514,93,502" onclick="submit()" name="seat10" href="#" data-funcybox="floor1"   alt="" />
+      <area shape="poly"   id="11"  coords="109,424,103,434,115,440,121,429" onclick="submit()" name="seat11"  href="#" data-funcybox="floor1"  alt="" />
+      <area shape="poly"   id="12"  coords="131,420,125,430,138,436,142,427" onclick="submit()"  name="seat12" href="#" data-funcybox="floor1"  alt="" />
+      <area shape="poly"   id="13"  coords="116,479,128,482,131,473,120,469" onclick="submit()" name="seat13" href="#"  data-funcybox="floor1"  alt="" />
+      <area shape="poly"   id="14"  coords="139,457,137,467,150,471,152,459" onclick="submit()" name="seat14" href="#" data-funcybox="floor1"  alt="" />
+      <area shape="poly"  id="15"  coords="159,462,161,472,173,470,169,458" onclick="submit()" name="seat15" href="#" data-funcybox="floor1"  alt="" />
+      <area shape="poly"  id="16"  coords="177,476,181,486,191,482,188,472" onclick="submit()" name="seat16" href="#" data-funcybox="floor1"  alt="" />
+      <area shape="poly"  id="17"  coords="185,492,192,500,200,492,193,484" onclick="submit()" name="seat17" href="#" data-funcybox="floor1"  alt="" />
+      <area shape="poly"  id="18"  coords="186,515,194,526,204,517,195,509" onclick="submit()" name="seat18" href="#" data-funcybox="floor1"   alt="" />
+      <area shape="poly"  id="19"  coords="181,526,177,538,190,541,192,529" onclick="submit()" name="seat19" href="#" data-funcybox="floor1"  alt="" />
+      <area shape="poly"  id="20"  coords="160,539,155,549,168,553,172,541" onclick="submit()" name="seat20" href="#" data-funcybox="floor1"  alt="" />
+      <area shape="poly"  id="21"  coords="137,542,140,552,150,550,149,539" onclick="submit()" name="seat21" href="#" data-funcybox="floor1"  alt="" />
+      <area shape="poly"  id="22"  coords="114,530,119,540,130,536,126,526" onclick="submit()" name="seat22" href="#"  data-funcybox="floor1"  alt="" />
+      <area shape="poly"  id="23"  coords="77,595,77,605,88,606,88,596" onclick="submit()" name="seat23" href="#" data-funcybox="floor1"  alt="" />
+      <area shape="poly"  id="24"  coords="77,617,77,627,88,627,87,616" onclick="submit()" name="seat24" href="#" data-funcybox="floor1"  alt="" />
+      <area shape="poly"  id="25"  coords="77,638,76,652,88,652,90,638" onclick="submit()" name="seat25" href="#" data-funcybox="floor1"  alt="" />
+      <area shape="poly"  id="26"  coords="82,715,83,726,94,727,95,715" onclick="submit()" name="seat26" href="#" data-funcybox="floor1"  alt="" />
+      <area shape="poly"  id="27"  coords="82,797,82,808,94,806,94,796,92,795" onclick="submit()" href="#" name="seat27"  data-funcybox="floor1"  alt="" />
+      <area shape="poly"  id="28"  coords="120,664,118,673,131,678,134,666" onclick="submit()" href="#" name="seat28"  data-funcybox="floor1"  alt="" />
+      <area shape="poly"  id="29"  coords="99,676,95,686,108,689,113,679" onclick="submit()" href="#" name="seat29"  data-funcybox="floor1"  alt="" />
+      <area shape="poly"  id="30"  coords="166,667,168,679,181,677,176,663" onclick="submit()" href="#" name="seat30"  data-funcybox="floor1"  alt="" />
+      <area shape="poly"  id="31"  coords="185,681,189,693,201,688,197,677" onclick="submit()" href="#" name="seat31"  data-funcybox="floor1"  alt="" />
+      <area shape="poly"  id="32"  coords="123,709,133,718,142,710,133,701" onclick="submit()" href="#" name="seat32"  data-funcybox="floor1"  alt="" />
+      <area shape="poly"  id="33"  coords="148,710,155,718,165,712,154,703" onclick="submit()" href="#" name="seat33"   data-funcybox="floor1"  alt="" />
+      <area shape="poly"  id="34"  coords="169,724,177,729,181,718,169,715" onclick="submit()" href="#" name="seat34"   data-funcybox="floor1"  alt="" />
+      <area shape="poly"  id="35"  coords="181,738,179,748,190,750,192,740,191,742" onclick="submit()" href="#" name="seat35"  data-funcybox="floor1"  alt="" />
+      <area shape="poly"  id="36"  coords="178,757,179,766,193,764,189,753" onclick="submit()" href="#" name="seat36" data-funcybox="floor1"  alt="" />
+      <area shape="poly"  id="37"  coords="167,779,169,789,182,788,179,775" onclick="submit()" href="#" name="seat37" data-funcybox="floor1"  alt="" />
+      <area shape="poly"  id="38"  coords="147,792,156,799,166,791,156,782" onclick="submit()" href="#" name="seat38"  data-funcybox="floor1"  alt="" />
+      <area shape="poly"  id="39"  coords="132,784,124,791,132,800,143,793" onclick="submit()" href="#" name="seat39"  data-funcybox="floor1"  alt="" />
+      <area shape="poly"  id="40"  coords="112,777,108,785,120,789,123,779" onclick="submit()"　href="#" name="seat40"  data-funcybox="floor1"  alt="" />
+      <area shape="poly"  id="41"  coords="101,753,98,764,108,767,111,756" onclick="submit()" href="#"　name="seat41"  data-funcybox="floor1"  alt="" />
+      <area shape="rect"  id="42"  coords="285,28,384,175"  onclick="submit()"  data-funcybox="floor1"  href="#"　name="cafe" alt="" />
+      <area shape="rect" data-key="43" id="43"  coords="693,30,1024,177" onclick="submit()" data-funcybox="floor1" href="#"  />
     </map>
 
 
@@ -106,46 +107,24 @@
 
 
 
-
-    <script type="text/javascript">
-        function get_class(e) {
-            var e = e || window.event;
-            var elem = e.target || e.srcElement;
-            var elem_id = elem.id;
-            var filename = document.getElementsByTagName("map")[0].id;
-            var seat = "{{seat}}";
-            if (seat != elem_id) {
-                var form = document.createElement("form");
-                var input = document.createElement("input");
-                var scroll = document.createElement("input");
-                scroll.name = "scroll";
-                scroll.type = "hidden";
-                scroll.value = document.documentElement.scrollTop;
-                form.appendChild(scroll);
-                form.action = "/find/" + elem.id;
-                form.method = "post";
-                input.name = "filename";
-                input.type = "hidden";
-                input.value = filename;
-                form.appendChild(input);
-                document.body.appendChild(form);
-
-                form.submit();
-
-            }
-
-
-
-
-
-        }
+    <script>
+        var form1 = document.getElementById("check_dist")
+        var input = document.createElement("input")
+        var filename = document.getElementsByTagName("map")[0].id;
+        input.value = filename
+        input.type = "hidden"
+        input.name = "map"
+        form1.appendChild(input)
+        var timpo = "aaa"
     </script>
+
     <script type="text/javascript">
         function submit(e) {
             var elem = document.getElementById("seat");
             if (elem != null) {
                 elem.parentNode.removeChild(elem);
             }
+            var form = document.getElementById("submit")
 
             var e = e || window.event;
 
@@ -161,7 +140,8 @@
 
             input2.name = "seat";
 
-            input2.value = elem.className;
+            input2.value = elem.id;
+
 
             input2.id = "seat";
             msg.textContent = elem.id + "を選択しました";
@@ -187,20 +167,65 @@
         }
     </script>
     <script>
-        $(document).ready(function() {
-            $('#pic').mapster({
-                clickNavigate: true,
-                render_highlight: {
-                    fillColor: 'ff0000',
-                },
-                mapKey: 'id',
-                fillOpacity: 0.5,
-                stroke: true,
-                strokeOpacity: 1,
-                strokeColor: '191970',
-                selected: true
+        var previous_seat = "a"
+        var dst = "{{dist}}";
 
-            });
+        list = dst.split(",")
+        seat = new Array()
+        info = {}
+        for (var i = 0; i < list.length; i++) {
+            seat[i] = list[i].split(" ")[2]
+            var elem = document.getElementById(seat[i])
+            elem.className = seat[i]
+            if (info[seat[i]]) {
+                info[seat[i]] = info[seat[i]] + " " + list[i].split(" ")[0]
+            } else {
+                info[seat[i]] = list[i].split(" ")[0]
+            }
+
+        }
+        console.log(info)
+    </script>
+    <script>
+        $('#pic').mapster({
+            clickNavigate: true,
+            render_highlight: {
+                fillColor: 'ff0000',
+            },
+            mapKey: 'class',
+            fillOpacity: 0.5,
+            stroke: true,
+            strokeOpacity: 1,
+            strokeColor: '191970',
+            selected: true,
+            onMouseover: function(event) {
+
+                console.log(info[event.e.target.className])
+
+                if (previous_seat != "0") {
+                    if (previous_seat == event.e.target.className) {
+                        alert("aaa")
+                    } else {
+                        list = info[event.e.target.className].split(" ")
+                        elem = document.getElementById("list")
+                        elem.innerHTML = ''
+                        for (var i = 0; i < list.length; i++) {
+                            var p = document.createElement("li");
+                            p.textContent = list[i]
+                            elem.appendChild(p)
+                        }
+                        previous_seat = event.e.target.className
+                    }
+
+                } else {
+                    console.log("aa")
+                }
+
+
+
+                //複数人に対応できてない
+            }
+
         });
     </script>
 </body>

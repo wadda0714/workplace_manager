@@ -11,22 +11,23 @@
 </head>
 
 <body>
-    <img src="/static/pics/2019-10-10 (5).png" usemap="#ImageMap" alt="" id="pic" />
+    <img src="2019-10-10 (5).png" usemap="#ImageMap" alt="" />
     <map name="ImageMap">
-      <area id = "a" shape="rect" coords="91,63,1057,669" href="#" alt="" />
-    </map>
+  <area id="a" shape="rect" coords="139,239,479,592" href="#" alt="" />
+  <area id="b" shape="rect" coords="633,246,1013,589" href="#" alt="" />
+</map>
     <script>
         /*$(document).ready(function() {
-                                                                                    var image = $("#pic")
-                                                                                    image.mapster({
-                                                                                        mapKey: 'id',
-                                                                                        fillColor: 'ff0000',
-                                                                                        fillOpacity: 0,
-                                                                                        strokeColor: 'ff0000',
-                                                                                        strokeOpacity: 1
-                                                                                    });
-                                                                                    image.mapster('set', true, "a");
-                                                                                });*/
+                                                                                            var image = $("#pic")
+                                                                                            image.mapster({
+                                                                                                mapKey: 'id',
+                                                                                                fillColor: 'ff0000',
+                                                                                                fillOpacity: 0,
+                                                                                                strokeColor: 'ff0000',
+                                                                                                strokeOpacity: 1
+                                                                                            });
+                                                                                            image.mapster('set', true, "a");
+                                                                                        });*/
         $(document).ready(function() {
             $('#pic').mapster({
                 clickNavigate: true,

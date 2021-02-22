@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*
-from flask import Flask, request, Response, abort, render_template,session, jsonify,send_from_directory,send_file
+from flask import Flask, request, Response, abort, render_template,session, jsonify,send_from_directory,send_file,json
 from flask_login import LoginManager, login_user, logout_user, login_required, UserMixin
 import sqlite3
 import datetime
@@ -166,7 +166,7 @@ def search():
 @app.route('/get_map/<Page>')
 def get_map(Page):
     
-    return render_template(Page+".html")
+    return render_template(Page+".html",dist = ["a","b"])
 @app.route("/find/<seat>" ,methods = ["GET","POST"])
 def find(seat):
     if False:
@@ -540,7 +540,22 @@ def delete_log():
     con.commit()
     con.close()
     return render_template("log.html",msg="ログの削除完了しました")
-    
+@app.route("/fetch_distribution",methods = ["POST"])
+def FetchDistributionInfo():
+    name = request.form.get("map")
+    cursor,con = connect_db()
+    cursor.execute('SELECT empname,sheet FROM emptable WHERE sheet LIKE "' + name +'%"')
+    dist = cursor.fetchall()
+    print(dist)
+    info = list()
+    for i in dist:
+        tmp = i[0]+" "+i[1]
+        info.append(tmp)
+        
+    print(info)
+    infoA = ",".join(info)
+    print(infoA)
+    return render_template(name+".html",dist = infoA)
 
             
         
