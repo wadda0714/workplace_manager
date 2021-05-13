@@ -143,7 +143,7 @@ def id_search():
     else:
         seat = record[0].split(" ")
         msg = record[1] + "さんは" + record[0] + "にいます"
-        return render_template(seat[0]+".html",msg = msg,dst="/static/pics/四星球.jpeg",user_seat=str(seat[1]))
+        return render_template(seat[0]+".html",msg = msg,dist=record[1]+" "+record[0],user_seat=str(seat[1]))
 @app.route("/search",methods = ["POST"])
 def search():
     employees_name = request.form.get("employees_name")
